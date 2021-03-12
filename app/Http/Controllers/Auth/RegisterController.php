@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -50,9 +51,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'full_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'piva'=> ['required', 'string', 'max:11'],
+            'restaurant_name'=> ['required', 'string', 'max:50','unique:users'],
+            'restaurant_description'=> ['required', 'string'],
+            'restaurant_logo'=> ['nullable', 'string'],
+            'restaurant_banner'=> ['nullable', 'string'],
+            'address'=> ['required', 'string'],
+            'phone_number'=> ['required', 'string']
         ]);
     }
 
@@ -64,10 +72,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $data['slug'] = Str::slug($data['restaurant_name']);
+        
         return User::create([
-            'name' => $data['name'],
+            'full_name' => $data['full_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'piva'=> $data['piva'],
+            'restaurant_name'=> $data['restaurant_name'],
+            'restaurant_description'=> $data['restaurant_description'],
+            'restaurant_logo'=> $data['restaurant_logo'],
+            'restaurant_banner'=> $data['restaurant_banner'],
+            'address'=> $data['address'],
+            'phone_number'=> $data['phone_number'],
+            'slug'=> $data['slug']
         ]);
     }
 }

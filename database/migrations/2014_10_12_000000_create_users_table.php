@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('piva', 11);
-            $table->string('restaurant_name', 50);
+            $table->string('restaurant_name', 50)->unique();
             $table->string('restaurant_description');
             $table->string('restaurant_logo')->nullable();
             $table->string('restaurant_banner')->nullable();
