@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Typology;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -43,6 +44,19 @@ class RegisterController extends Controller
     }
 
     /**
+     * Override of the showRegistarionForm in trait RegistersUsers
+     * Show the application registration form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showRegistrationForm()
+    {
+        $typologies = Typology::all();
+
+        return view('auth.register', compact('typologies'));
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -60,7 +74,8 @@ class RegisterController extends Controller
             'restaurant_logo'=> ['nullable', 'string'],
             'restaurant_banner'=> ['nullable', 'string'],
             'address'=> ['required', 'string'],
-            'phone_number'=> ['required', 'string']
+            'phone_number'=> ['required', 'string'],
+            'typologies'=> ['required', 'exists:typologies,id']
         ]);
     }
 
@@ -74,7 +89,7 @@ class RegisterController extends Controller
     {
         $data['slug'] = Str::slug($data['restaurant_name']);
         
-        return User::create([
+        $user = User::create([
             'full_name' => $data['full_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -87,5 +102,10 @@ class RegisterController extends Controller
             'phone_number'=> $data['phone_number'],
             'slug'=> $data['slug']
         ]);
+
+        //attaching typologies ids to the user
+        $user->typologies()->attach($data['typologies']);
+        
+        return $user;
     }
 }

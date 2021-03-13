@@ -105,6 +105,24 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="typologies" class="col-md-4 col-form-label text-md-right">{{ __('Select Typologies') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="typologies[]" id="typologies" multiple>
+                                    @foreach($typologies as $typology)
+                                        <option value="{{ $typology->id }}">{{ $typology->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('typologies')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="restaurant_logo" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Logo') }}</label>
 
                             <div class="col-md-6">
