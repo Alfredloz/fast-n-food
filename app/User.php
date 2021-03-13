@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Plate::class);
     }
+
+    public function typologies()
+    {
+        return $this->belongsToMany(Typology::class);
+    }
 }
