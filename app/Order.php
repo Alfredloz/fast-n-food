@@ -10,4 +10,9 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function plates()
+    {
+        return $this->belongsToMany(Plate::class)->withPivot('plate_quantity');
+    }
 }
