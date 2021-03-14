@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasMany(Plate::class);
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
     public function typologies()
     {
         return $this->belongsToMany(Typology::class);
