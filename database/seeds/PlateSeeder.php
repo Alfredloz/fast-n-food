@@ -15,7 +15,7 @@ class PlateSeeder extends Seeder
     public function run(Faker $faker)
     {
         // Generating 5 fake plates for the user 1
-        for ($i=0; $i < 5; $i++) { 
+        for ($i=0; $i < 5; $i++) {
             $newPlate = new Plate();
             $newPlate->user_id = 1;
             $newPlate->name = $faker->word(true);

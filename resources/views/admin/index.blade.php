@@ -8,8 +8,7 @@
 
 
 
-
-  <h3>- lista piatti con il crud piatti -</h3>
+  <h3><a href="{{route('admin.plates.index')}}">lista piatti con il crud piatti </a></h3> 
 
   <h3>- pagina delle statistiche -</h3>
 

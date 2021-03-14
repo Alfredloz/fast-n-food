@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Plate;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -48,9 +49,9 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Plate $plate)
     {
-        //
+      return view('admin.plates.show', compact('plate'));
     }
 
     /**
