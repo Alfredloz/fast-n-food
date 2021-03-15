@@ -7,6 +7,7 @@
 
   <h1>Piatto singolo bello con tutte le informazione</h1>
 
+  <img src="{{ asset('storage/' . $plate->picture) }}" alt="">
   <h2>{{$plate->name}}</h2>
   <h3>{{$plate->price}}</h3>
 

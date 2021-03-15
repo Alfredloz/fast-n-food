@@ -15,6 +15,10 @@
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 
+    @error('slug')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+
     {{-- Input text description --}}
     <div class="form-group">
         <label for="description_ingredients">Description</label>
@@ -34,7 +38,7 @@
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 
-    {{-- Inout radio visibility --}}
+    {{-- Input radio visibility --}}
     <div class="form-check my-4">
         <input type="radio" class="form-check-input" name="visibility" id="visibility" value="1" checked>
         <label for="visibility" class="form-check-label">Avaliable</label>

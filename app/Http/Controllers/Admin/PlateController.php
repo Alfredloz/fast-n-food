@@ -18,7 +18,7 @@ class PlateController extends Controller
      */
     public function index()
     {
-      $plates = Auth::user()->plates;
+      $plates = Auth::user()->plates()->latest()->get();
       return view('admin.plates.index', compact('plates'));
     }
 
@@ -40,25 +40,23 @@ class PlateController extends Controller
      */
     public function store(Request $request)
     {
+        $request['slug'] = Str::slug($request->name . '-' . Auth::user()->id);
+        
         $validatedData = $request->validate([            
             'name' => 'required',
             'description_ingredients' => 'required',
             'picture' => 'nullable | file | max:500',
             'price' => 'required | numeric | max:9999,99',
-            'visibility' => 'required'
-            ]);
-    
+            'visibility' => 'required',
+            'slug' => 'unique:plates'
+        ]);
     
         $validatedData['user_id'] = Auth::user()->id;
 
         $picture = Storage::put('img/plates', $request->picture);
         $validatedData['picture'] = $picture;
         
-        $validatedData['slug'] = Str::slug($request->name . '-' . $validatedData['user_id']);
-        
         Plate::create($validatedData);
-        
-        //$new_plate = Plate::orderBy('id', 'desc')->first();
 
         return redirect()->route('admin.plates.index');
     }
@@ -80,9 +78,9 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Plate $plate)
     {
-        //
+        return view('admin.plates.edit', compact('plate'));
     }
 
     /**
@@ -92,9 +90,28 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Plate $plate)
     {
-        //
+        $validatedData = $request->validate([            
+            'name' => 'required',
+            'description_ingredients' => 'required',
+            'picture' => 'nullable | file | max:500',
+            'price' => 'required | numeric | max:9999,99',
+            'visibility' => 'required'
+        ]);
+            
+        if ($request->hasFile('picture')) {
+            Storage::delete($plate->picture);
+            $picture = Storage::put('img/plates', $request->picture);
+            $validatedData['picture'] = $picture;
+        }
+            
+        $validatedData['user_id'] = Auth::user()->id;
+        $validatedData['slug'] = Str::slug($request->name . '-' . $validatedData['user_id']);
+        
+        $plate->update($validatedData);
+
+        return redirect()->route('admin.plates.show', $plate);
     }
 
     /**
@@ -103,8 +120,10 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Plate $plate)
     {
-        //
+        Storage::delete($plate->picture);
+        $plate->delete();
+        return redirect()->route('admin.plates.index');
     }
 }
