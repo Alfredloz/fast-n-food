@@ -1,29 +1,32 @@
 @extends('layouts.dashboard')
 
-
 @section('content')
 
-<h1>lista dei piatti tanto carina su cui fare le cosacce sporche e zozze</h1>
+<h2>Menu</h2>
 
-<a class="btn btn-primary" href="{{ route('admin.plates.create') }}" role="button">Aggiungi un pitto</a>
+<a class="btn btn-primary mt-5" href="{{ route('admin.plates.create') }}" role="button">Add a plate</a>
 
+<div class="d-flex flex-wrap">
+  @foreach ($plates as $plate)
 
-
-@foreach ($plates as $plate)
-
-<a href="{{route('admin.plates.show', $plate)}}">
-  <p>{{$plate->name}}</p>
-</a>
-
-<a class="btn btn-primary" href="{{ route('admin.plates.show', ['plate'=> $plate->id]) }}" role="button">Mostra un pitto</a>
-
-<a class="btn btn-secondary" href="{{ route('admin.plates.edit', ['plate'=> $plate->id]) }}" role="button">Modifica un pitto</a>
-
-<form action="{{route('admin.plates.destroy', ['plate'=> $plate->id] )}}" method="post">
-  @csrf
-  @method('DELETE')
-  <button type="submit" class="btn btn-danger">Delete</button>
-</form>
-@endforeach
-
+  {{-- Card plate --}}
+  <div class="card mr-3 mt-5" style="width: 16rem;">
+    <img class="card-img-top" style="height: 10rem" src="{{ asset('storage/' . $plate->picture) }}" alt="">
+    <div class="card-body">
+      <h5 class="card-title">{{$plate->name}}</h5>
+      <p class="card-text overflow-auto" style="height: 8rem">{{$plate->description_ingredients}}</p>
+      {{-- Group button --}}
+      <div class="d-flex flex-column">
+        <a class="btn btn-primary" href="{{ route('admin.plates.show', ['plate'=> $plate->id]) }}"><i class="fas fa-pizza-slice"></i> Show</a>
+        <a class="btn btn-secondary my-2" href="{{ route('admin.plates.edit', ['plate'=> $plate->id]) }}"><i class="fas fa-edit"></i> Edit</a>
+        <form class="d-flex flex-column" action="{{route('admin.plates.destroy', ['plate'=> $plate->id] )}}" method="post">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  @endforeach
+</div>
 @endsection
