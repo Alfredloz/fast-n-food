@@ -2018,12 +2018,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       typologies: null,
-      restaurants: null
+      restaurants: null,
+      typology_id: 0
     };
+  },
+  watch: {
+    typology_id: {
+      handler: function handler() {
+        this.loadRestaurants();
+      }
+    }
   },
   methods: {
     loadTypologies: function loadTypologies() {
@@ -2038,7 +2054,11 @@ __webpack_require__.r(__webpack_exports__);
     loadRestaurants: function loadRestaurants() {
       var _this2 = this;
 
-      axios.get('api/restaurants').then(function (response) {
+      axios.get('api/restaurants', {
+        params: {
+          typology_id: this.typology_id
+        }
+      }).then(function (response) {
         _this2.restaurants = response.data.data;
       })["catch"](function (error) {
         return console.log(error);
@@ -37771,13 +37791,63 @@ var render = function() {
         [
           _c("h3", [_vm._v("Tipologie")]),
           _vm._v(" "),
+          _c("div", { staticClass: "form-check" }, [
+            _c("label", { staticClass: "form-check-label" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.typology_id,
+                    expression: "typology_id"
+                  }
+                ],
+                staticClass: "form-check-input",
+                attrs: {
+                  type: "radio",
+                  id: "all",
+                  value: "0",
+                  name: "typology_id",
+                  checked: ""
+                },
+                domProps: { checked: _vm._q(_vm.typology_id, "0") },
+                on: {
+                  change: function($event) {
+                    _vm.typology_id = "0"
+                  }
+                }
+              }),
+              _vm._v("\n                All\n              ")
+            ])
+          ]),
+          _vm._v(" "),
           _vm._l(_vm.typologies, function(typology) {
             return _c("div", { key: typology.id, staticClass: "form-check" }, [
               _c("label", { staticClass: "form-check-label" }, [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.typology_id,
+                      expression: "typology_id"
+                    }
+                  ],
                   staticClass: "form-check-input",
-                  attrs: { type: "checkbox", id: "typology" + typology.id },
-                  domProps: { value: typology.id }
+                  attrs: {
+                    type: "radio",
+                    id: "typology" + typology.id,
+                    name: "typology_id"
+                  },
+                  domProps: {
+                    value: typology.id,
+                    checked: _vm._q(_vm.typology_id, typology.id)
+                  },
+                  on: {
+                    change: function($event) {
+                      _vm.typology_id = typology.id
+                    }
+                  }
                 }),
                 _vm._v(
                   "\n                " +
@@ -37802,7 +37872,9 @@ var render = function() {
               "div",
               { key: restaurant.id, staticClass: "restaurant" },
               [
-                _c("p", [_vm._v(_vm._s(restaurant.restaurant_name))]),
+                _c("h4", [_vm._v(_vm._s(restaurant.restaurant_name))]),
+                _vm._v(" "),
+                _c("h5", [_vm._v("Tipologie del ristorante")]),
                 _vm._v(" "),
                 _c(
                   "ul",

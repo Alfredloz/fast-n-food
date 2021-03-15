@@ -11,7 +11,15 @@ class RestaurantController extends Controller
 {
     public function index()
     {
-        return RestaurantResource::collection(User::with('typologies')->get());
+        $callback = function($query) {
+            if (request()->input('typology_id') != 0){
+                $query->where('id' , '=' ,request()->input('typology_id') );
+            }
+        };
+
+        $restaurants = User::whereHas('typologies', $callback)->get();//->with(['typologies' => $callback])->get();
+
+        return RestaurantResource::collection($restaurants);       
     }
 
 }

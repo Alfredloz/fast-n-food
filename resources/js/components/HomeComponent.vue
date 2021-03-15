@@ -5,9 +5,16 @@
         <div class="row">
             <div class="col-md-2">
                 <h3>Tipologie</h3>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" id="all" value="0" name="typology_id" v-model="typology_id" checked>
+                    All
+                  </label>
+                </div>
+
                 <div class="form-check"  v-for="typology in typologies" :key="typology.id">
                   <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" :id="'typology' + typology.id" :value="typology.id" >
+                    <input type="radio" class="form-check-input" :id="'typology' + typology.id" :value="typology.id" name="typology_id" v-model="typology_id">
                     {{typology.name}}
                   </label>
                 </div>
@@ -16,7 +23,8 @@
             <div class="col-md-10">
                 <h3>Ristoranti</h3>
                 <div class="restaurant"  v-for="restaurant in restaurants" :key="restaurant.id">
-                  <p>{{restaurant.restaurant_name}}</p>
+                  <h4>{{restaurant.restaurant_name}}</h4>
+                  <h5>Tipologie del ristorante</h5>
                   <ul>
                       <li v-for="type in restaurant.typologies" :key="type.id">{{type.name}}</li>
                   </ul>
@@ -33,7 +41,15 @@
         data(){
             return {
                 typologies: null,
-                restaurants: null
+                restaurants: null,
+                typology_id: 0
+            }
+        },
+        watch :{
+            typology_id: {
+                handler(){
+                    this.loadRestaurants();
+                }
             }
         },
         methods: {
@@ -46,7 +62,7 @@
             },
 
             loadRestaurants() {
-                axios.get('api/restaurants')
+                axios.get('api/restaurants', { params: {typology_id: this.typology_id} })
                     .then(response => {
                         this.restaurants = response.data.data
                     })
