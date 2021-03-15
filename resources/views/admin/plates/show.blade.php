@@ -3,16 +3,17 @@
 
 @section('content')
 
-@can ('acces-plate', $plate)
+@can ('access-plate', $plate)
 
   <h1>Piatto singolo bello con tutte le informazione</h1>
 
+  <img src="{{ asset('storage/' . $plate->picture) }}" alt="">
   <h2>{{$plate->name}}</h2>
   <h3>{{$plate->price}}</h3>
 
 @endcan
 
-@cannot ('acces-plate', $plate)
+@cannot ('access-plate', $plate)
 
   <h3>FAI CACARE; NON guardare i piatti degli altri</h3>
 

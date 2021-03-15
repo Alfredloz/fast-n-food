@@ -7,11 +7,12 @@ use Illuminate\Support\Facades\App;
 
 class Plate extends Model
 {
-    //protected $fillable = [];
+    protected $fillable = ['name', 'description_ingredients', 'picture', 'price', 'visibility', 'slug', 'user_id'];
     
     public function user()
     {
         return $this->belongsTo(User::class);
+
     }
     
     public function orders()
