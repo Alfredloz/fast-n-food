@@ -29,7 +29,7 @@ class PlateController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.plates.create');
     }
 
     /**
@@ -40,7 +40,38 @@ class PlateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([            
+            'name' => 'required',
+            'description_ingredients' => 'required',
+            'picture' => 'nullable | file | max:500',
+            'price' => 'required | numeric | max:9999,99',
+            //'slug' => 'required',
+            'visibility' => 'required',
+            //'user_id' => 'required',
+            ]);
+    
+    Auth::user();
+    $plate = new Plate();
+    $plate->user_id=Auth::user()->id;
+
+        
+    
+    dd($plate);    
+
+        $picture = Storage::put('img/plates', $request->picture);
+        $validatedData['picture'] = $picture;
+
+        
+            
+        Plate::create($validatedData);
+
+        
+        // $new_plate = Plate::orderBy('id', 'desc')->first();
+        // $request['slug'] = Str::slug($request->name . '-' . $new_plate->id);
+        // $new_plate = Plate::orderBy('id', 'desc')->first();
+
+
+        return redirect()->route('admin.plates.index');
     }
 
     /**
