@@ -12,6 +12,14 @@
 
 @endcan
 
-<h2>questo testo qua lo vedi in ogni caso</h2>
+@cannot ('show-plate', $plate)
+
+  <h3>FAI CACARE; NON guardare i piatti degli altri</h3>
+
+  <a href="{{route('admin.index')}}">Torna al tuo ristorante e non rompere i coglioni, AGHERE</a>
+
+@endcannot
+
+
 
 @endsection
