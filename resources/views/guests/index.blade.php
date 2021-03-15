@@ -3,6 +3,8 @@
 
 @section('content')
 
-  <h1>homepage bella assai</h1>
+  <div id="app">
+    <home-component></home-component>
+  </div>
 
 @endsection

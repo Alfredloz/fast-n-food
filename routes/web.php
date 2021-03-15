@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 // Route::get('/', 'PageController@index')->name('homepage');
+// Route temporanea per la homepage
+Route::get('/home', function ()
+{
+    return view('guests.index');
+})->name('homepage');
 
 
 Auth::routes();
