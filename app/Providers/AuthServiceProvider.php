@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('show-plate', function($user, $plate){
+        Gate::define('acces-plate', function($user, $plate){
           return $user->id === $plate->user_id;
         });
     }

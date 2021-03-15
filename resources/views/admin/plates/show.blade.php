@@ -3,7 +3,7 @@
 
 @section('content')
 
-@can ('show-plate', $plate)
+@can ('acces-plate', $plate)
 
   <h1>Piatto singolo bello con tutte le informazione</h1>
 
@@ -12,7 +12,7 @@
 
 @endcan
 
-@cannot ('show-plate', $plate)
+@cannot ('acces-plate', $plate)
 
   <h3>FAI CACARE; NON guardare i piatti degli altri</h3>
 
