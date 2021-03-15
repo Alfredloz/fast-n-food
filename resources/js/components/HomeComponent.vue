@@ -17,6 +17,9 @@
                 <h3>Ristoranti</h3>
                 <div class="restaurant"  v-for="restaurant in restaurants" :key="restaurant.id">
                   <p>{{restaurant.restaurant_name}}</p>
+                  <ul>
+                      <li v-for="type in restaurant.typologies" :key="type.id">{{type.name}}</li>
+                  </ul>
                 </div>
             </div>
             
@@ -33,12 +36,26 @@
                 restaurants: null
             }
         },
+        methods: {
+            loadTypologies() {
+                axios.get('api/typologies')
+                    .then(response => {
+                        this.typologies = response.data.data
+                    })
+                    .catch(error => console.log(error))
+            },
+
+            loadRestaurants() {
+                axios.get('api/restaurants')
+                    .then(response => {
+                        this.restaurants = response.data.data
+                    })
+                    .catch(error => console.log(error))
+            }
+        },
         mounted() {
-            axios.get('api/typologies')
-            .then(response => {
-                this.typologies = response.data.data
-            })
-            .catch(error => console.log(error))
+            this.loadTypologies();
+            this.loadRestaurants();       
         }
     }
 </script>

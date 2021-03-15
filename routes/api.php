@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('typologies', 'API\TypologyController@index');
+Route::get('restaurants', 'API\RestaurantController@index');

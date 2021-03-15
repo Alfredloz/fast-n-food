@@ -2015,6 +2015,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2022,14 +2025,29 @@ __webpack_require__.r(__webpack_exports__);
       restaurants: null
     };
   },
-  mounted: function mounted() {
-    var _this = this;
+  methods: {
+    loadTypologies: function loadTypologies() {
+      var _this = this;
 
-    axios.get('api/typologies').then(function (response) {
-      _this.typologies = response.data.data;
-    })["catch"](function (error) {
-      return console.log(error);
-    });
+      axios.get('api/typologies').then(function (response) {
+        _this.typologies = response.data.data;
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    loadRestaurants: function loadRestaurants() {
+      var _this2 = this;
+
+      axios.get('api/restaurants').then(function (response) {
+        _this2.restaurants = response.data.data;
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.loadTypologies();
+    this.loadRestaurants();
   }
 });
 
@@ -37783,7 +37801,19 @@ var render = function() {
             return _c(
               "div",
               { key: restaurant.id, staticClass: "restaurant" },
-              [_c("p", [_vm._v(_vm._s(restaurant.restaurant_name))])]
+              [
+                _c("p", [_vm._v(_vm._s(restaurant.restaurant_name))]),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  _vm._l(restaurant.typologies, function(type) {
+                    return _c("li", { key: type.id }, [
+                      _vm._v(_vm._s(type.name))
+                    ])
+                  }),
+                  0
+                )
+              ]
             )
           })
         ],
