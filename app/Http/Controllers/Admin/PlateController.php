@@ -45,31 +45,20 @@ class PlateController extends Controller
             'description_ingredients' => 'required',
             'picture' => 'nullable | file | max:500',
             'price' => 'required | numeric | max:9999,99',
-            //'slug' => 'required',
-            'visibility' => 'required',
-            //'user_id' => 'required',
+            'visibility' => 'required'
             ]);
     
-    Auth::user();
-    $plate = new Plate();
-    $plate->user_id=Auth::user()->id;
-
-        
     
-    dd($plate);    
+        $validatedData['user_id'] = Auth::user()->id;
 
         $picture = Storage::put('img/plates', $request->picture);
         $validatedData['picture'] = $picture;
-
         
-            
+        $validatedData['slug'] = Str::slug($request->name . '-' . $validatedData['user_id']);
+        
         Plate::create($validatedData);
-
         
-        // $new_plate = Plate::orderBy('id', 'desc')->first();
-        // $request['slug'] = Str::slug($request->name . '-' . $new_plate->id);
-        // $new_plate = Plate::orderBy('id', 'desc')->first();
-
+        //$new_plate = Plate::orderBy('id', 'desc')->first();
 
         return redirect()->route('admin.plates.index');
     }

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\App;
 
 class Plate extends Model
 {
-    protected $fillable = ['name', 'description_ingredients', 'picture', 'price', 'visibility', 'user_id'];
+    protected $fillable = ['name', 'description_ingredients', 'picture', 'price', 'visibility', 'slug', 'user_id'];
     
     public function user()
     {
