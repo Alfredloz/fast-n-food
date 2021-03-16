@@ -114,6 +114,17 @@ class PlateController extends Controller
         return redirect()->route('admin.plates.show', $plate);
     }
 
+    public function updateVisibility(Request $request, Plate $plate)
+    {
+        $validatedData = $request->validate([            
+            'visibility' => 'required | numeric | min:0 | max:1'
+        ]);
+
+        $plate->update($validatedData);
+
+        return redirect()->route('admin.plates.index');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
