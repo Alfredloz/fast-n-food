@@ -39,12 +39,38 @@
                         class="fas fa-pizza-slice"></i> Show</a>
                 <a class="btn btn-secondary my-2" href="{{ route('admin.plates.edit', ['plate'=> $plate->id]) }}"><i
                         class="fas fa-edit"></i> Edit</a>
-                <form class="d-flex flex-column" action="{{route('admin.plates.destroy', ['plate'=> $plate->id] )}}"
-                    method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
-                </form>
+                
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger " data-toggle="modal" data-target="{{'#delete_modal' . $plate->id}}">
+                      <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="{{'delete_modal' . $plate->id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Delete Plate</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure? 
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <form class="d-flex flex-column" action="{{route('admin.plates.destroy', ['plate'=> $plate->id] )}}"
+                                        method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
