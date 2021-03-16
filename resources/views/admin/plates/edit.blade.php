@@ -14,7 +14,7 @@
     {{-- Input text name --}}
     <div class="form-group">
         <label for="name">Name</label>
-        <input class="form-control" type="text" name="name" id="name" value="{{ $plate->name }}">
+        <input class="form-control" type="text" name="name" id="name" value="{{ old('name') ? old('name') : $plate->name }}">
     </div>
     @error('name')
     <div class="alert alert-danger">{{ $message }}</div>
@@ -24,7 +24,7 @@
     <div class="form-group">
         <label for="description_ingredients">Description</label>
         <textarea class="form-control" type="text" rows="3" name="description_ingredients"
-            id="description_ingredients">{{ $plate->description_ingredients }}</textarea>
+            id="description_ingredients">{{ old('description_ingredients') ? old('description_ingredients') : $plate->description_ingredients }}</textarea>
     </div>
     @error('description_ingredients')
     <div class="alert alert-danger">{{ $message }}</div>
@@ -33,8 +33,7 @@
     {{-- Input number price --}}
     <div class="form-group">
         <label for="price">Price</label>
-        <input class="form-control" type="number" name="price" id="price" step="0.01" min="0" max="9999,99"
-            value="{{ $plate->price }}">
+        <input class="form-control" type="number" name="price" id="price" step="0.01" min="0" max="9999,99" value="{{ old('price') ? old('price') : $plate->price }}">
     </div>
     @error('price')
     <div class="alert alert-danger">{{ $message }}</div>
@@ -42,13 +41,13 @@
 
     {{-- Input radio visibility --}}
     <div class="form-check my-4">
-        <input type="radio" class="form-check-input" name="visibility" id="visibility" value="1"
+        <input type="radio" class="form-check-input" name="visibility" value="1"
             {{ $plate->visibility ? 'checked' : '' }}>
-        <label for="visibility" class="form-check-label">Avaliable</label>
+        <label for="visibility" class="form-check-label">Available</label>
         <br>
-        <input type="radio" class="form-check-input" name="visibility" id="visibility" value="0"
-            {{ $plate->visibility ? 'checked' : ''  }}>
-        <label for="visibility" class="form-check-label">Not Avaliable</label>
+        <input type="radio" class="form-check-input" name="visibility" value="0"
+            {{ $plate->visibility ? '' : 'checked'  }}>
+        <label for="visibility" class="form-check-label">Not Available</label>
     </div>
     @error('visibility')
     <div class="alert alert-danger">{{ $message }}</div>

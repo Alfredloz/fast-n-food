@@ -43,11 +43,11 @@
 
     {{-- Input radio visibility --}}
     <div class="form-check my-4">
-        <input type="radio" class="form-check-input" name="visibility" id="visibility" value="1" checked>
-        <label for="visibility" class="form-check-label">Avaliable</label>
+        <input type="radio" class="form-check-input" name="visibility" value="1" checked>
+        <label for="visibility" class="form-check-label">Available</label>
         <br>
-        <input type="radio" class="form-check-input" name="visibility" id="visibility" value="0">
-        <label for="visibility" class="form-check-label">Not Avaliable</label>
+        <input type="radio" class="form-check-input" name="visibility" value="0">
+        <label for="visibility" class="form-check-label">Not Available</label>
     </div>
     @error('visibility')
     <div class="alert alert-danger">{{ $message }}</div>

@@ -31,5 +31,5 @@ Auth::routes();
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
   Route::get('/', 'HomeController@index')->name('index');
   Route::resource('plates', 'PlateController');
-  Route::put('plates/{plate}', 'PlateController@updateVisibility')->name('plates.update_visibility');
+  Route::put('plates/{plate}/visibility', 'PlateController@visibility')->name('plates.visibility');
 });
