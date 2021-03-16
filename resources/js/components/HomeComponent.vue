@@ -5,16 +5,9 @@
         <div class="row">
             <div class="col-md-2">
                 <h3>Tipologie</h3>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input type="radio" class="form-check-input" id="all" value="0" name="typology_id" v-model="typology_id" checked>
-                    All
-                  </label>
-                </div>
-
                 <div class="form-check"  v-for="typology in typologies" :key="typology.id">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" :id="'typology' + typology.id" :value="typology.id" name="typology_id" v-model="typology_id">
+                    <input type="checkbox" class="form-check-input" :id="'typology' + typology.id" :value="typology.id" v-model="typologies_ids">
                     {{typology.name}}
                   </label>
                 </div>
@@ -42,11 +35,11 @@
             return {
                 typologies: null,
                 restaurants: null,
-                typology_id: 0
+                typologies_ids: []
             }
         },
         watch :{
-            typology_id: {
+            typologies_ids: {
                 handler(){
                     this.loadRestaurants();
                 }
@@ -62,7 +55,7 @@
             },
 
             loadRestaurants() {
-                axios.get('api/restaurants', { params: {typology_id: this.typology_id} })
+                axios.get('api/restaurants', { params: { typologies_ids: this.typologies_ids} })
                     .then(response => {
                         this.restaurants = response.data.data
                     })

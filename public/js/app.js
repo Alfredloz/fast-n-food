@@ -2019,23 +2019,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       typologies: null,
       restaurants: null,
-      typology_id: 0
+      typologies_ids: []
     };
   },
   watch: {
-    typology_id: {
+    typologies_ids: {
       handler: function handler() {
         this.loadRestaurants();
       }
@@ -2056,7 +2049,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('api/restaurants', {
         params: {
-          typology_id: this.typology_id
+          typologies_ids: this.typologies_ids
         }
       }).then(function (response) {
         _this2.restaurants = response.data.data;
@@ -37791,36 +37784,6 @@ var render = function() {
         [
           _c("h3", [_vm._v("Tipologie")]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-check" }, [
-            _c("label", { staticClass: "form-check-label" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.typology_id,
-                    expression: "typology_id"
-                  }
-                ],
-                staticClass: "form-check-input",
-                attrs: {
-                  type: "radio",
-                  id: "all",
-                  value: "0",
-                  name: "typology_id",
-                  checked: ""
-                },
-                domProps: { checked: _vm._q(_vm.typology_id, "0") },
-                on: {
-                  change: function($event) {
-                    _vm.typology_id = "0"
-                  }
-                }
-              }),
-              _vm._v("\n                All\n              ")
-            ])
-          ]),
-          _vm._v(" "),
           _vm._l(_vm.typologies, function(typology) {
             return _c("div", { key: typology.id, staticClass: "form-check" }, [
               _c("label", { staticClass: "form-check-label" }, [
@@ -37829,23 +37792,37 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.typology_id,
-                      expression: "typology_id"
+                      value: _vm.typologies_ids,
+                      expression: "typologies_ids"
                     }
                   ],
                   staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    id: "typology" + typology.id,
-                    name: "typology_id"
-                  },
+                  attrs: { type: "checkbox", id: "typology" + typology.id },
                   domProps: {
                     value: typology.id,
-                    checked: _vm._q(_vm.typology_id, typology.id)
+                    checked: Array.isArray(_vm.typologies_ids)
+                      ? _vm._i(_vm.typologies_ids, typology.id) > -1
+                      : _vm.typologies_ids
                   },
                   on: {
                     change: function($event) {
-                      _vm.typology_id = typology.id
+                      var $$a = _vm.typologies_ids,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = typology.id,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.typologies_ids = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.typologies_ids = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.typologies_ids = $$c
+                      }
                     }
                   }
                 }),
