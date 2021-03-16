@@ -71,8 +71,8 @@ class RegisterController extends Controller
             'piva'=> ['required', 'string', 'max:11'],
             'restaurant_name'=> ['required', 'string', 'max:50','unique:users'],
             'restaurant_description'=> ['required', 'string'],
-            'restaurant_logo'=> ['required', 'file', 'max:500'],
-            'restaurant_banner'=> ['nullable', 'file', 'max:1000'],
+            'restaurant_logo'=> ['required', 'image', 'max:500'],
+            'restaurant_banner'=> ['nullable', 'image', 'max:1000'],
             'address'=> ['required', 'string'],
             'phone_number'=> ['required', 'string'],
             'typologies'=> ['required', 'exists:typologies,id']
