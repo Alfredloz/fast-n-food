@@ -16,21 +16,19 @@
             <h5 class="card-title">{{$plate->name}}</h5>
 
             {{-- Visibility form --}}
-            <form id="visibility_form" action="{{route('admin.plates.update_visibility', ['plate' => $plate->id]) }}"
+            <form id="{{$plate->id}}" action="{{route('admin.plates.visibility', ['plate' => $plate->id]) }}"
                 method="post">
                 @csrf
                 @method('PUT')
                 {{-- Input radio visibility --}}
                 <div class="form-check my-4">
-                    <input type="radio" class="form-check-input" name="visibility" id="visibility" value="1"
+                    <input type="radio" class="form-check-input" name="visibility" value="1" onclick="this.form.submit()"
                         {{ $plate->visibility ? 'checked' : '' }}>
-                    <label for="visibility" class="form-check-label">Avaliable</label>
+                    <label for="visibility" class="form-check-label">Available</label>
                     <br>
-                    <input type="radio" class="form-check-input" name="visibility" id="visibility" value="0"
+                    <input type="radio" class="form-check-input" name="visibility" value="0" onclick="this.form.submit()"
                         {{ $plate->visibility ? '' : 'checked'  }}>
-                    <label for="visibility" class="form-check-label">Not Avaliable</label>
-
-                    <button type="submit" class="btn btn-primary">Confirm availability</button>
+                    <label for="visibility" class="form-check-label">Not Available</label>
                 </div>
             </form>
 

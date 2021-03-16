@@ -41,8 +41,8 @@ class PlateController extends Controller
     public function store(Request $request)
     {
         $request['slug'] = Str::slug($request->name . '-' . Auth::user()->id);
-        
-        $validatedData = $request->validate([            
+
+        $validatedData = $request->validate([
             'name' => 'required',
             'description_ingredients' => 'required',
             'picture' => 'nullable | image | max:500',
@@ -50,12 +50,12 @@ class PlateController extends Controller
             'visibility' => 'required',
             'slug' => 'unique:plates'
         ]);
-    
+
         $validatedData['user_id'] = Auth::user()->id;
 
         $picture = Storage::put('img/plates', $request->picture);
         $validatedData['picture'] = $picture;
-        
+
         Plate::create($validatedData);
 
         return redirect()->route('admin.plates.index');
@@ -92,36 +92,37 @@ class PlateController extends Controller
      */
     public function update(Request $request, Plate $plate)
     {
-        $validatedData = $request->validate([            
+      // dd($request->all());
+        $validatedData = $request->validate([
             'name' => 'required',
             'description_ingredients' => 'required',
             'picture' => 'nullable | image | max:500',
             'price' => 'required | numeric | max:9999.99',
             'visibility' => 'required'
         ]);
-            
+
         if ($request->hasFile('picture')) {
             Storage::delete($plate->picture);
             $picture = Storage::put('img/plates', $request->picture);
             $validatedData['picture'] = $picture;
         }
-            
+
         $validatedData['user_id'] = Auth::user()->id;
         $validatedData['slug'] = Str::slug($request->name . '-' . $validatedData['user_id']);
-        
+
         $plate->update($validatedData);
 
         return redirect()->route('admin.plates.show', $plate);
     }
 
-    public function updateVisibility(Request $request, Plate $plate)
+    public function visibility(Request $request, Plate $plate)
     {
-        $validatedData = $request->validate([            
-            'visibility' => 'required | numeric | min:0 | max:1'
+      // dd($plate);
+        $validatedData = $request->validate([
+            'visibility' => 'required'
         ]);
-
         $plate->update($validatedData);
-
+        // dd($validatedData, $plate);
         return redirect()->route('admin.plates.index');
     }
 
