@@ -45,7 +45,7 @@ class PlateController extends Controller
         $validatedData = $request->validate([            
             'name' => 'required',
             'description_ingredients' => 'required',
-            'picture' => 'nullable | file | max:500',
+            'picture' => 'nullable | image | max:500',
             'price' => 'required | numeric | max:9999,99',
             'visibility' => 'required',
             'slug' => 'unique:plates'
@@ -95,7 +95,7 @@ class PlateController extends Controller
         $validatedData = $request->validate([            
             'name' => 'required',
             'description_ingredients' => 'required',
-            'picture' => 'nullable | file | max:500',
+            'picture' => 'nullable | image | max:500',
             'price' => 'required | numeric | max:9999,99',
             'visibility' => 'required'
         ]);
