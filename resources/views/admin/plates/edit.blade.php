@@ -3,6 +3,8 @@
 
 @section('content')
 
+@include('layouts.partials.errors')
+<h2>Add a new plate</h2>
 @can ('access-plate', $plate)
 
 <form action="{{route('admin.plates.update', ['plate' => $plate->id]) }}" method="post" enctype="multipart/form-data">
@@ -71,9 +73,7 @@
 @endcan
 
 @cannot ('access-plate', $plate)
-
-<h3>FAI CACARE; NON modificare i piatti degli altri</h3>
-<a href="{{route('admin.index')}}">Torna al tuo ristorante e non rompere i coglioni, AGHERE</a>
-
+@include('layouts.partials.attention')
 @endcannot
+
 @endsection

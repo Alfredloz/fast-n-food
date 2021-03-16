@@ -2,8 +2,9 @@
 
 
 @section('content')
+@include('layouts.partials.errors')
 
-<h2>Add a new plate</h2>
+<h2>Edit your plate</h2>
 
 <form action="{{route('admin.plates.store')}}" method="post" enctype="multipart/form-data">
     @csrf

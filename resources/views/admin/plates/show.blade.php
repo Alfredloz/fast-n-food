@@ -21,10 +21,7 @@
 @endcan
 
 @cannot ('access-plate', $plate)
-  <img src="" alt="">
-  <a href="{{route('admin.index')}}">Go back to your restaurant</a>
+
 @endcannot
-
-
-
+@include('layouts.partials.attention')
 @endsection
