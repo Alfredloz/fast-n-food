@@ -17,9 +17,9 @@ class RestaurantController extends Controller
             }
         };
 
-        $restaurants = User::whereHas('typologies', $callback)->get();//->with(['typologies' => $callback])->get();
+        $restaurants = User::whereHas('typologies', $callback)->get();
 
-        return RestaurantResource::collection($restaurants);       
+        return RestaurantResource::collection($restaurants);    
     }
 
 }
