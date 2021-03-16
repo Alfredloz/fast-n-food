@@ -21,7 +21,6 @@
 @endcan
 
 @cannot ('access-plate', $plate)
-
-@endcannot
 @include('layouts.partials.attention')
+@endcannot
 @endsection

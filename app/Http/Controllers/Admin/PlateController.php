@@ -46,7 +46,7 @@ class PlateController extends Controller
             'name' => 'required',
             'description_ingredients' => 'required',
             'picture' => 'nullable | image | max:500',
-            'price' => 'required | numeric | max:9999,99',
+            'price' => 'required | numeric | max:9999.99',
             'visibility' => 'required',
             'slug' => 'unique:plates'
         ]);
@@ -96,7 +96,7 @@ class PlateController extends Controller
             'name' => 'required',
             'description_ingredients' => 'required',
             'picture' => 'nullable | image | max:500',
-            'price' => 'required | numeric | max:9999,99',
+            'price' => 'required | numeric | max:9999.99',
             'visibility' => 'required'
         ]);
             

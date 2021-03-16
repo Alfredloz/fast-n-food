@@ -4,7 +4,7 @@
 @section('content')
 @include('layouts.partials.errors')
 
-<h2>Edit your plate</h2>
+<h2>Create your plate</h2>
 
 <form action="{{route('admin.plates.store')}}" method="post" enctype="multipart/form-data">
     @csrf
@@ -26,8 +26,7 @@
     {{-- Input textarea description --}}
     <div class="form-group">
         <label for="description_ingredients">Description</label>
-        <textarea class="form-control" type="text" rows="3" name="description_ingredients" id="description_ingredients"
-            value="{{ old('description_ingredients')}}"></textarea>
+        <textarea class="form-control" type="text" rows="3" name="description_ingredients" id="description_ingredients">{{old('description_ingredients')}}</textarea>
     </div>
     @error('description_ingredients')
     <div class="alert alert-danger">{{ $message }}</div>
@@ -36,8 +35,7 @@
     {{-- Input number price --}}
     <div class="form-group">
         <label for="price">Price</label>
-        <input class="form-control" type="number" name="price" id="price" step="0.01" min="0" max="9999,99"
-            value="{{ old('price')}}">
+        <input class="form-control" type="number" name="price" id="price" step="0.01" min="0" max="9999.99" value="{{ old('price')}}">
     </div>
     @error('price')
     <div class="alert alert-danger">{{ $message }}</div>
