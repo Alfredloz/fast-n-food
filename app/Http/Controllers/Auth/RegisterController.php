@@ -72,7 +72,7 @@ class RegisterController extends Controller
             'restaurant_name'=> ['required', 'string', 'max:50','unique:users'],
             'restaurant_description'=> ['required', 'string'],
             'restaurant_logo'=> ['required', 'file', 'max:500'],
-            'restaurant_banner'=> ['nullable', 'string'],
+            'restaurant_banner'=> ['nullable', 'file', 'max:1000'],
             'address'=> ['required', 'string'],
             'phone_number'=> ['required', 'string'],
             'typologies'=> ['required', 'exists:typologies,id']
@@ -88,7 +88,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $data['slug'] = Str::slug($data['restaurant_name']);
-        $data['restaurant_logo'] = Storage::put('img/restaurant', $data['restaurant_logo']);
+
         $user = User::create([
             'full_name' => $data['full_name'],
             'email' => $data['email'],
@@ -96,17 +96,15 @@ class RegisterController extends Controller
             'piva'=> $data['piva'],
             'restaurant_name'=> $data['restaurant_name'],
             'restaurant_description'=> $data['restaurant_description'],
-            'restaurant_logo'=> $data['restaurant_logo'],
-            'restaurant_banner'=> $data['restaurant_banner'],
+            'restaurant_logo'=> Storage::put('img/restaurant', $data['restaurant_logo']),
+            'restaurant_banner'=> Storage::put('img/restaurant', $data['restaurant_banner']),
             'address'=> $data['address'],
             'phone_number'=> $data['phone_number'],
             'slug'=> $data['slug']
         ]);
          
-        // $user['restaurant_logo'] = $picture;
         //attaching typologies ids to the user
         $user->typologies()->attach($data['typologies']);
-        dd($user['restaurant_logo']);
         return $user;
     }
 }
