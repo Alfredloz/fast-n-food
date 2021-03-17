@@ -19,5 +19,9 @@ class Plate extends Model
     {
         return $this->belongsToMany(Order::class)->withPivot('plate_quantity');
     }
-
+    // slug implementation
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

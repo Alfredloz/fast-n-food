@@ -7,7 +7,7 @@
 <h2>Add a new plate</h2>
 @can ('access-plate', $plate)
 
-<form action="{{route('admin.plates.update', ['plate' => $plate->id]) }}" method="post" enctype="multipart/form-data">
+<form action="{{route('admin.plates.update', ['plate' => $plate->slug]) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 

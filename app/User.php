@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Typology::class);
     }
+    // slug implementation
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

@@ -11,12 +11,17 @@
 
     {{-- Card plate --}}
     <div class="card mr-3 mt-5" style="width: 16rem;">
+        @if ($plate->picture)
+            
         <img class="card-img-top" style="height: 10rem" src="{{ asset('storage/' . $plate->picture) }}" alt="">
+        @else
+            <img src="{{ asset('images/plate_ph.png') }}" alt="logo placeholder" class="card-img-top" style="height: 10rem">
+        @endif
         <div class="card-body">
             <h5 class="card-title">{{$plate->name}}</h5>
 
             {{-- Visibility form --}}
-            <form id="{{$plate->id}}" action="{{route('admin.plates.visibility', ['plate' => $plate->id]) }}"
+            <form id="{{$plate->id}}" action="{{route('admin.plates.visibility', ['plate' => $plate->slug]) }}"
                 method="post">
                 @csrf
                 @method('PUT')
@@ -35,9 +40,9 @@
             <p class="card-text overflow-auto" style="height: 8rem">{{$plate->description_ingredients}}</p>
             {{-- Group button --}}
             <div class="d-flex flex-column">
-                <a class="btn btn-primary" href="{{ route('admin.plates.show', ['plate'=> $plate->id]) }}"><i
+                <a class="btn btn-primary" href="{{ route('admin.plates.show', ['plate'=> $plate->slug]) }}"><i
                         class="fas fa-pizza-slice"></i> Show</a>
-                <a class="btn btn-secondary my-2" href="{{ route('admin.plates.edit', ['plate'=> $plate->id]) }}"><i
+                <a class="btn btn-secondary my-2" href="{{ route('admin.plates.edit', ['plate'=> $plate->slug]) }}"><i
                         class="fas fa-edit"></i> Edit</a>
                 
                     <!-- Button trigger modal -->
@@ -60,7 +65,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <form class="d-flex flex-column" action="{{route('admin.plates.destroy', ['plate'=> $plate->id] )}}"
+                                    <form class="d-flex flex-column" action="{{route('admin.plates.destroy', ['plate'=> $plate->slug] )}}"
                                         method="post">
                                         @csrf
                                         @method('DELETE')

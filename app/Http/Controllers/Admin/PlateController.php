@@ -52,9 +52,10 @@ class PlateController extends Controller
         ]);
 
         $validatedData['user_id'] = Auth::user()->id;
-
-        $picture = Storage::put('img/plates', $request->picture);
-        $validatedData['picture'] = $picture;
+        if ($request->hasFile('picture')) {
+            $picture = Storage::put('img/plates', $request->picture);
+            $validatedData['picture'] = $picture;
+        }
 
         Plate::create($validatedData);
 
