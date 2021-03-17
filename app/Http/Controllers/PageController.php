@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class PageController extends Controller
 {
@@ -18,8 +19,21 @@ class PageController extends Controller
      * single restaurant return
      * 
      */
-    public function restaurant()
+    public function restaurant(User $user)
     {   
-        return view('guests.restaurant');
+        $restaurant = [
+        'id' => $user->id,
+        'restaurant_name' => $user->restaurant_name,
+        'restaurant_description' => $user->restaurant_description,
+        'restaurant_logo' => $user->restaurant_logo,
+        'restaurant_banner' => $user->restaurant_banner,
+        'address' => $user->address,
+        'phone_number' => $user->phone_number,
+        'slug' => $user->slug,
+        'typologies' => $user->typologies
+        ];
+        $plates = $user->plates;
+        dd($restaurant, $plates);
+        return view('guests.restaurant', compact('user'));
     }
 }
