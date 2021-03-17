@@ -17,6 +17,7 @@
                 <h3>Ristoranti</h3>
                 <div class="restaurant"  v-for="restaurant in restaurants" :key="restaurant.id">
                   <h4>{{restaurant.restaurant_name}}</h4>
+                  <a class="btn btn-primary" :href="/restaurant/+restaurant.slug" role="button">Vai</a>
                   <h5>Tipologie del ristorante</h5>
                   <ul>
                       <li v-for="type in restaurant.typologies" :key="type.id">{{type.name}}</li>

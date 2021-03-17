@@ -16,13 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/', 'PageController@index')->name('homepage');
+Route::get('/', 'PageController@index')->name('homepage');
 // Route temporanea per la homepage
-Route::get('/home', function ()
-{
-    return view('guests.index');
-})->name('homepage');
-
+// Route::get('/home', function ()
+// {
+//     return view('guests.index');
+// })->name('homepage');
+Route::prefix('restaurant')->name('restaurant.')->group(function(){
+    Route::get('{user}', 'PageController@restaurant')->name('restaurant');
+});
 
 Auth::routes();
 
