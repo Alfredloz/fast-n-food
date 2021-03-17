@@ -4,7 +4,7 @@
 @section('content')
 
 <div id="app">
-    <restaurant-component></restaurant-component>
+    <restaurant-component restaurant ="{{ $restaurant }}" plates = "{{ $plates }}"></restaurant-component>
 </div>
 
 @endsection

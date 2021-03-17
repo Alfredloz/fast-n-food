@@ -21,7 +21,7 @@ class PageController extends Controller
      */
     public function restaurant(User $user)
     {   
-        $restaurant = [
+        $restaurant = json_encode( [
         'id' => $user->id,
         'restaurant_name' => $user->restaurant_name,
         'restaurant_description' => $user->restaurant_description,
@@ -31,9 +31,9 @@ class PageController extends Controller
         'phone_number' => $user->phone_number,
         'slug' => $user->slug,
         'typologies' => $user->typologies
-        ];
-        $plates = $user->plates;
-        dd($restaurant, $plates);
-        return view('guests.restaurant', compact('user'));
+        ] );
+        $plates = json_encode( $user->plates );
+        //dd($restaurant, $plates);
+        return view('guests.restaurant', compact('restaurant', 'plates'));
     }
 }
