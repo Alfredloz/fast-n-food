@@ -3,6 +3,7 @@
 
 @section('content')
 
-  <h1>ristomenù + carrello 1</h1>
+<div id="app">
+</div>
 
 @endsection
