@@ -1,32 +1,36 @@
 <template>
-    <div class="container">
-        <h1>Home Page</h1>
-        
-        <div class="row">
-            <div class="col-md-2">
-                <h3>Tipologie</h3>
+    <div class="center">
+        <section id="typologies"></section>
+        <div class="row typologies">
+            <h1>Seleziona una o più tipologie</h1>
+            <div class="col-md-12 checkboxes">
                 <div class="form-check"  v-for="typology in typologies" :key="typology.id">
-                  <label class="form-check-label">
+                  <label class="form-check-label checkbox">
                     <input type="checkbox" class="form-check-input" :id="'typology' + typology.id" :value="typology.id" v-model="typologies_ids">
                     {{typology.name}}
                   </label>
                 </div>
             </div>
 
-            <div class="col-md-10">
-                <h3>Ristoranti</h3>
-                <div class="restaurant"  v-for="restaurant in restaurants" :key="restaurant.id">
-                  <h4>{{restaurant.restaurant_name}}</h4>
-                  <a class="btn btn-primary" :href="/restaurant/+restaurant.slug" role="button">Vai</a>
-                  <h5>Tipologie del ristorante</h5>
-                  <ul>
-                      <li v-for="type in restaurant.typologies" :key="type.id">{{type.name}}</li>
-                  </ul>
+            <h1>Ristoranti</h1>
+            <div class="col-md-12 restaurant-list">
+                <div v-for="restaurant in restaurants" :key="restaurant.id">
+                    <a :href="/restaurant/+restaurant.slug">
+                        <div class="restaurant">
+                            <div class="restaurant-info">
+                                <img :src="'storage/'+restaurant.restaurant_logo" alt="">
+                                <h4>{{restaurant.restaurant_name}}</h4>
+                                <p>{{restaurant.restaurant_description}}</p>
+                                <!-- <h5>Tipologie del ristorante</h5>
+                                <ul>
+                                    <li v-for="type in restaurant.typologies" :key="type.id">{{type.name}}</li>
+                                </ul> -->
+                            </div>   
+                        </div>
+                    </a>                  
                 </div>
-            </div>
-            
-        </div>
-        
+            </div>           
+        </div>       
     </div>
 </template>
 
