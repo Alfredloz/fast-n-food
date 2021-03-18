@@ -2180,12 +2180,28 @@ __webpack_require__.r(__webpack_exports__);
       var position = this.getBoughtPosition(plate);
       if (position == -1) return;
       var oldQuantity = this.plates_bought[position].quantity;
-      console.log('oldQuantity', oldQuantity);
       var oldPlate = this.plates_bought[position];
-      oldPlate.quantity = oldQuantity + 1;
+      oldPlate.quantity = oldQuantity + 1; // splice and push back:  necessary for VUE to notice the change in the quantity of the plate
+
       this.plates_bought.splice(position, 1);
       this.plates_bought.push(oldPlate);
-      console.log('Alla fine quantità: ', oldPlate.quantity);
+      this.savePlate();
+    },
+    decreaseQuantity: function decreaseQuantity(plate) {
+      var position = this.getBoughtPosition(plate);
+      if (position == -1) return;
+
+      if (this.plates_bought[position].quantity <= 1) {
+        this.removePlate(plate);
+        return;
+      }
+
+      var oldQuantity = this.plates_bought[position].quantity;
+      var oldPlate = this.plates_bought[position];
+      oldPlate.quantity = oldQuantity - 1; // splice and push back:  necessary for VUE to notice the change in the quantity of the plate
+
+      this.plates_bought.splice(position, 1);
+      this.plates_bought.push(oldPlate);
       this.savePlate();
     }
   }
@@ -38727,7 +38743,17 @@ var render = function() {
           _vm._v(" "),
           _vm.alreadyInCart(plate)
             ? _c("div", { staticClass: "quantity_wrapper" }, [
-                _vm._m(0, true),
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.decreaseQuantity(plate)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-minus-circle fa-lg fa-fw" })]
+                ),
                 _vm._v(" "),
                 _c("input", {
                   attrs: { type: "number", disabled: "" },
@@ -38769,16 +38795,7 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", [
-      _c("i", { staticClass: "fas fa-minus-circle fa-lg fa-fw" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -17,7 +17,7 @@
                 Remove from Cart
             </button>
             <div class="quantity_wrapper" v-if="alreadyInCart(plate)">
-                <button><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
+                <button @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
                 <input type="number" :value="plate.quantity" disabled>
                 <button @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
             </div>
@@ -103,13 +103,32 @@
                 if(position == -1) return
 
                 const oldQuantity = this.plates_bought[position].quantity;
-                console.log('oldQuantity', oldQuantity);
                 const oldPlate = this.plates_bought[position];
                 oldPlate.quantity = oldQuantity + 1;
+                // splice and push back:  necessary for VUE to notice the change in the quantity of the plate
                 this.plates_bought.splice(position, 1);
                 this.plates_bought.push(oldPlate);
                 
-                console.log('Alla fine quantità: ', oldPlate.quantity);
+                this.savePlate();
+            },
+            decreaseQuantity(plate){
+                const position = this.getBoughtPosition(plate);
+                
+                if(position == -1) return
+                
+                if(this.plates_bought[position].quantity <= 1){
+                    this.removePlate(plate);
+                    return
+                }
+
+                const oldQuantity = this.plates_bought[position].quantity;
+                const oldPlate = this.plates_bought[position];
+                oldPlate.quantity = oldQuantity - 1;
+
+                // splice and push back:  necessary for VUE to notice the change in the quantity of the plate
+                this.plates_bought.splice(position, 1);
+                this.plates_bought.push(oldPlate);
+                
                 this.savePlate();
             }
         }
