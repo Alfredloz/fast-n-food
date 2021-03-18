@@ -18,7 +18,7 @@
             </button>
             <div class="quantity_wrapper" v-if="alreadyInCart(plate)">
                 <button @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
-                <input type="number" :value="plate.quantity" disabled>
+                <input type="number" :value="getPlateQuantity(plate)" disabled>
                 <button @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
             </div>
         </div>
@@ -27,7 +27,7 @@
         <div>
             <div v-for="plate in plates_bought" :key="plate.id">
                 <h3>{{plate.name}}</h3>
-                <h3>Quantità{{plate.quantity}}</h3>
+                <h3>Quantità{{getPlateQuantity(plate)}}</h3>
             </div>
         </div>
         
@@ -52,6 +52,11 @@
             if (localStorage.getItem('plates_bought')) {
                 try {
                     this.plates_bought = JSON.parse(localStorage.getItem('plates_bought'));
+                    // If the cart content come from another restaurant, i remove it
+                    if ( this.plates_bought[0].user_id != this.restaurant_info.id) {
+                        localStorage.removeItem('plates_bought');
+                        this.plates_bought = [];
+                    }
                 } catch(e) {
                     localStorage.removeItem('plates_bought');
                 }
@@ -67,6 +72,7 @@
         methods : {
             addPlate(plate){
                 plate['quantity'] = 1;
+                plate['user_id'] = this.restaurant_info.id;
                 this.plates_bought.push(plate);
                 this.savePlate();
             },
@@ -130,6 +136,12 @@
                 this.plates_bought.push(oldPlate);
                 
                 this.savePlate();
+            },
+            getPlateQuantity(plate) {
+                const position = this.getBoughtPosition(plate);
+                if (position == -1) return 0;
+
+                return this.plates_bought[position].quantity;
             }
         }
     }

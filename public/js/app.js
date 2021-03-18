@@ -2132,7 +2132,12 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     if (localStorage.getItem('plates_bought')) {
       try {
-        this.plates_bought = JSON.parse(localStorage.getItem('plates_bought'));
+        this.plates_bought = JSON.parse(localStorage.getItem('plates_bought')); // If the cart content come from another restaurant, i remove it
+
+        if (this.plates_bought[0].user_id != this.restaurant_info.id) {
+          localStorage.removeItem('plates_bought');
+          this.plates_bought = [];
+        }
       } catch (e) {
         localStorage.removeItem('plates_bought');
       }
@@ -2148,6 +2153,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     addPlate: function addPlate(plate) {
       plate['quantity'] = 1;
+      plate['user_id'] = this.restaurant_info.id;
       this.plates_bought.push(plate);
       this.savePlate();
     },
@@ -2207,6 +2213,11 @@ __webpack_require__.r(__webpack_exports__);
       this.plates_bought.splice(position, 1);
       this.plates_bought.push(oldPlate);
       this.savePlate();
+    },
+    getPlateQuantity: function getPlateQuantity(plate) {
+      var position = this.getBoughtPosition(plate);
+      if (position == -1) return 0;
+      return this.plates_bought[position].quantity;
     }
   }
 });
@@ -38744,7 +38755,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("input", {
                   attrs: { type: "number", disabled: "" },
-                  domProps: { value: plate.quantity }
+                  domProps: { value: _vm.getPlateQuantity(plate) }
                 }),
                 _vm._v(" "),
                 _c(
@@ -38773,7 +38784,7 @@ var render = function() {
           return _c("div", { key: plate.id }, [
             _c("h3", [_vm._v(_vm._s(plate.name))]),
             _vm._v(" "),
-            _c("h3", [_vm._v("Quantità" + _vm._s(plate.quantity))])
+            _c("h3", [_vm._v("Quantità" + _vm._s(_vm.getPlateQuantity(plate)))])
           ])
         }),
         0
