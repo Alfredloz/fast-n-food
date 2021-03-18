@@ -2106,6 +2106,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant", "plates"],
   data: function data() {
@@ -2137,10 +2143,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addPlate: function addPlate(plate) {
+      plate['quantity'] = 1;
       this.plates_bought.push(plate);
       this.savePlate();
     },
     removePlate: function removePlate(plate) {
+      plate['quantity'] = 0;
       var position = this.getBoughtPosition(plate);
 
       if (position != -1) {
@@ -2167,6 +2175,18 @@ __webpack_require__.r(__webpack_exports__);
       return this.plates_bought.findIndex(function (element) {
         return element.id == plate.id;
       });
+    },
+    increaseQuantity: function increaseQuantity(plate) {
+      var position = this.getBoughtPosition(plate);
+      if (position == -1) return;
+      var oldQuantity = this.plates_bought[position].quantity;
+      console.log('oldQuantity', oldQuantity);
+      var oldPlate = this.plates_bought[position];
+      oldPlate.quantity = oldQuantity + 1;
+      this.plates_bought.splice(position, 1);
+      this.plates_bought.push(oldPlate);
+      console.log('Alla fine quantità: ', oldPlate.quantity);
+      this.savePlate();
     }
   }
 });
@@ -38703,7 +38723,30 @@ var render = function() {
               }
             },
             [_vm._v("\n            Remove from Cart\n        ")]
-          )
+          ),
+          _vm._v(" "),
+          _vm.alreadyInCart(plate)
+            ? _c("div", { staticClass: "quantity_wrapper" }, [
+                _vm._m(0, true),
+                _vm._v(" "),
+                _c("input", {
+                  attrs: { type: "number", disabled: "" },
+                  domProps: { value: plate.quantity }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.increaseQuantity(plate)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-plus-circle fa-lg fa-fw" })]
+                )
+              ])
+            : _vm._e()
         ])
       }),
       _vm._v(" "),
@@ -38715,7 +38758,9 @@ var render = function() {
         "div",
         _vm._l(_vm.plates_bought, function(plate) {
           return _c("div", { key: plate.id }, [
-            _c("h3", [_vm._v(_vm._s(plate.name))])
+            _c("h3", [_vm._v(_vm._s(plate.name))]),
+            _vm._v(" "),
+            _c("h3", [_vm._v("Quantità" + _vm._s(plate.quantity))])
           ])
         }),
         0
@@ -38724,7 +38769,16 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", [
+      _c("i", { staticClass: "fas fa-minus-circle fa-lg fa-fw" })
+    ])
+  }
+]
 render._withStripped = true
 
 

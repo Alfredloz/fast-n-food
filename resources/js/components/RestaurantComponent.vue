@@ -16,12 +16,18 @@
             <button class="btn btn-danger" :class="alreadyInCart(plate) ? 'show' : 'hide' " @click="removePlate(plate)" :disabled="!alreadyInCart(plate)">
                 Remove from Cart
             </button>
+            <div class="quantity_wrapper" v-if="alreadyInCart(plate)">
+                <button><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
+                <input type="number" :value="plate.quantity" disabled>
+                <button @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
+            </div>
         </div>
 
         <h2 class="my-4 storage">IN STORAGE (E in un futuro carrello)</h2>
         <div>
             <div v-for="plate in plates_bought" :key="plate.id">
                 <h3>{{plate.name}}</h3>
+                <h3>Quantità{{plate.quantity}}</h3>
             </div>
         </div>
         
@@ -60,10 +66,12 @@
         },
         methods : {
             addPlate(plate){
-                this.plates_bought.push(plate)
+                plate['quantity'] = 1;
+                this.plates_bought.push(plate);
                 this.savePlate();
             },
             removePlate(plate){
+                plate['quantity'] = 0;
                 const position = this.getBoughtPosition(plate);
 
                 if(position != -1){
@@ -89,6 +97,20 @@
                 return this.plates_bought.findIndex(element => {
                     return element.id == plate.id;
                 });
+            },
+            increaseQuantity(plate){
+                const position = this.getBoughtPosition(plate);
+                if(position == -1) return
+
+                const oldQuantity = this.plates_bought[position].quantity;
+                console.log('oldQuantity', oldQuantity);
+                const oldPlate = this.plates_bought[position];
+                oldPlate.quantity = oldQuantity + 1;
+                this.plates_bought.splice(position, 1);
+                this.plates_bought.push(oldPlate);
+                
+                console.log('Alla fine quantità: ', oldPlate.quantity);
+                this.savePlate();
             }
         }
     }
