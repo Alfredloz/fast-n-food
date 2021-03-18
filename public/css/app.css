@@ -10942,3 +10942,18 @@ a.text-dark:focus {
   }
 }
 
+.navbar {
+  background-color: #FA6400 !important;
+}
+
+.navbar .nav-link {
+  font-weight: bold;
+  color: #FF9D2B !important;
+  text-align: center;
+  background-color: white;
+  width: 100px;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-left: 20px;
+}
+
