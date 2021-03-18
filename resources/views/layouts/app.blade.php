@@ -24,14 +24,14 @@
 
 </head>
 <body>
-    <div id="app">
-        @include('layouts.header')
+    
+    @include('layouts.header')
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+    <main class="py-4">
+        @yield('content')
+    </main>
 
-        @include('layouts.footer')
-    </div>
+    @include('layouts.footer')
+    
 </body>
 </html>
