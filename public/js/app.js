@@ -2108,8 +2108,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       plates_info: null,
       restaurant_info: null,
-      plates_bought: [],
-      already_added: []
+      plates_bought: []
     };
   },
   created: function created() {
@@ -2150,6 +2149,12 @@ __webpack_require__.r(__webpack_exports__);
     savePlate: function savePlate() {
       var parsed = JSON.stringify(this.plates_bought);
       localStorage.setItem('plates_bought', parsed);
+    },
+    alreadyInCart: function alreadyInCart(plate) {
+      var position = this.plates_bought.findIndex(function (element) {
+        return element.id == plate.id;
+      });
+      return position != -1; // position != -1 means that the plate is already in cart
     }
   }
 });
@@ -38017,6 +38022,7 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-primary",
+              attrs: { disabled: _vm.alreadyInCart(plate) },
               on: {
                 click: function($event) {
                   return _vm.addPlate(plate)
@@ -38030,6 +38036,7 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-danger",
+              attrs: { disabled: !_vm.alreadyInCart(plate) },
               on: {
                 click: function($event) {
                   return _vm.removePlate(plate)
