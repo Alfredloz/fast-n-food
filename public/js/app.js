@@ -2093,23 +2093,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant", "plates"],
   data: function data() {
     return {
       plates_info: null,
-      restaurant_info: null
+      restaurant_info: null,
+      plates_bought: [],
+      already_added: []
     };
   },
   created: function created() {
     this.restaurant_info = JSON.parse(this.restaurant);
     this.plates_info = JSON.parse(this.plates);
   },
+  mounted: function mounted() {
+    if (localStorage.getItem('plates_bought')) {
+      try {
+        this.plates_bought = JSON.parse(localStorage.getItem('plates_bought'));
+      } catch (e) {
+        localStorage.removeItem('plates_bought');
+      }
+    }
+  },
   computed: {
     visiblePlates: function visiblePlates() {
       return this.plates_info.filter(function (plate) {
         return plate.visibility == 1;
       });
+    }
+  },
+  methods: {
+    addPlate: function addPlate(plate) {
+      this.plates_bought.push(plate);
+      this.savePlate();
+    },
+    removePlate: function removePlate(plate) {
+      var position = this.plates_bought.findIndex(function (element) {
+        return element.id == plate.id;
+      });
+
+      if (position != -1) {
+        this.plates_bought.splice(position, 1);
+        this.savePlate();
+      }
+    },
+    savePlate: function savePlate() {
+      var parsed = JSON.stringify(this.plates_bought);
+      localStorage.setItem('plates_bought', parsed);
     }
   }
 });
@@ -37968,12 +38008,52 @@ var render = function() {
       _c("h2", [_vm._v("Menu")]),
       _vm._v(" "),
       _vm._l(_vm.visiblePlates, function(plate) {
-        return _c("div", { key: plate.info, staticClass: "plate" }, [
+        return _c("div", { key: plate.id, staticClass: "plate my-2" }, [
           _c("h3", [_vm._v(_vm._s(plate.name))]),
           _vm._v(" "),
-          _c("h4", [_vm._v(_vm._s(plate.description_ingredients))])
+          _c("h4", [_vm._v(_vm._s(plate.description_ingredients))]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              on: {
+                click: function($event) {
+                  return _vm.addPlate(plate)
+                }
+              }
+            },
+            [_vm._v("Add to Cart")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-danger",
+              on: {
+                click: function($event) {
+                  return _vm.removePlate(plate)
+                }
+              }
+            },
+            [_vm._v("Remove from Cart")]
+          )
         ])
-      })
+      }),
+      _vm._v(" "),
+      _c("h2", { staticClass: "my-4 storage" }, [
+        _vm._v("IN STORAGE (E in un futuro carrello)")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        _vm._l(_vm.plates_bought, function(plate) {
+          return _c("div", { key: plate.id }, [
+            _c("h3", [_vm._v(_vm._s(plate.name))])
+          ])
+        }),
+        0
+      )
     ],
     2
   )

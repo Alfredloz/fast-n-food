@@ -7,9 +7,18 @@
         </div>
         
         <h2>Menu</h2>
-        <div class="plate" v-for="plate in visiblePlates" :key="plate.info">
+        <div class="plate my-2" v-for="plate in visiblePlates" :key="plate.id">
             <h3>{{plate.name}}</h3>
             <h4>{{plate.description_ingredients}}</h4>
+            <button class="btn btn-primary" @click="addPlate(plate)">Add to Cart</button>
+            <button class="btn btn-danger" @click="removePlate(plate)">Remove from Cart</button>
+        </div>
+
+        <h2 class="my-4 storage">IN STORAGE (E in un futuro carrello)</h2>
+        <div>
+            <div v-for="plate in plates_bought" :key="plate.id">
+                <h3>{{plate.name}}</h3>
+            </div>
         </div>
         
     </div>
@@ -21,18 +30,49 @@
         data(){
             return {
                 plates_info: null,
-                restaurant_info: null
+                restaurant_info: null,
+                plates_bought: [],
+                already_added: []
             }
         },
         created() {
             this.restaurant_info = JSON.parse( this.restaurant );
             this.plates_info = JSON.parse( this.plates );
         },
+        mounted() {
+            if (localStorage.getItem('plates_bought')) {
+                try {
+                    this.plates_bought = JSON.parse(localStorage.getItem('plates_bought'));
+                } catch(e) {
+                    localStorage.removeItem('plates_bought');
+                }
+            }
+        },
         computed : {
             visiblePlates(){
                 return this.plates_info.filter((plate)=>{
                     return plate.visibility == 1;
                 })
+            }
+        },
+        methods : {
+            addPlate(plate){
+                this.plates_bought.push(plate)
+                this.savePlate();
+            },
+            removePlate(plate){
+                const position = this.plates_bought.findIndex(element => {
+                    return element.id == plate.id;
+                });
+
+                if(position != -1){
+                    this.plates_bought.splice(position, 1);
+                    this.savePlate();
+                }
+            },
+            savePlate(){
+                const parsed = JSON.stringify(this.plates_bought);
+                localStorage.setItem('plates_bought', parsed);
             }
         }
     }
