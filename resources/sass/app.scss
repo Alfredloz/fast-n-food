@@ -8,4 +8,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 //Guests
-@import 'navbar';
+@import 'partials/navbar';
+@import 'partials/footer';
+
+@import 'pages/home';

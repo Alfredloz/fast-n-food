@@ -1,0 +1,21 @@
+.navbar {
+    background: rgb(254,125,13);
+    background: linear-gradient(90deg, rgba(254,125,13,1) 0%, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);
+    .nav-link {
+        font-weight: bold;
+        font-size: 15px;
+        color: $secondary-color!important;
+        text-align: center;
+        background-color: white;
+        width: 100px;
+        border-radius: 10px;
+        padding: 5px 10px;
+        margin-left: 20px;
+        transition: 1s;
+        &:hover {
+            background-color: black;
+            transition: 1s;
+        }
+    }
+
+}
