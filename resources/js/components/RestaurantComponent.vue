@@ -10,8 +10,12 @@
         <div class="plate my-2" v-for="plate in visiblePlates" :key="plate.id">
             <h3>{{plate.name}}</h3>
             <h4>{{plate.description_ingredients}}</h4>
-            <button class="btn btn-primary" @click="addPlate(plate)" :disabled="alreadyInCart(plate)">Add to Cart</button>
-            <button class="btn btn-danger" @click="removePlate(plate)" :disabled="!alreadyInCart(plate)">Remove from Cart</button>
+            <button class="btn btn-primary" :class="alreadyInCart(plate) ? 'hide' : 'show' " @click="addPlate(plate)" :disabled="alreadyInCart(plate)">
+                Add to Cart
+            </button>
+            <button class="btn btn-danger" :class="alreadyInCart(plate) ? 'show' : 'hide' " @click="removePlate(plate)" :disabled="!alreadyInCart(plate)">
+                Remove from Cart
+            </button>
         </div>
 
         <h2 class="my-4 storage">IN STORAGE (E in un futuro carrello)</h2>
@@ -60,9 +64,7 @@
                 this.savePlate();
             },
             removePlate(plate){
-                const position = this.plates_bought.findIndex(element => {
-                    return element.id == plate.id;
-                });
+                const position = this.getBoughtPosition(plate);
 
                 if(position != -1){
                     this.plates_bought.splice(position, 1);
@@ -74,12 +76,30 @@
                 localStorage.setItem('plates_bought', parsed);
             },
             alreadyInCart(plate){
-                const position = this.plates_bought.findIndex(element => {
+                const position = this.getBoughtPosition(plate);
+                return position != -1; // position != -1 means that the plate is already in cart
+            },
+            /**
+             * Get the position of a plate bought in the plates_bought array, -1 otherwise
+             * 
+             * @param plate - the plate to look for
+             * @return the position of the plate or -1 if the plate is not in plates_bought
+            */
+            getBoughtPosition(plate){
+                return this.plates_bought.findIndex(element => {
                     return element.id == plate.id;
                 });
-
-                return position != -1; // position != -1 means that the plate is already in cart
             }
         }
     }
 </script>
+
+<style lang="scss" scoped>
+    button.hide{
+        display: none;
+    }
+
+    button.show{
+        display: inline-block;
+    }
+</style>
