@@ -11059,7 +11059,7 @@ body {
   align-items: center;
   width: 60%;
   margin: auto;
-  padding: 100px 50px 50px 50px;
+  padding: 0px 50px 20px 50px;
 }
 
 .banner-container .banner img {
@@ -11106,7 +11106,7 @@ body {
 .curvature {
   border-radius: 100%/0 0 130px 130px;
   background: linear-gradient(90deg, #fe7d0d 0%, #fd1d1d 0%, #fcb045 100%);
-  height: 200px;
+  height: 180px;
   width: 100%;
   position: absolute;
   transform: translate(0px, -100px);
@@ -11120,12 +11120,11 @@ body {
 
 .home-component .typologies {
   margin: auto;
-  width: 60%;
+  width: 80%;
 }
 
 .home-component .typologies h1 {
   font-size: 50px;
-  margin-bottom: 20px;
   margin-bottom: 50px;
   font-weight: bold;
   color: #435070;
@@ -11167,7 +11166,8 @@ body {
 .home-component .typologies .restaurant-list .restaurant {
   transition: 1s;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  border-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   width: 300px;
   margin: 50px 20px;
   padding-bottom: 20px;
@@ -11184,7 +11184,6 @@ body {
 .home-component .typologies .restaurant-list .restaurant img {
   width: 100%;
   margin-bottom: 20px;
-  border-radius: 10px;
 }
 
 .home-component .typologies .restaurant-list .restaurant:hover {
@@ -11203,18 +11202,38 @@ body {
   text-decoration: none;
 }
 
-.lavora {
+.lavora-con-noi-container {
   display: flex;
   justify-content: space-around;
+  align-items: baseline;
   flex-wrap: wrap;
   margin: auto;
-  margin-top: 100px;
   margin-bottom: 100px;
   width: 60%;
+  text-align: center;
+}
+
+.lavora-con-noi-container .lavora-con-noi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 30px;
+}
+
+.lavora-con-noi-container h1 {
+  max-width: 300px;
+  padding-top: 40px;
+  font-weight: bold;
+}
+
+.lavora-con-noi-container p {
+  max-width: 300px;
+  padding-top: 20px;
 }
 
 .slider-container {
-  padding-top: 100px;
+  margin-top: 150px;
+  margin-bottom: 50px;
   background-color: white;
   border-radius: 1000px/50px;
 }
@@ -11222,7 +11241,6 @@ body {
 .slider-container .slider-container-2 {
   max-width: 1000px;
   margin: auto;
-  padding: 100px 0px;
   text-align: center;
 }
 
@@ -11265,7 +11283,7 @@ body {
   overflow: hidden;
   white-space: nowrap;
   width: 70%;
-  padding: 20px 0px;
+  padding: 0px 0px 20px 0px;
   margin: auto;
   justify-content: space-between;
 }

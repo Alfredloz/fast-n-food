@@ -1,5 +1,4 @@
 body {
-    //background: linear-gradient(90deg, rgba(254,125,13,1) 0%, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);
     background-color: white;
     margin-top: 75px;
 }
@@ -19,7 +18,7 @@ body {
         align-items: center;
         width: 60%;
         margin: auto;
-        padding: 100px 50px 50px 50px;
+        padding: 0px 50px 20px 50px;
         img {
             max-width: 800px;
             width: 500px;
@@ -61,7 +60,7 @@ body {
     //border-radius: 1000px/100px;
     border-radius: 100%/0 0 130px 130px;
     background: linear-gradient(90deg, rgba(254,125,13,1) 0%, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);
-    height: 200px;
+    height: 180px;
     width: 100%;
     position: absolute;
     transform: translate(0px, -100px);
@@ -73,10 +72,9 @@ body {
     
     .typologies {
         margin: auto;
-        width: 60%;
+        width: 80%;
         h1 {
             font-size: 50px;
-            margin-bottom: 20px;
             margin-bottom: 50px;
             font-weight: bold;
             color: $tertiary-color;
@@ -116,7 +114,8 @@ body {
                 -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
                 -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
                 box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-                border-radius: 10px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
                 width: 300px;   
                 margin: 50px 20px;
                 padding-bottom: 20px;
@@ -129,7 +128,6 @@ body {
                 img {
                     width: 100%;
                     margin-bottom: 20px;
-                    border-radius: 10px;
                 }
                 &:hover {
                     filter: grayscale(100%);
@@ -148,23 +146,39 @@ body {
         }
     }
 }
-.lavora {
+.lavora-con-noi-container {
     display: flex;
     justify-content: space-around;
+    align-items: baseline;
     flex-wrap: wrap;
     margin: auto;
-    margin-top: 100px;
     margin-bottom: 100px;
     width: 60%;
+    text-align: center;
+    .lavora-con-noi {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 30px;
+    }
+    h1 {
+        max-width: 300px;
+        padding-top: 40px;
+        font-weight: bold;
+    }
+    p {
+        max-width: 300px;
+        padding-top: 20px;
+    }   
 }
 .slider-container {
-    padding-top: 100px;
+    margin-top: 150px;
+    margin-bottom: 50px;
     background-color: white;
     border-radius: 1000px/50px;
     .slider-container-2 {
         max-width: 1000px;
         margin: auto;
-        padding: 100px 0px;
         text-align: center;
         .slider-container-3 {
             display: flex;
@@ -199,7 +213,7 @@ body {
             overflow: hidden;
             white-space: nowrap;
             width: 70%;
-            padding: 20px 0px;
+            padding: 0px 0px 20px 0px;
             margin: auto;
             justify-content: space-between;
             img {
