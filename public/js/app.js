@@ -2003,7 +2003,8 @@ __webpack_require__.r(__webpack_exports__);
     checkLocalStorage: function checkLocalStorage() {
       if (localStorage.getItem('plates_bought')) {
         try {
-          this.plates_bought = JSON.parse(localStorage.getItem('plates_bought')); // If the cart content come from another restaurant, i remove it
+          this.plates_bought = JSON.parse(localStorage.getItem('plates_bought'));
+          this.sortPlatesBought(); // If the cart content come from another restaurant, i remove it
 
           if (this.plates_bought[0].user_id != this.restaurant_info.id) {
             localStorage.removeItem('plates_bought');
@@ -2013,6 +2014,11 @@ __webpack_require__.r(__webpack_exports__);
           localStorage.removeItem('plates_bought');
         }
       }
+    },
+    sortPlatesBought: function sortPlatesBought() {
+      this.plates_bought.sort(function (a, b) {
+        return a.id - b.id;
+      });
     },
     removePlate: function removePlate(plate) {
       plate['quantity'] = 0;
@@ -2024,6 +2030,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     savePlate: function savePlate() {
+      this.sortPlatesBought();
       var parsed = JSON.stringify(this.plates_bought);
       localStorage.setItem('plates_bought', parsed); // Emit the event localStorageUpdated through the eventBus
 
@@ -38677,7 +38684,7 @@ var render = function() {
       "div",
       _vm._l(_vm.plates_bought, function(plate) {
         return _c("div", { key: plate.id }, [
-          _c("h3", [_vm._v(_vm._s(plate.name))]),
+          _c("h3", [_vm._v(_vm._s(plate.name) + " id: " + _vm._s(plate.id))]),
           _vm._v(" "),
           _c(
             "button",

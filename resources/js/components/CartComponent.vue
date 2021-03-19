@@ -4,7 +4,7 @@
         <h2 class="my-4 storage">Shopping Cart</h2>
         <div>
             <div v-for="plate in plates_bought" :key="plate.id">
-                <h3>{{plate.name}}</h3>
+                <h3>{{plate.name}} id: {{plate.id}}</h3>
                 <button class="btn btn-danger" @click="removePlate(plate)">
                     Remove from Cart
                 </button>
@@ -45,6 +45,7 @@
                 if (localStorage.getItem('plates_bought')) {
                     try {
                         this.plates_bought = JSON.parse(localStorage.getItem('plates_bought'));
+                        this.sortPlatesBought();
                         // If the cart content come from another restaurant, i remove it
                         if ( this.plates_bought[0].user_id != this.restaurant_info.id) {
                             localStorage.removeItem('plates_bought');
@@ -54,6 +55,11 @@
                         localStorage.removeItem('plates_bought');
                     }
                 }
+            },
+            sortPlatesBought(){
+                this.plates_bought.sort((a, b) => {
+                    return a.id - b.id;
+                })
             },
             removePlate(plate){
                 plate['quantity'] = 0;
@@ -65,6 +71,7 @@
                 }
             },
             savePlate(){
+                this.sortPlatesBought();
                 const parsed = JSON.stringify(this.plates_bought);
                 localStorage.setItem('plates_bought', parsed);
                 // Emit the event localStorageUpdated through the eventBus
