@@ -16,12 +16,12 @@
   </div>
 </div>
 
-<div class="test">
-  <div class="test2">
+<div class="slider-container">
+  <div class="slider-container-2">
     <h1>Seleziona una o più tipologie</h1>
-      <div class="slider">
+      <div class="slider-container-3">
         <button id="slideBack" type="button"><i class="fas fa-caret-left"></i></button>
-        <div id="container" class="tipi">
+        <div id="slider-typologies">
           <img src="{{ asset('/images/typologies/007-pizza.png') }}" alt="Logo brand">
           <img src="{{ asset('/images/typologies/013-sandwich.png') }}" alt="Logo brand">
           <img src="{{ asset('/images/typologies/002-sushi.png') }}" alt="Logo brand">
@@ -57,13 +57,13 @@
 <script>
   var button = document.getElementById('slide');
   button.onclick = function () {
-      var container = document.getElementById('container');
+      var container = document.getElementById('slider-typologies');
       sideScroll(container,'right',10,450,10);
   };
 
   var back = document.getElementById('slideBack');
   back.onclick = function () {
-      var container = document.getElementById('container');
+      var container = document.getElementById('slider-typologies');
       sideScroll(container,'left',10,450,10);
   };
 

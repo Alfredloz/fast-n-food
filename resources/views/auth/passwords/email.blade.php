@@ -23,6 +23,7 @@
                     </span>
                 @enderror
             </div>
+            <hr>
 
             <div class="login-container">
                 <button type="submit" class="login-button">

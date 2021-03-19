@@ -1,7 +1,7 @@
 <template>
-    <div class="center">
+    <div class="home-component">
         <section id="typologies"></section>
-        <div class="row typologies">
+        <div class="typologies">
             <h1>Seleziona una o più tipologie</h1>
             <div class="col-md-12 checkboxes">
                 <div class="form-check"  v-for="typology in typologies" :key="typology.id">

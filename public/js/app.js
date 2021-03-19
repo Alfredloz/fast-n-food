@@ -38825,10 +38825,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "center" }, [
+  return _c("div", { staticClass: "home-component" }, [
     _c("section", { attrs: { id: "typologies" } }),
     _vm._v(" "),
-    _c("div", { staticClass: "row typologies" }, [
+    _c("div", { staticClass: "typologies" }, [
       _c("h1", [_vm._v("Seleziona una o più tipologie")]),
       _vm._v(" "),
       _c(
@@ -51600,8 +51600,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\DATI\Corso Boolean\Esercizi\fast-n-food\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\DATI\Corso Boolean\Esercizi\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\user\Documents\Boolean\Esercizi\laravel\fast-n-food\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\user\Documents\Boolean\Esercizi\laravel\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
