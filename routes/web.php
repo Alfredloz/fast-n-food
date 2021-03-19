@@ -13,22 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+
 Route::get('/', 'PageController@index')->name('homepage');
-// Route temporanea per la homepage
-// Route::get('/home', function ()
-// {
-//     return view('guests.index');
-// })->name('homepage');
+
 Route::prefix('restaurant')->name('restaurant.')->group(function(){
     Route::get('{user}', 'PageController@restaurant')->name('restaurant');
 });
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+// !PaymentController
+Route::get('/payment', 'PaymentController@make')->name('payment');
+
+
+// !route provvisoria checkout forse in RESTAURANT
+Route::get('/checkout', function(){
+  return view('guests.checkout');
+});
+
+
+
 
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
   Route::get('/', 'HomeController@index')->name('index');
