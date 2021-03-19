@@ -1978,6 +1978,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant"],
@@ -2080,6 +2084,13 @@ __webpack_require__.r(__webpack_exports__);
       var position = this.getBoughtPosition(plate);
       if (position == -1) return 0;
       return this.plates_bought[position].quantity;
+    },
+    getTotal: function getTotal() {
+      if (!this.plates_bought) return 0;
+      return this.plates_bought.reduce(function (total, plate) {
+        var subtotal = total + plate.price * plate.quantity;
+        return Math.round(subtotal * 100) / 100; // round to 2 decimals places
+      }, 0);
     }
   }
 });
@@ -38678,62 +38689,70 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "cart" }, [
-    _c("h2", { staticClass: "my-4 storage" }, [_vm._v("Shopping Cart")]),
+    _c("h2", [_vm._v("Shopping Cart")]),
     _vm._v(" "),
     _c(
       "div",
-      _vm._l(_vm.plates_bought, function(plate) {
-        return _c("div", { key: plate.id }, [
-          _c("h3", [_vm._v(_vm._s(plate.name) + " id: " + _vm._s(plate.id))]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-danger",
-              on: {
-                click: function($event) {
-                  return _vm.removePlate(plate)
-                }
-              }
-            },
-            [_vm._v("\n                Remove from Cart\n            ")]
-          ),
-          _vm._v(" "),
-          _c("h3", [_vm._v("Quantità" + _vm._s(_vm.getPlateQuantity(plate)))]),
-          _vm._v(" "),
-          _c("div", { staticClass: "quantity_wrapper" }, [
+      [
+        _vm._l(_vm.plates_bought, function(plate) {
+          return _c("div", { key: plate.id }, [
+            _c("h3", [_vm._v(_vm._s(plate.name))]),
+            _vm._v(" "),
             _c(
               "button",
               {
+                staticClass: "btn btn-danger",
                 on: {
                   click: function($event) {
-                    return _vm.decreaseQuantity(plate)
+                    return _vm.removePlate(plate)
                   }
                 }
               },
-              [_c("i", { staticClass: "fas fa-minus-circle fa-lg fa-fw" })]
+              [_vm._v("\n                Remove from Cart\n            ")]
             ),
             _vm._v(" "),
-            _c("input", {
-              attrs: { type: "number", disabled: "" },
-              domProps: { value: _vm.getPlateQuantity(plate) }
-            }),
+            _c("h3", [
+              _vm._v("Quantity: " + _vm._s(_vm.getPlateQuantity(plate)))
+            ]),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                on: {
-                  click: function($event) {
-                    return _vm.increaseQuantity(plate)
+            _c("h3", [_vm._v("Price: " + _vm._s(plate.price))]),
+            _vm._v(" "),
+            _c("div", { staticClass: "quantity_wrapper" }, [
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.decreaseQuantity(plate)
+                    }
                   }
-                }
-              },
-              [_c("i", { staticClass: "fas fa-plus-circle fa-lg fa-fw" })]
-            )
+                },
+                [_c("i", { staticClass: "fas fa-minus-circle fa-lg fa-fw" })]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "number", disabled: "" },
+                domProps: { value: _vm.getPlateQuantity(plate) }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.increaseQuantity(plate)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-plus-circle fa-lg fa-fw" })]
+              )
+            ])
           ])
-        ])
-      }),
-      0
+        }),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Total: " + _vm._s(_vm.getTotal()))])
+      ],
+      2
     )
   ])
 }
@@ -51581,8 +51600,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/alfredoloz/Boolean/fast-n-food/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/alfredoloz/Boolean/fast-n-food/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\DATI\Corso Boolean\Esercizi\fast-n-food\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\DATI\Corso Boolean\Esercizi\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
