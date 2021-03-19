@@ -1,20 +1,24 @@
 <template>
     <div class="cart">
         
-        <h2 class="my-4 storage">Shopping Cart</h2>
+        <h2>Shopping Cart</h2>
         <div>
             <div v-for="plate in plates_bought" :key="plate.id">
-                <h3>{{plate.name}} id: {{plate.id}}</h3>
+                <h3>{{plate.name}}</h3>
                 <button class="btn btn-danger" @click="removePlate(plate)">
                     Remove from Cart
                 </button>
-                <h3>Quantità{{getPlateQuantity(plate)}}</h3>
+                <h3>Quantity: {{getPlateQuantity(plate)}}</h3>
+                <h3>Price: {{plate.price}}</h3>
+
                 <div class="quantity_wrapper">
                     <button @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
                     <input type="number" :value="getPlateQuantity(plate)" disabled>
                     <button @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
                 </div>
             </div>
+
+            <h3>Total: {{getTotal()}}</h3>
         </div>
         
     </div>
@@ -126,6 +130,14 @@
                 if (position == -1) return 0;
 
                 return this.plates_bought[position].quantity;
+            },
+            getTotal(){
+                if (!this.plates_bought) return 0
+
+                return this.plates_bought.reduce( (total, plate)=>{
+                    const subtotal = total + (plate.price * plate.quantity)
+                    return Math.round( subtotal * 100 ) / 100; // round to 2 decimals places
+                }, 0);
             }
         }
     }
