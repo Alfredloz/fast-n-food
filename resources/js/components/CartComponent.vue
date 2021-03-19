@@ -1,68 +1,51 @@
 <template>
-    <div class="container">
-     
-        <h2>Ristorante</h2>
-        <div class="restaurant">
-            <h3>{{restaurant_info.restaurant_name}}</h3>
-        </div>
+    <div class="cart">
         
-        <h2>Menu</h2>
-        <div class="plate my-2" v-for="plate in visiblePlates" :key="plate.id">
-            <h3>{{plate.name}}</h3>
-            <h4>{{plate.description_ingredients}}</h4>
-            <button class="btn btn-primary" :class="alreadyInCart(plate) ? 'hide' : 'show' " @click="addPlate(plate)" :disabled="alreadyInCart(plate)">
-                Add to Cart
-            </button>
-            <button class="btn btn-danger" :class="alreadyInCart(plate) ? 'show' : 'hide' " @click="removePlate(plate)" :disabled="!alreadyInCart(plate)">
-                Remove from Cart
-            </button>
-            <div class="quantity_wrapper" v-if="alreadyInCart(plate)">
-                <button @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
-                <input type="number" :value="getPlateQuantity(plate)" disabled>
-                <button @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
+        <h2 class="my-4 storage">Shopping Cart</h2>
+        <div>
+            <div v-for="plate in plates_bought" :key="plate.id">
+                <h3>{{plate.name}} id: {{plate.id}}</h3>
+                <button class="btn btn-danger" @click="removePlate(plate)">
+                    Remove from Cart
+                </button>
+                <h3>Quantità{{getPlateQuantity(plate)}}</h3>
+                <div class="quantity_wrapper">
+                    <button @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
+                    <input type="number" :value="getPlateQuantity(plate)" disabled>
+                    <button @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
+                </div>
             </div>
         </div>
-
-        
         
     </div>
 </template>
 
 <script>
     import {eventBus} from '../app';
-
     export default {
-        props: ["restaurant", "plates"],
+        props: ["restaurant"],
         data(){
             return {
-                plates_info: null,
                 restaurant_info: null,
                 plates_bought: []
             }
         },
         created() {
             this.restaurant_info = JSON.parse( this.restaurant );
-            this.plates_info = JSON.parse( this.plates );
             // Listen for the event localStorageUpdated
-            eventBus.$on('CartLocalStorageUpdated', () =>{
+            eventBus.$on('RestaurantLocalStorageUpdated', () => {
                 this.checkLocalStorage();
             })
         },
         mounted() {
-            this.checkLocalStorage();
-        },
-        computed : {
-            visiblePlates(){
-                return this.plates_info.filter((plate)=>{
-                    return plate.visibility == 1;
-                })
-            }
+            this.checkLocalStorage()
         },
         methods : {
             checkLocalStorage(){
                 if (localStorage.getItem('plates_bought')) {
                     try {
                         this.plates_bought = JSON.parse(localStorage.getItem('plates_bought'));
+                        this.sortPlatesBought();
                         // If the cart content come from another restaurant, i remove it
                         if ( this.plates_bought[0].user_id != this.restaurant_info.id) {
                             localStorage.removeItem('plates_bought');
@@ -73,11 +56,10 @@
                     }
                 }
             },
-            addPlate(plate){
-                plate['quantity'] = 1;
-                plate['user_id'] = this.restaurant_info.id;
-                this.plates_bought.push(plate);
-                this.savePlate();
+            sortPlatesBought(){
+                this.plates_bought.sort((a, b) => {
+                    return a.id - b.id;
+                })
             },
             removePlate(plate){
                 plate['quantity'] = 0;
@@ -89,14 +71,11 @@
                 }
             },
             savePlate(){
+                this.sortPlatesBought();
                 const parsed = JSON.stringify(this.plates_bought);
                 localStorage.setItem('plates_bought', parsed);
                 // Emit the event localStorageUpdated through the eventBus
-                eventBus.$emit('RestaurantLocalStorageUpdated');
-            },
-            alreadyInCart(plate){
-                const position = this.getBoughtPosition(plate);
-                return position != -1; // position != -1 means that the plate is already in cart
+                eventBus.$emit('CartLocalStorageUpdated');
             },
             /**
              * Get the position of a plate bought in the plates_bought array, -1 otherwise
@@ -151,13 +130,3 @@
         }
     }
 </script>
-
-<style lang="scss" scoped>
-    button.hide{
-        display: none;
-    }
-
-    button.show{
-        display: inline-block;
-    }
-</style>
