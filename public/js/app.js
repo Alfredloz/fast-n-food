@@ -38891,7 +38891,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-md-12 restaurant-list" },
+        { staticClass: "restaurant-list" },
         _vm._l(_vm.restaurants, function(restaurant) {
           return _c("div", { key: restaurant.id }, [
             _c("a", { attrs: { href: /restaurant/ + restaurant.slug } }, [

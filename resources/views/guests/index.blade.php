@@ -14,6 +14,10 @@
       <a class="discover-button" href="#typologies">Scopri di più</a>
     </div>
   </div>
+
+  <div class="curvature">
+    
+  </div>
 </div>
 
 <div class="slider-container">

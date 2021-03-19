@@ -13,7 +13,7 @@
             </div>
 
             <h1>Ristoranti</h1>
-            <div class="col-md-12 restaurant-list">
+            <div class="restaurant-list">
                 <div v-for="restaurant in restaurants" :key="restaurant.id">
                     <a :href="/restaurant/+restaurant.slug">
                         <div class="restaurant">
