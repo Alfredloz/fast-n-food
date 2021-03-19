@@ -1,42 +1,36 @@
 <footer>
     <div class="credits">
-        <div class="chi-siamo">
-            <h1>Chi siamo?</h1>
-            
-            <div class="person">
-                <div><p>Gabriele Scodinu</p></div>
-                <div><i class="fab fa-linkedin"></i> <i class="fab fa-github-square"></i></div>
-            </div>
-            <hr>
-            <div class="person">
-                <div><p>Alfredo Lozano</p></div>
-                <div><i class="fab fa-linkedin"></i> <i class="fab fa-github-square"></i></div>
-            </div>
-            <hr>
-            <div class="person">
-                <div><p>Salvatore Abate</p></div>
-                <div><i class="fab fa-linkedin"></i> <i class="fab fa-github-square"></i></div>
-            </div>
-            <hr>
-            <div class="person">
-                <div><p>Mirko Rinelli</p></div>
-                <div><i class="fab fa-linkedin"></i> <i class="fab fa-github-square"></i></div>
-            </div>
-            <hr>
-            <div class="person">
-                <div><p>Alessandro Internicola</p></div>
-                <div><i class="fab fa-linkedin"></i> <i class="fab fa-github-square"></i></div>
-            </div>
-        </div>
-        
         <div>
-            <img src="images/logo.svg" alt="Logo brand" width="70px">
-            <div class="socials">
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-facebook-square"></i>
-                <i class="fab fa-twitter-square"></i>
-                <i class="fas fa-map-pin"></i>
-            </div>
+            <img src="{{ asset('/images/logo.svg') }}" alt="Logo brand" width="200px">
+        </div>
+        <div>
+            <h1>Chi siamo?</h1>
+            <p>Lavora con noi</p>
+            <p>Negozi Partner</p>
+            <p>Corrieri</p>
+            <p>Fast and Food Buisness</p>
+        </div>
+
+        <div>
+            <h1>Blog</h1>
+            <p>Chi siamo?</p>
+            <p>FAQ</p>
+            <p>Blog</p>
+            <p>Contattaci</p>
+        </div>
+
+        <div>
+            <h1>Privacy</h1>
+            <p>Termini e condizioni</p>
+            <p>Politica sulla privacy</p>
+            <p>Politica sui Cookie</p>
+        </div>
+
+        <div>
+            <h1>Seguici</h1>
+            <p><i class="fab fa-facebook-square"></i>Facebook</p>
+            <p><i class="fab fa-twitter-square"></i>Twitter</p>
+            <p><i class="fab fa-instagram"></i>Instagram</p>
         </div>
     </div>
 </footer>
