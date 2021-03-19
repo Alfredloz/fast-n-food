@@ -11279,3 +11279,82 @@ html {
   background: #555;
 }
 
+.login-container {
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+.login-container i {
+  font-size: 30px;
+  margin-right: 20px;
+  color: grey;
+}
+
+.login-container h1 {
+  padding: 50px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.login-container hr {
+  width: 30%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.login-container .input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 30%;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+.login-container .input-container input {
+  border: none;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.login-container .login-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.login-container .login-container .login-button {
+  background-color: #fe7d0d;
+  border: 0px;
+  color: white;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 50px;
+  border-radius: 10px;
+  width: 120px;
+  margin: auto;
+  transition: 0.5s;
+}
+
+.login-container .login-container .login-button:hover {
+  background-color: #435070;
+  transition: 0.5s;
+}
+
+.login-container .login-container a {
+  color: #435070;
+}
+
+.login-container .login-container a:hover {
+  text-decoration: none;
+  color: lightgrey;
+}
+
+@media screen and (max-width: 600px) {
+  .input-container {
+    width: 60%;
+  }
+}
+

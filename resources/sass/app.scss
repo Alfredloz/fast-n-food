@@ -7,8 +7,18 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-//Guests
+// Partials
 @import 'partials/navbar';
 @import 'partials/footer';
 
-@import 'pages/home';
+// Guests
+@import 'pages/guests/home';
+@import 'pages/guests/restaurant';
+@import 'pages/guests/checkout';
+
+// Admin
+@import 'pages/admin/authentication';
+@import 'pages/admin/home';
+@import 'pages/admin/show';
+@import 'pages/admin/edit';
+@import 'pages/admin/create';

@@ -1,0 +1,68 @@
+.login-container {
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    padding-bottom: 100px;
+    i {
+        font-size: 30px;
+        margin-right: 20px;
+        color: grey;
+    }
+    h1 {
+        padding: 50px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    hr {
+        width: 30%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .input-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 30%;
+        margin: auto;
+        margin-bottom: 15px;
+        input {
+            border: none;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+    }
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+        .login-button {
+            background-color: rgba(254,125,13,1);
+            border: 0px;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 50px;
+            border-radius: 10px;
+            width: 120px;
+            margin: auto;
+            transition: 0.5s;
+            &:hover {
+                background-color: $tertiary-color;
+                transition: 0.5s;
+            }
+        }
+        a {
+            color: $tertiary-color;
+            &:hover {
+                text-decoration: none;
+                color: lightgrey;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .input-container {
+        width: 60%;
+    }
+  }
