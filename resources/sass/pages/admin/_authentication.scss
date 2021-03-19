@@ -1,8 +1,12 @@
+form {
+    padding: 20px;
+}
 .login-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 100%;
+    max-width: 800px;
+    margin: auto;
     background-color: white;
     text-align: center;
     padding-bottom: 100px;
@@ -64,9 +68,3 @@
         }
     }
 }
-
-@media screen and (max-width: 600px) {
-    .input-container {
-        width: 60%;
-    }
-  }
