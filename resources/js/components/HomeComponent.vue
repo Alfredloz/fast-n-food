@@ -1,8 +1,7 @@
 <template>
-    <div class="center">
-        <section id="typologies"></section>
-        <div class="row typologies">
-            <h1>Seleziona una o più tipologie</h1>
+    <div class="home-component">
+        <div class="typologies">
+            <!-- <h1>Seleziona una o più tipologie</h1>
             <div class="col-md-12 checkboxes">
                 <div class="form-check"  v-for="typology in typologies" :key="typology.id">
                   <label class="form-check-label checkbox">
@@ -10,15 +9,15 @@
                     {{typology.name}}
                   </label>
                 </div>
-            </div>
+            </div> -->
 
             <h1>Ristoranti</h1>
-            <div class="col-md-12 restaurant-list">
+            <div class="restaurant-list">
                 <div v-for="restaurant in restaurants" :key="restaurant.id">
                     <a :href="/restaurant/+restaurant.slug">
                         <div class="restaurant">
                             <div class="restaurant-info">
-                                <img :src="'storage/'+restaurant.restaurant_logo" alt="">
+                                <img :src="'storage/'+restaurant.restaurant_banner" alt="">
                                 <h4>{{restaurant.restaurant_name}}</h4>
                                 <p>{{restaurant.restaurant_description}}</p>
                                 <!-- <h5>Tipologie del ristorante</h5>

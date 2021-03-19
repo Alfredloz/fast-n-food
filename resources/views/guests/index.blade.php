@@ -11,17 +11,20 @@
     <div class="banner-text">
       <h1>Consegna di cibo a domicilio e molto altro</h1>
       <h3>I migliori ristoranti di Fast and Food!</h3>
-      <a class="discover-button" href="#typologies">Scopri di più</a>
+      <a class="discover-button" href="#typologies">Inizia ora</a>
     </div>
   </div>
+
+  <div class="curvature"></div>
 </div>
 
-<div class="test">
-  <div class="test2">
+<section id="typologies"></section>
+<div class="slider-container">
+  <div class="slider-container-2">
     <h1>Seleziona una o più tipologie</h1>
-      <div class="slider">
+      <div class="slider-container-3">
         <button id="slideBack" type="button"><i class="fas fa-caret-left"></i></button>
-        <div id="container" class="tipi">
+        <div id="slider-typologies">
           <img src="{{ asset('/images/typologies/007-pizza.png') }}" alt="Logo brand">
           <img src="{{ asset('/images/typologies/013-sandwich.png') }}" alt="Logo brand">
           <img src="{{ asset('/images/typologies/002-sushi.png') }}" alt="Logo brand">
@@ -42,28 +45,34 @@
   <home-component></home-component>
 </div>
 
-<div class="lavora">
+<div class="lavora-con-noi-container">
   <div class="lavora-con-noi">
     <img src="images/Artwork.svg" alt="">
+    <h1>1000+ ristoranti</h1>
+    <p>Con oltre mille ristoranti puoi ordinare i tuoi piatti preferiti, esplora nuovi ristoranti in zona!</p>
   </div>
   <div class="lavora-con-noi">
     <img src="images/Artwork3.svg" alt="">
+    <h1>Consegna rapida </h1>
+    <p>La rapidità è un nostro punto d'orgoglio. Ordina o invia qualsiasi cosa nella tua città e lo ritireremo e te lo consegneremo nel giro di pochi minuti.</p>
   </div>
   <div class="lavora-con-noi">
     <img src="images/Artwork2.svg" alt="">
+    <h1>Consegna della spesa e altro</h1>
+    <p>Trova tutto ciò che ti serve! Dai supermercati ai negozi, puoi contare su di noi per portartelo.</p>
   </div>
 </div>
 
 <script>
   var button = document.getElementById('slide');
   button.onclick = function () {
-      var container = document.getElementById('container');
+      var container = document.getElementById('slider-typologies');
       sideScroll(container,'right',10,450,10);
   };
 
   var back = document.getElementById('slideBack');
   back.onclick = function () {
-      var container = document.getElementById('container');
+      var container = document.getElementById('slider-typologies');
       sideScroll(container,'left',10,450,10);
   };
 

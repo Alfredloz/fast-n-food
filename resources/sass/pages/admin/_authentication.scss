@@ -1,5 +1,12 @@
+form {
+    padding: 20px;
+}
 .login-container {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 800px;
+    margin: auto;
     background-color: white;
     text-align: center;
     padding-bottom: 100px;
@@ -12,9 +19,10 @@
         padding: 50px;
         font-size: 30px;
         font-weight: bold;
+        color: $tertiary-color;
     }
     hr {
-        width: 30%;
+        max-width: 600px;
         margin: auto;
         margin-bottom: 20px;
     }
@@ -22,7 +30,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 30%;
+        max-width: 600px;
         margin: auto;
         margin-bottom: 15px;
         input {
@@ -60,9 +68,3 @@
         }
     }
 }
-
-@media screen and (max-width: 600px) {
-    .input-container {
-        width: 60%;
-    }
-  }

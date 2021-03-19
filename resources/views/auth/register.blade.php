@@ -84,7 +84,7 @@
         <div class="input-container">
             <i class="far fa-list-alt"></i><h2>Select Categories</h2>
             <!-- <label for="typologies" class="col-md-4 col-form-label text-md-right">{{ __('Select Typologies') }}</label> -->
-            <select name="typologies[]" id="typologies" multiple>
+            <select name="typologies[]" id="typologies" multiple class="form-select" aria-label="multiple select example">
                 @foreach($typologies as $typology)
                     <option value="{{ $typology->id }}">{{ $typology->name }}</option>
                 @endforeach
@@ -111,7 +111,6 @@
         <div class="input-container">
             <i class="fas fa-sign-in-alt"></i><label for="restaurant_banner" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Banner') }}</label>
             <input id="restaurant_banner" type="file" class="form-control @error('restaurant_banner') is-invalid @enderror" name="restaurant_banner" autocomplete="restaurant_banner" autofocus>
-
             @error('restaurant_banner')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

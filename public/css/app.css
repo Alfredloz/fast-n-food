@@ -10958,6 +10958,20 @@ a.text-dark:focus {
   font-size: 20px;
 }
 
+.navbar .navbar-toggler {
+  margin-right: 20px;
+}
+
+.navbar .navbar-brand {
+  margin-left: 20px;
+  transition: 0.5s;
+}
+
+.navbar .navbar-brand:hover {
+  transition: 0.5s;
+  transform: scale(1.1);
+}
+
 .navbar .nav-link {
   font-weight: bold;
   font-size: 15px;
@@ -10987,9 +11001,14 @@ footer {
   margin: auto;
   color: white;
   display: flex;
-  padding-top: 100px;
-  justify-content: space-between;
+  padding-top: 50px;
   flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.credits div {
+  margin: 50px 40px 50px 0px;
+  width: 200px;
 }
 
 .credits p {
@@ -11018,24 +11037,38 @@ footer {
 }
 
 body {
-  background: #fe7d0d;
+  background-color: white;
+  margin-top: 75px;
+}
+
+@media screen and (max-width: 600px) {
+  .banner img {
+    display: none;
+    width: 100px;
+  }
+}
+
+.banner-container {
   background: linear-gradient(90deg, #fe7d0d 0%, #fd1d1d 0%, #fcb045 100%);
-  margin-top: 100px;
 }
 
 .banner-container .banner {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
   width: 60%;
   margin: auto;
-  padding: 50px 50px 150px 50px;
+  padding: 0px 50px 20px 50px;
 }
 
 .banner-container .banner img {
-  width: 600px;
+  max-width: 800px;
+  width: 500px;
 }
 
 .banner-container .banner .banner-text {
+  max-width: 500px;
   text-align: center;
   padding: 100px 0px;
 }
@@ -11070,42 +11103,40 @@ body {
   color: #435070;
 }
 
-.center {
+.curvature {
+  border-radius: 100%/0 0 130px 130px;
+  background: linear-gradient(90deg, #fe7d0d 0%, #fd1d1d 0%, #fcb045 100%);
+  height: 180px;
+  width: 100%;
+  position: absolute;
+  transform: translate(0px, -100px);
+}
+
+.home-component {
   background-color: white;
   margin: auto;
-  border-radius: 1000px/50px;
+  text-align: center;
 }
 
-.center .typologies {
+.home-component .typologies {
   margin: auto;
-  padding-top: 200px;
-  width: 60%;
+  width: 80%;
 }
 
-.center .typologies h1 {
+.home-component .typologies h1 {
   font-size: 50px;
-  margin-bottom: 20px;
   margin-bottom: 50px;
   font-weight: bold;
   color: #435070;
 }
 
-.center .typologies .typologies {
-  margin: auto;
-}
-
-.center .typologies .typologies h1 {
-  text-align: center;
-  color: #435070;
-}
-
-.center .typologies .checkboxes {
+.home-component .typologies .checkboxes {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 50px;
 }
 
-.center .typologies .checkboxes .checkbox {
+.home-component .typologies .checkboxes .checkbox {
   transition: 0.5s;
   font-size: 15px;
   margin: 10px 20px;
@@ -11118,130 +11149,146 @@ body {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
-.center .typologies .checkboxes .checkbox:hover {
+.home-component .typologies .checkboxes .checkbox:hover {
   transition: 0.2s;
   transition: 0.5s ease;
   transform: scale(1.15);
   background: #435070;
 }
 
-.center .typologies .restaurant-list {
+.home-component .typologies .restaurant-list {
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
-  margin-bottom: 300px;
+  margin-bottom: 200px;
 }
 
-.center .typologies .restaurant-list .restaurant {
+.home-component .typologies .restaurant-list .restaurant {
   transition: 1s;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  border-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   width: 300px;
-  margin-right: 50px;
+  margin: 50px 20px;
   padding-bottom: 20px;
 }
 
-.center .typologies .restaurant-list .restaurant h4 {
-  padding-left: 20px;
+.home-component .typologies .restaurant-list .restaurant h4 {
   font-weight: bold;
 }
 
-.center .typologies .restaurant-list .restaurant h5,
-.center .typologies .restaurant-list .restaurant p {
-  padding-left: 20px;
-}
-
-.center .typologies .restaurant-list .restaurant ul {
-  padding-left: 40px;
+.home-component .typologies .restaurant-list .restaurant ul {
   padding-bottom: 20px;
 }
 
-.center .typologies .restaurant-list .restaurant img {
+.home-component .typologies .restaurant-list .restaurant img {
   width: 100%;
   margin-bottom: 20px;
-  border-radius: 10px;
 }
 
-.center .typologies .restaurant-list .restaurant:hover {
+.home-component .typologies .restaurant-list .restaurant:hover {
   filter: grayscale(100%);
   transition: 0.2s;
   transition: 1s ease;
   transform: scale(1.15);
 }
 
-.center .typologies .restaurant-list a {
+.home-component .typologies .restaurant-list a {
   text-decoration: none;
   color: #435070;
 }
 
-.center .typologies .restaurant-list a:hover {
+.home-component .typologies .restaurant-list a:hover {
   text-decoration: none;
 }
 
-.lavora {
+.lavora-con-noi-container {
   display: flex;
+  justify-content: space-around;
+  align-items: baseline;
   flex-wrap: wrap;
   margin: auto;
+  margin-bottom: 100px;
   width: 60%;
-  margin-top: 100px;
-  justify-content: space-between;
+  text-align: center;
 }
 
-.test {
+.lavora-con-noi-container .lavora-con-noi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 30px;
+}
+
+.lavora-con-noi-container h1 {
+  max-width: 300px;
+  padding-top: 40px;
+  font-weight: bold;
+}
+
+.lavora-con-noi-container p {
+  max-width: 300px;
+  padding-top: 20px;
+}
+
+.slider-container {
+  margin-top: 150px;
+  margin-bottom: 50px;
   background-color: white;
   border-radius: 1000px/50px;
 }
 
-.test .test2 {
-  width: 50%;
+.slider-container .slider-container-2 {
+  max-width: 1000px;
   margin: auto;
-  padding: 100px 0px;
   text-align: center;
 }
 
-.test .test2 .slider {
+.slider-container .slider-container-2 .slider-container-3 {
   display: flex;
   align-items: center;
 }
 
-.test .test2 .slider i {
+.slider-container .slider-container-2 .slider-container-3 i {
   color: lightgrey;
   font-size: 50px;
   transition: 0.5s;
 }
 
-.test .test2 .slider i:hover {
+.slider-container .slider-container-2 .slider-container-3 i:hover {
   color: grey;
   transition: 0.5s;
 }
 
-.test .test2 .slider #slide {
+.slider-container .slider-container-2 .slider-container-3 #slide {
   border: 0px;
   background-color: white;
 }
 
-.test .test2 .slider #slideBack {
+.slider-container .slider-container-2 .slider-container-3 #slideBack {
   border: 0px;
   background-color: white;
 }
 
-.test .test2 h1 {
+.slider-container .slider-container-2 h1 {
   margin-bottom: 50px;
   font-weight: bold;
   font-size: 50px;
   color: #435070;
 }
 
-.test .test2 .tipi {
+.slider-container .slider-container-2 #slider-typologies {
   display: flex;
   overflow: auto;
   overflow: hidden;
   white-space: nowrap;
   width: 70%;
+  padding: 0px 0px 20px 0px;
   margin: auto;
   justify-content: space-between;
 }
 
-.test .test2 .tipi img {
+.slider-container .slider-container-2 #slider-typologies img {
   cursor: pointer;
   margin: 20px 20px;
   transition: 0.5s;
@@ -11251,7 +11298,7 @@ body {
   padding: 20px;
 }
 
-.test .test2 .tipi img:hover {
+.slider-container .slider-container-2 #slider-typologies img:hover {
   transform: scale(1.3);
   transition: 0.5s;
   box-shadow: 2px 2px 5px 2px orange;
@@ -11279,8 +11326,16 @@ html {
   background: #555;
 }
 
+form {
+  padding: 20px;
+}
+
 .login-container {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 800px;
+  margin: auto;
   background-color: white;
   text-align: center;
   padding-bottom: 100px;
@@ -11296,10 +11351,11 @@ html {
   padding: 50px;
   font-size: 30px;
   font-weight: bold;
+  color: #435070;
 }
 
 .login-container hr {
-  width: 30%;
+  max-width: 600px;
   margin: auto;
   margin-bottom: 20px;
 }
@@ -11308,7 +11364,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 30%;
+  max-width: 600px;
   margin: auto;
   margin-bottom: 15px;
 }
@@ -11350,11 +11406,5 @@ html {
 .login-container .login-container a:hover {
   text-decoration: none;
   color: lightgrey;
-}
-
-@media screen and (max-width: 600px) {
-  .input-container {
-    width: 60%;
-  }
 }
 

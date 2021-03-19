@@ -1,20 +1,30 @@
 body {
-    background: rgb(254,125,13);
-    background: linear-gradient(90deg, rgba(254,125,13,1) 0%, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);
-    margin-top: 100px;
+    background-color: white;
+    margin-top: 75px;
 }
+@media screen and (max-width: 600px) {
+    .banner img {
+        display: none;
+        width: 100px;
+    }
+  }
 
 .banner-container {   
+    background: linear-gradient(90deg, rgba(254,125,13,1) 0%, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);
     .banner {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        align-items: center;
         width: 60%;
         margin: auto;
-        padding: 50px 50px 150px 50px;
+        padding: 0px 50px 20px 50px;
         img {
-            width: 600px;
+            max-width: 800px;
+            width: 500px;
         }
         .banner-text {
+            max-width: 500px;
             text-align: center;
             padding: 100px 0px;
             .discover-button {
@@ -46,27 +56,28 @@ body {
         }
     }
 }
-.center {
+.curvature {
+    //border-radius: 1000px/100px;
+    border-radius: 100%/0 0 130px 130px;
+    background: linear-gradient(90deg, rgba(254,125,13,1) 0%, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);
+    height: 180px;
+    width: 100%;
+    position: absolute;
+    transform: translate(0px, -100px);
+}
+.home-component {
     background-color: white;
     margin: auto;
-    border-radius: 1000px/50px;
+    text-align: center;
+    
     .typologies {
         margin: auto;
-        padding-top: 200px;
-        width: 60%;
+        width: 80%;
         h1 {
             font-size: 50px;
-            margin-bottom: 20px;
             margin-bottom: 50px;
             font-weight: bold;
             color: $tertiary-color;
-        }
-        .typologies {
-            margin: auto;
-            h1 {
-                text-align: center;
-                color: $tertiary-color;
-            }
         }
         .checkboxes {
             display: flex;
@@ -95,32 +106,28 @@ body {
         }
         .restaurant-list {
             display: flex;
+            justify-content: space-around;
             flex-wrap: wrap;
-            margin-bottom: 300px;
+            margin-bottom: 200px;
             .restaurant {
                 transition: 1s;
                 -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
                 -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
                 box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-                border-radius: 10px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
                 width: 300px;   
-                margin-right: 50px;
+                margin: 50px 20px;
                 padding-bottom: 20px;
                 h4 {
-                    padding-left: 20px;
                     font-weight: bold;
                 }       
-                h5, p {
-                    padding-left: 20px;
-                }
                 ul {
-                    padding-left: 40px;
                     padding-bottom: 20px;
                 }
                 img {
                     width: 100%;
                     margin-bottom: 20px;
-                    border-radius: 10px;
                 }
                 &:hover {
                     filter: grayscale(100%);
@@ -139,23 +146,41 @@ body {
         }
     }
 }
-.lavora {
+.lavora-con-noi-container {
     display: flex;
+    justify-content: space-around;
+    align-items: baseline;
     flex-wrap: wrap;
     margin: auto;
+    margin-bottom: 100px;
     width: 60%;
-    margin-top: 100px;
-    justify-content: space-between;
+    text-align: center;
+    .lavora-con-noi {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 30px;
+    }
+    h1 {
+        max-width: 300px;
+        padding-top: 40px;
+        font-weight: bold;
+    }
+    p {
+        max-width: 300px;
+        padding-top: 20px;
+    }   
 }
-.test {
+.slider-container {
+    margin-top: 150px;
+    margin-bottom: 50px;
     background-color: white;
     border-radius: 1000px/50px;
-    .test2 {
-        width: 50%;
+    .slider-container-2 {
+        max-width: 1000px;
         margin: auto;
-        padding: 100px 0px;
         text-align: center;
-        .slider {
+        .slider-container-3 {
             display: flex;
             align-items: center;
             i {
@@ -182,12 +207,13 @@ body {
             font-size: 50px;
             color: $tertiary-color;
         }
-        .tipi {
+        #slider-typologies {
             display: flex;
             overflow: auto;
             overflow: hidden;
             white-space: nowrap;
             width: 70%;
+            padding: 0px 0px 20px 0px;
             margin: auto;
             justify-content: space-between;
             img {
