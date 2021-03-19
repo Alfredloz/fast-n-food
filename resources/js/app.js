@@ -22,7 +22,12 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('home-component', require('./components/HomeComponent.vue').default);
 Vue.component('restaurant-component', require('./components/RestaurantComponent.vue').default);
+Vue.component('cart-component', require('./components/CartComponent.vue').default);
 
+/**
+ * Creating an Event Bus
+ */
+export const eventBus = new Vue();
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

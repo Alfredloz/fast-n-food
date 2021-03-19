@@ -1946,6 +1946,139 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CartComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CartComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["restaurant"],
+  data: function data() {
+    return {
+      restaurant_info: null,
+      plates_bought: []
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    this.restaurant_info = JSON.parse(this.restaurant); // Listen for the event localStorageUpdated
+
+    _app__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$on('RestaurantLocalStorageUpdated', function () {
+      _this.checkLocalStorage();
+    });
+  },
+  mounted: function mounted() {
+    this.checkLocalStorage();
+  },
+  methods: {
+    checkLocalStorage: function checkLocalStorage() {
+      if (localStorage.getItem('plates_bought')) {
+        try {
+          this.plates_bought = JSON.parse(localStorage.getItem('plates_bought')); // If the cart content come from another restaurant, i remove it
+
+          if (this.plates_bought[0].user_id != this.restaurant_info.id) {
+            localStorage.removeItem('plates_bought');
+            this.plates_bought.splice(0, this.plates_bought.length);
+          }
+        } catch (e) {
+          localStorage.removeItem('plates_bought');
+        }
+      }
+    },
+    removePlate: function removePlate(plate) {
+      plate['quantity'] = 0;
+      var position = this.getBoughtPosition(plate);
+
+      if (position != -1) {
+        this.plates_bought.splice(position, 1);
+        this.savePlate();
+      }
+    },
+    savePlate: function savePlate() {
+      var parsed = JSON.stringify(this.plates_bought);
+      localStorage.setItem('plates_bought', parsed); // Emit the event localStorageUpdated through the eventBus
+
+      _app__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$emit('CartLocalStorageUpdated');
+    },
+
+    /**
+     * Get the position of a plate bought in the plates_bought array, -1 otherwise
+     * 
+     * @param plate - the plate to look for
+     * @return the position of the plate or -1 if the plate is not in plates_bought
+    */
+    getBoughtPosition: function getBoughtPosition(plate) {
+      return this.plates_bought.findIndex(function (element) {
+        return element.id == plate.id;
+      });
+    },
+    increaseQuantity: function increaseQuantity(plate) {
+      var position = this.getBoughtPosition(plate);
+      if (position == -1) return;
+      var oldQuantity = this.plates_bought[position].quantity;
+      var oldPlate = this.plates_bought[position];
+      oldPlate.quantity = oldQuantity + 1; // splice and push back:  necessary for VUE to notice the change in the quantity of the plate
+
+      this.plates_bought.splice(position, 1);
+      this.plates_bought.push(oldPlate);
+      this.savePlate();
+    },
+    decreaseQuantity: function decreaseQuantity(plate) {
+      var position = this.getBoughtPosition(plate);
+      if (position == -1) return;
+
+      if (this.plates_bought[position].quantity <= 1) {
+        this.removePlate(plate);
+        return;
+      }
+
+      var oldQuantity = this.plates_bought[position].quantity;
+      var oldPlate = this.plates_bought[position];
+      oldPlate.quantity = oldQuantity - 1; // splice and push back:  necessary for VUE to notice the change in the quantity of the plate
+
+      this.plates_bought.splice(position, 1);
+      this.plates_bought.push(oldPlate);
+      this.savePlate();
+    },
+    getPlateQuantity: function getPlateQuantity(plate) {
+      var position = this.getBoughtPosition(plate);
+      if (position == -1) return 0;
+      return this.plates_bought[position].quantity;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -2080,6 +2213,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
 //
 //
 //
@@ -2110,12 +2244,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant", "plates"],
   data: function data() {
@@ -2126,22 +2255,17 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
+    var _this = this;
+
     this.restaurant_info = JSON.parse(this.restaurant);
-    this.plates_info = JSON.parse(this.plates);
+    this.plates_info = JSON.parse(this.plates); // Listen for the event localStorageUpdated
+
+    _app__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$on('CartLocalStorageUpdated', function () {
+      _this.checkLocalStorage();
+    });
   },
   mounted: function mounted() {
-    if (localStorage.getItem('plates_bought')) {
-      try {
-        this.plates_bought = JSON.parse(localStorage.getItem('plates_bought')); // If the cart content come from another restaurant, i remove it
-
-        if (this.plates_bought[0].user_id != this.restaurant_info.id) {
-          localStorage.removeItem('plates_bought');
-          this.plates_bought = [];
-        }
-      } catch (e) {
-        localStorage.removeItem('plates_bought');
-      }
-    }
+    this.checkLocalStorage();
   },
   computed: {
     visiblePlates: function visiblePlates() {
@@ -2151,6 +2275,20 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    checkLocalStorage: function checkLocalStorage() {
+      if (localStorage.getItem('plates_bought')) {
+        try {
+          this.plates_bought = JSON.parse(localStorage.getItem('plates_bought')); // If the cart content come from another restaurant, i remove it
+
+          if (this.plates_bought[0].user_id != this.restaurant_info.id) {
+            localStorage.removeItem('plates_bought');
+            this.plates_bought.splice(0, this.plates_bought.length);
+          }
+        } catch (e) {
+          localStorage.removeItem('plates_bought');
+        }
+      }
+    },
     addPlate: function addPlate(plate) {
       plate['quantity'] = 1;
       plate['user_id'] = this.restaurant_info.id;
@@ -2168,7 +2306,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     savePlate: function savePlate() {
       var parsed = JSON.stringify(this.plates_bought);
-      localStorage.setItem('plates_bought', parsed);
+      localStorage.setItem('plates_bought', parsed); // Emit the event localStorageUpdated through the eventBus
+
+      _app__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$emit('RestaurantLocalStorageUpdated');
     },
     alreadyInCart: function alreadyInCart(plate) {
       var position = this.getBoughtPosition(plate);
@@ -38515,6 +38655,88 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CartComponent.vue?vue&type=template&id=e7ab8a3c&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CartComponent.vue?vue&type=template&id=e7ab8a3c& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "cart" }, [
+    _c("h2", { staticClass: "my-4 storage" }, [_vm._v("Shopping Cart")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      _vm._l(_vm.plates_bought, function(plate) {
+        return _c("div", { key: plate.id }, [
+          _c("h3", [_vm._v(_vm._s(plate.name))]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-danger",
+              on: {
+                click: function($event) {
+                  return _vm.removePlate(plate)
+                }
+              }
+            },
+            [_vm._v("\n                Remove from Cart\n            ")]
+          ),
+          _vm._v(" "),
+          _c("h3", [_vm._v("Quantità" + _vm._s(_vm.getPlateQuantity(plate)))]),
+          _vm._v(" "),
+          _c("div", { staticClass: "quantity_wrapper" }, [
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.decreaseQuantity(plate)
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-minus-circle fa-lg fa-fw" })]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "number", disabled: "" },
+              domProps: { value: _vm.getPlateQuantity(plate) }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.increaseQuantity(plate)
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-plus-circle fa-lg fa-fw" })]
+            )
+          ])
+        ])
+      }),
+      0
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -38772,23 +38994,7 @@ var render = function() {
               ])
             : _vm._e()
         ])
-      }),
-      _vm._v(" "),
-      _c("h2", { staticClass: "my-4 storage" }, [
-        _vm._v("IN STORAGE (E in un futuro carrello)")
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        _vm._l(_vm.plates_bought, function(plate) {
-          return _c("div", { key: plate.id }, [
-            _c("h3", [_vm._v(_vm._s(plate.name))]),
-            _vm._v(" "),
-            _c("h3", [_vm._v("Quantità" + _vm._s(_vm.getPlateQuantity(plate)))])
-          ])
-        }),
-        0
-      )
+      })
     ],
     2
   )
@@ -50966,9 +51172,12 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: eventBus */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eventBus", function() { return eventBus; });
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -50990,6 +51199,12 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('home-component', __webpack_require__(/*! ./components/HomeComponent.vue */ "./resources/js/components/HomeComponent.vue")["default"]);
 Vue.component('restaurant-component', __webpack_require__(/*! ./components/RestaurantComponent.vue */ "./resources/js/components/RestaurantComponent.vue")["default"]);
+Vue.component('cart-component', __webpack_require__(/*! ./components/CartComponent.vue */ "./resources/js/components/CartComponent.vue")["default"]);
+/**
+ * Creating an Event Bus
+ */
+
+var eventBus = new Vue();
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -51044,6 +51259,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/CartComponent.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/CartComponent.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CartComponent_vue_vue_type_template_id_e7ab8a3c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CartComponent.vue?vue&type=template&id=e7ab8a3c& */ "./resources/js/components/CartComponent.vue?vue&type=template&id=e7ab8a3c&");
+/* harmony import */ var _CartComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CartComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CartComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CartComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CartComponent_vue_vue_type_template_id_e7ab8a3c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CartComponent_vue_vue_type_template_id_e7ab8a3c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CartComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CartComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/CartComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CartComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CartComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CartComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CartComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CartComponent.vue?vue&type=template&id=e7ab8a3c&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/CartComponent.vue?vue&type=template&id=e7ab8a3c& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartComponent_vue_vue_type_template_id_e7ab8a3c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CartComponent.vue?vue&type=template&id=e7ab8a3c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CartComponent.vue?vue&type=template&id=e7ab8a3c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartComponent_vue_vue_type_template_id_e7ab8a3c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartComponent_vue_vue_type_template_id_e7ab8a3c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -51290,8 +51574,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\user\Documents\Boolean\Esercizi\laravel\fast-n-food\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\user\Documents\Boolean\Esercizi\laravel\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\DATI\Corso Boolean\Esercizi\fast-n-food\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\DATI\Corso Boolean\Esercizi\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
