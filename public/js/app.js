@@ -2272,6 +2272,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant", "plates"],
@@ -38725,7 +38729,7 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("h5", [
-              _vm._v("Quantity: " + _vm._s(_vm.getPlateQuantity(plate)))
+              _vm._v("Quantity: " + _vm._s(_vm.getPlateQuantity(plate)) + "x")
             ]),
             _vm._v(" "),
             _c("hr"),
@@ -38748,11 +38752,6 @@ var render = function() {
                 [_c("i", { staticClass: "fas fa-minus-circle fa-lg fa-fw" })]
               ),
               _vm._v(" "),
-              _c("input", {
-                attrs: { type: "number", disabled: "" },
-                domProps: { value: _vm.getPlateQuantity(plate) }
-              }),
-              _vm._v(" "),
               _c(
                 "button",
                 {
@@ -38770,7 +38769,11 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("div", { staticClass: "checkout" }, [
-          _c("h3", [_vm._v("Total: € " + _vm._s(_vm.getTotal()))]),
+          _c("h3", [
+            _c("i", { staticClass: "fas fa-tags" }),
+            _c("b", [_vm._v("Total:")]),
+            _vm._v(" € " + _vm._s(_vm.getTotal()))
+          ]),
           _vm._v(" "),
           _vm.toCheckoutPage
             ? _c("a", { staticClass: "checkout-btn", attrs: { href: "#" } }, [
@@ -38919,10 +38922,25 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "restaurant-container-2" }, [
     _c("div", { staticClass: "restaurant-name" }, [
-      _c("h1", [_vm._v(_vm._s(_vm.restaurant_info.restaurant_name))])
+      _c("h1", [
+        _c("i", { staticClass: "fas fa-utensils" }),
+        _vm._v(" " + _vm._s(_vm.restaurant_info.restaurant_name))
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("h6", [
+          _c("i", { staticClass: "fas fa-map-marker-alt" }),
+          _c("b", [_vm._v(_vm._s(_vm.restaurant_info.address))])
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("i", { staticClass: "fas fa-phone" }),
+          _c("b", [_vm._v(_vm._s(_vm.restaurant_info.phone_number))])
+        ])
+      ])
     ]),
     _vm._v(" "),
-    _c("h2", [_vm._v("I più venduti")]),
+    _vm._m(0),
     _vm._v(" "),
     _c(
       "div",
@@ -39012,7 +39030,17 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", [
+      _vm._v("I più venduti "),
+      _c("i", { staticClass: "fas fa-hamburger" })
+    ])
+  }
+]
 render._withStripped = true
 
 

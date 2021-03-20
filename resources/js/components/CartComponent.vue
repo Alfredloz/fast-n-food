@@ -8,20 +8,20 @@
                 <button class="remove-cart-btn" @click="removePlate(plate)">
                     <i class="fas fa-trash-alt"></i> Remove from Cart
                 </button>
-                <h5>Quantity: {{getPlateQuantity(plate)}}</h5>
+                <h5>Quantity: {{getPlateQuantity(plate)}}x</h5>
                 <hr>
                 <h6>€ {{plate.price}}</h6>
                 <hr>
 
                 <div class="quantity_wrapper">
                     <button class="less-plus-button" @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
-                    <input type="number" :value="getPlateQuantity(plate)" disabled>
+                    <!-- <input type="number" :value="getPlateQuantity(plate)" disabled> -->
                     <button class="less-plus-button" @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
                 </div>
             </div>
 
             <div class="checkout">
-                <h3>Total: € {{getTotal()}}</h3>
+                <h3><i class="fas fa-tags"></i><b>Total:</b> € {{getTotal()}}</h3>
                 <a class="checkout-btn" href="#" v-if="toCheckoutPage"><i class="fas fa-check"></i> Checkout</a>
             </div>
         </div>

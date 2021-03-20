@@ -11337,6 +11337,7 @@ html {
   position: absolute;
   bottom: 0;
   width: 100%;
+  box-shadow: 0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
 .restaurant-container {
@@ -11357,12 +11358,12 @@ html {
   font-weight: bold;
   text-transform: uppercase;
   color: #435070;
+  transform: translate(-50px, 0px);
 }
 
 .restaurant-container .plate-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
 }
 
 .restaurant-container .plate {
@@ -11398,8 +11399,13 @@ html {
   padding: 30px;
   border-radius: 10px;
   max-width: 800px;
-  transform: translate(0px, -50px);
+  min-width: 270px;
+  transform: translate(-50px, -50px);
   background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .restaurant-name h1 {
@@ -11408,16 +11414,21 @@ html {
   color: #435070;
 }
 
+.restaurant-name i {
+  padding-right: 20px;
+}
+
 .cart {
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   padding: 30px;
   border-radius: 10px;
-  transform: translate(-50px, -450px);
+  transform: translate(-100px, -450px);
   position: fixed;
   background-color: white;
   color: #435070;
   overflow-y: scroll;
   max-height: 700px;
+  min-width: 300px;
 }
 
 .cart h2 {
@@ -11449,6 +11460,10 @@ html {
 
 .cart .checkout h3 {
   margin: 10px 0px 20px 0px;
+}
+
+.cart .checkout i {
+  font-size: 20px;
 }
 
 .add-cart-btn {
@@ -11529,6 +11544,22 @@ html {
 
 .quantity_wrapper i {
   font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .cart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(0px, 0px);
+    max-height: 350px;
+    margin-top: 150px;
+    margin-left: 30px;
+  }
+
+  .restaurant-banner-container img {
+    top: 0;
+  }
 }
 
 form {

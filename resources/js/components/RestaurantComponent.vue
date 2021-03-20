@@ -1,10 +1,14 @@
 <template>
     <div class="restaurant-container-2">     
         <div class="restaurant-name">
-            <h1>{{restaurant_info.restaurant_name}}</h1>
+            <h1><i class="fas fa-utensils"></i> {{restaurant_info.restaurant_name}}</h1>
+            <div>
+                <h6><i class="fas fa-map-marker-alt"></i><b>{{restaurant_info.address}}</b></h6>
+                <p><i class="fas fa-phone"></i><b>{{restaurant_info.phone_number}}</b></p>
+            </div>   
         </div>
         
-        <h2>I più venduti</h2>
+        <h2>I più venduti <i class="fas fa-hamburger"></i></h2>
         <div class="plate-list">
             <div class="plate" v-for="plate in visiblePlates" :key="plate.id">
                 <div class="plate-info">
