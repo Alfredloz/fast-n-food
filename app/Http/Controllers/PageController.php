@@ -9,18 +9,28 @@ class PageController extends Controller
 {
     /** index page
      * index return
-     * 
+     *
      */
     public function index()
-    {   
+    {
         return view('guests.index');
     }
+
+    /** index page
+     * index return
+     *
+     */
+    public function checkout()
+    {   
+      return view('guests.checkout');
+    }
+
      /** single restaurant
      * single restaurant return
-     * 
+     *
      */
     public function restaurant(User $user)
-    {   
+    {
         $restaurant = json_encode( [
         'id' => $user->id,
         'restaurant_name' => $user->restaurant_name,

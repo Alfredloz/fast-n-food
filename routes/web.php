@@ -25,13 +25,13 @@ Auth::routes();
 // !PaymentController
 Route::get('/payment', 'PaymentController@make')->name('payment');
 
+// !route provvisoria checkout tramite pagecontroller
+Route::get('/checkout', 'PageController@checkout')->name('checkout');
 
 // !route provvisoria checkout forse in RESTAURANT
-Route::get('/checkout', function(){
-  return view('guests.checkout');
-});
-
-
+// Route::get('/checkout', function(){
+//   return view('guests.checkout');
+// });
 
 
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
