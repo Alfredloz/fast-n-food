@@ -1,0 +1,182 @@
+.restaurant-banner-container { 
+    position: relative; 
+    height: 500px; 
+    width: 100%; 
+    margin-bottom: 0px;
+}
+.restaurant-banner-container img { 
+    position: absolute; bottom: 0;
+    width: 100%;
+}
+.restaurant-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: auto;
+    margin-bottom: 100px;
+    .plates {
+        width: 80%;
+    }
+    h2 {
+        font-size: 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: $tertiary-color;
+    }
+    .plate-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .plate {
+        -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        border-radius: 10px;
+        margin: 50px 20px;
+        padding-bottom: 20px;
+        max-width: 280px;
+        min-width: 200px;
+        color: $tertiary-color;
+        text-align: center;
+        transition: 1s;
+        &:hover {
+            transition: 0.2s;
+            transition: 1s ease;
+            -webkit-box-shadow:0 5px 10px rgba(0, 0, 0, 0.3), 0 0 80px rgba(0, 0, 0, 0.1) inset;
+            -moz-box-shadow:0 5px 10px rgba(0, 0, 0, 0.3), 0 0 80px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 5px 10px rgba(0, 0, 0, 0.3), 0 0 80px rgba(0, 0, 0, 0.1) inset;
+        }
+        h3 {
+            font-size: 30px;
+            font-weight: bold;
+            padding-top: 20px;
+        }
+        img {
+            width: 100%;
+        }
+    }
+}
+.restaurant-name {
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 800px;
+    transform: translate(0px, -50px);
+    background-color: white;
+    h1 {
+        font-size: 50px;
+        font-weight: bold;
+        color: $tertiary-color;
+    }
+}
+.cart {
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    padding: 30px;
+    border-radius: 10px;
+    transform: translate(-50px, -450px);
+    position: fixed;
+    background-color: white;
+    color: $tertiary-color;
+    overflow-y: scroll;
+    max-height: 700px;
+    h2 {
+        font-weight: bold;
+    }
+    i {
+        font-size: 30px;
+        padding-right: 20px;
+    }
+    .shopping {
+        display: flex;
+        align-items: baseline;
+        padding-bottom: 30px;
+        h1 {
+            font-size: 30px;
+            font-weight: bold;
+        }
+    }
+    .checkout {
+        text-align: center;
+        margin-top: 20px;
+        border-top: 2px solid $tertiary-color;
+        padding: 10px;
+        h3 {
+            margin: 10px 0px 20px 0px;
+        }
+    }
+}
+// buttons
+.add-cart-btn {
+    background-color: $add-color;
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    font-size: 15px;
+    border-radius: 10px;
+    transition: 0.5s;
+    margin-top: 20px;
+    &:hover {
+        background-color: $tertiary-color;
+        transition: 0.5s;
+    }
+}
+.remove-cart-btn {
+    background-color: $remove-color;
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    font-size: 15px;
+    border-radius: 10px;
+    transition: 0.5s;
+    margin: 20px 0px;
+    i {
+        font-size: 15px;
+    }
+    &:hover {
+        background-color: $tertiary-color;
+        transition: 0.5s;
+    }
+}
+.less-plus-button {
+    border: none;
+    color: $tertiary-color;
+    background-color: rgba(0, 0, 0, 0);
+    transition: 0.5s;
+    font-size: 20px;
+    &:hover {
+        color: lightgrey;
+        transition: 0.5s;
+    }
+}
+.checkout-btn {
+    background-color: #00997A;
+    text-decoration: none;
+    border: none;
+    color: white;
+    padding: 10px 40px;
+    font-size: 20px;
+    border-radius: 20px;
+    transition: 0.5s;
+    margin: 20px 0px;
+    i {
+        font-size: 15px;
+    }
+    &:hover {
+        background-color: $tertiary-color;
+        text-decoration: none;
+        transition: 0.5s;
+        color: white;
+    }
+}
+.quantity_wrapper {
+    margin-bottom: 20px;
+    i {
+        font-size: 20px;
+    }
+}

@@ -1,30 +1,31 @@
 <template>
-    <div class="container">
-     
-        <h2>Ristorante</h2>
-        <div class="restaurant">
-            <h3>{{restaurant_info.restaurant_name}}</h3>
+    <div class="restaurant-container-2">     
+        <div class="restaurant-name">
+            <h1>{{restaurant_info.restaurant_name}}</h1>
         </div>
         
-        <h2>Menu</h2>
-        <div class="plate my-2" v-for="plate in visiblePlates" :key="plate.id">
-            <h3>{{plate.name}}</h3>
-            <h4>{{plate.description_ingredients}}</h4>
-            <button class="btn btn-primary" :class="alreadyInCart(plate) ? 'hide' : 'show' " @click="addPlate(plate)" :disabled="alreadyInCart(plate)">
-                Add to Cart
-            </button>
-            <button class="btn btn-danger" :class="alreadyInCart(plate) ? 'show' : 'hide' " @click="removePlate(plate)" :disabled="!alreadyInCart(plate)">
-                Remove from Cart
-            </button>
-            <div class="quantity_wrapper" v-if="alreadyInCart(plate)">
-                <button @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
-                <input type="number" :value="getPlateQuantity(plate)" disabled>
-                <button @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
+        <h2>I più venduti</h2>
+        <div class="plate-list">
+            <div class="plate" v-for="plate in visiblePlates" :key="plate.id">
+                <div class="plate-info">
+                    <img src="/images/restaurants/ristorante4.jpg">
+                    <h3>{{plate.name}}</h3>
+                    <h4>{{plate.description_ingredients}}</h4>
+                    <h5>€ {{plate.price}}</h5>
+                    <button class="add-cart-btn" :class="alreadyInCart(plate) ? 'hide' : 'show' " @click="addPlate(plate)" :disabled="alreadyInCart(plate)">
+                        <i class="fas fa-plus-circle"></i> Add to Cart
+                    </button>
+                </div>
+                <button class="remove-cart-btn" :class="alreadyInCart(plate) ? 'show' : 'hide' " @click="removePlate(plate)" :disabled="!alreadyInCart(plate)">
+                    <i class="fas fa-trash-alt"></i> Remove from Cart
+                </button>
+                <div class="quantity_wrapper" v-if="alreadyInCart(plate)">
+                    <button class="less-plus-button" @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
+                    <!-- <input type="number" :value="getPlateQuantity(plate)" disabled> -->
+                    <button class="less-plus-button" @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
+                </div>
             </div>
         </div>
-
-        
-        
     </div>
 </template>
 

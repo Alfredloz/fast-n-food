@@ -1,25 +1,29 @@
 <template>
     <div class="cart">
         
-        <h2>Shopping Cart</h2>
+        <div class="shopping"><i class="fas fa-cart-arrow-down"></i><h1>Shopping Cart</h1></div>
         <div>
             <div v-for="plate in plates_bought" :key="plate.id">
-                <h3>{{plate.name}}</h3>
-                <button class="btn btn-danger" @click="removePlate(plate)">
-                    Remove from Cart
+                <h4>{{plate.name}}</h4>
+                <button class="remove-cart-btn" @click="removePlate(plate)">
+                    <i class="fas fa-trash-alt"></i> Remove from Cart
                 </button>
-                <h3>Quantity: {{getPlateQuantity(plate)}}</h3>
-                <h3>Price: {{plate.price}}</h3>
+                <h5>Quantity: {{getPlateQuantity(plate)}}</h5>
+                <hr>
+                <h6>€ {{plate.price}}</h6>
+                <hr>
 
                 <div class="quantity_wrapper">
-                    <button @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
+                    <button class="less-plus-button" @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
                     <input type="number" :value="getPlateQuantity(plate)" disabled>
-                    <button @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
+                    <button class="less-plus-button" @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
                 </div>
             </div>
 
-            <h3>Total: {{getTotal()}}</h3>
-            <a class="btn btn-primary" href="#" v-if="toCheckoutPage">Checkout</a>
+            <div class="checkout">
+                <h3>Total: € {{getTotal()}}</h3>
+                <a class="checkout-btn" href="#" v-if="toCheckoutPage"><i class="fas fa-check"></i> Checkout</a>
+            </div>
         </div>
         
     </div>

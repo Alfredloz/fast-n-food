@@ -1983,6 +1983,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant"],
@@ -2237,6 +2241,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
+//
 //
 //
 //
@@ -38694,38 +38699,46 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "cart" }, [
-    _c("h2", [_vm._v("Shopping Cart")]),
+    _vm._m(0),
     _vm._v(" "),
     _c(
       "div",
       [
         _vm._l(_vm.plates_bought, function(plate) {
           return _c("div", { key: plate.id }, [
-            _c("h3", [_vm._v(_vm._s(plate.name))]),
+            _c("h4", [_vm._v(_vm._s(plate.name))]),
             _vm._v(" "),
             _c(
               "button",
               {
-                staticClass: "btn btn-danger",
+                staticClass: "remove-cart-btn",
                 on: {
                   click: function($event) {
                     return _vm.removePlate(plate)
                   }
                 }
               },
-              [_vm._v("\n                Remove from Cart\n            ")]
+              [
+                _c("i", { staticClass: "fas fa-trash-alt" }),
+                _vm._v(" Remove from Cart\n            ")
+              ]
             ),
             _vm._v(" "),
-            _c("h3", [
+            _c("h5", [
               _vm._v("Quantity: " + _vm._s(_vm.getPlateQuantity(plate)))
             ]),
             _vm._v(" "),
-            _c("h3", [_vm._v("Price: " + _vm._s(plate.price))]),
+            _c("hr"),
+            _vm._v(" "),
+            _c("h6", [_vm._v("€ " + _vm._s(plate.price))]),
+            _vm._v(" "),
+            _c("hr"),
             _vm._v(" "),
             _c("div", { staticClass: "quantity_wrapper" }, [
               _c(
                 "button",
                 {
+                  staticClass: "less-plus-button",
                   on: {
                     click: function($event) {
                       return _vm.decreaseQuantity(plate)
@@ -38743,6 +38756,7 @@ var render = function() {
               _c(
                 "button",
                 {
+                  staticClass: "less-plus-button",
                   on: {
                     click: function($event) {
                       return _vm.increaseQuantity(plate)
@@ -38755,19 +38769,32 @@ var render = function() {
           ])
         }),
         _vm._v(" "),
-        _c("h3", [_vm._v("Total: " + _vm._s(_vm.getTotal()))]),
-        _vm._v(" "),
-        _vm.toCheckoutPage
-          ? _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
-              _vm._v("Checkout")
-            ])
-          : _vm._e()
+        _c("div", { staticClass: "checkout" }, [
+          _c("h3", [_vm._v("Total: € " + _vm._s(_vm.getTotal()))]),
+          _vm._v(" "),
+          _vm.toCheckoutPage
+            ? _c("a", { staticClass: "checkout-btn", attrs: { href: "#" } }, [
+                _c("i", { staticClass: "fas fa-check" }),
+                _vm._v(" Checkout")
+              ])
+            : _vm._e()
+        ])
       ],
       2
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "shopping" }, [
+      _c("i", { staticClass: "fas fa-cart-arrow-down" }),
+      _c("h1", [_vm._v("Shopping Cart")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -38890,43 +38917,52 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c("h2", [_vm._v("Ristorante")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "restaurant" }, [
-        _c("h3", [_vm._v(_vm._s(_vm.restaurant_info.restaurant_name))])
-      ]),
-      _vm._v(" "),
-      _c("h2", [_vm._v("Menu")]),
-      _vm._v(" "),
+  return _c("div", { staticClass: "restaurant-container-2" }, [
+    _c("div", { staticClass: "restaurant-name" }, [
+      _c("h1", [_vm._v(_vm._s(_vm.restaurant_info.restaurant_name))])
+    ]),
+    _vm._v(" "),
+    _c("h2", [_vm._v("I più venduti")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "plate-list" },
       _vm._l(_vm.visiblePlates, function(plate) {
-        return _c("div", { key: plate.id, staticClass: "plate my-2" }, [
-          _c("h3", [_vm._v(_vm._s(plate.name))]),
-          _vm._v(" "),
-          _c("h4", [_vm._v(_vm._s(plate.description_ingredients))]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              class: _vm.alreadyInCart(plate) ? "hide" : "show",
-              attrs: { disabled: _vm.alreadyInCart(plate) },
-              on: {
-                click: function($event) {
-                  return _vm.addPlate(plate)
+        return _c("div", { key: plate.id, staticClass: "plate" }, [
+          _c("div", { staticClass: "plate-info" }, [
+            _c("img", {
+              attrs: { src: "/images/restaurants/ristorante4.jpg" }
+            }),
+            _vm._v(" "),
+            _c("h3", [_vm._v(_vm._s(plate.name))]),
+            _vm._v(" "),
+            _c("h4", [_vm._v(_vm._s(plate.description_ingredients))]),
+            _vm._v(" "),
+            _c("h5", [_vm._v("€ " + _vm._s(plate.price))]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "add-cart-btn",
+                class: _vm.alreadyInCart(plate) ? "hide" : "show",
+                attrs: { disabled: _vm.alreadyInCart(plate) },
+                on: {
+                  click: function($event) {
+                    return _vm.addPlate(plate)
+                  }
                 }
-              }
-            },
-            [_vm._v("\n            Add to Cart\n        ")]
-          ),
+              },
+              [
+                _c("i", { staticClass: "fas fa-plus-circle" }),
+                _vm._v(" Add to Cart\n                ")
+              ]
+            )
+          ]),
           _vm._v(" "),
           _c(
             "button",
             {
-              staticClass: "btn btn-danger",
+              staticClass: "remove-cart-btn",
               class: _vm.alreadyInCart(plate) ? "show" : "hide",
               attrs: { disabled: !_vm.alreadyInCart(plate) },
               on: {
@@ -38935,7 +38971,10 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            Remove from Cart\n        ")]
+            [
+              _c("i", { staticClass: "fas fa-trash-alt" }),
+              _vm._v(" Remove from Cart\n            ")
+            ]
           ),
           _vm._v(" "),
           _vm.alreadyInCart(plate)
@@ -38943,6 +38982,7 @@ var render = function() {
                 _c(
                   "button",
                   {
+                    staticClass: "less-plus-button",
                     on: {
                       click: function($event) {
                         return _vm.decreaseQuantity(plate)
@@ -38952,14 +38992,10 @@ var render = function() {
                   [_c("i", { staticClass: "fas fa-minus-circle fa-lg fa-fw" })]
                 ),
                 _vm._v(" "),
-                _c("input", {
-                  attrs: { type: "number", disabled: "" },
-                  domProps: { value: _vm.getPlateQuantity(plate) }
-                }),
-                _vm._v(" "),
                 _c(
                   "button",
                   {
+                    staticClass: "less-plus-button",
                     on: {
                       click: function($event) {
                         return _vm.increaseQuantity(plate)
@@ -38971,10 +39007,10 @@ var render = function() {
               ])
             : _vm._e()
         ])
-      })
-    ],
-    2
-  )
+      }),
+      0
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

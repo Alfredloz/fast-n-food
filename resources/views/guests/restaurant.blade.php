@@ -2,17 +2,18 @@
 
 
 @section('content')
+<div class="restaurant-banner-container">
+    <img class="banner-restaurant" src="{{ asset('/images/restaurants/ristorante4.jpg') }}" alt="Banner ristorante">
 
+</div>
 <div id="app">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <restaurant-component restaurant ="{{ $restaurant }}" plates = "{{ $plates }}"></restaurant-component>
-                
-            </div>
-            <div class="col-md-4">
-                <cart-component restaurant ="{{ $restaurant }}"></cart-component>
-            </div>
+    <div class="restaurant-container">
+        <div class="plates">
+            <restaurant-component restaurant ="{{ $restaurant }}" plates = "{{ $plates }}"></restaurant-component>
+            
+        </div>
+        <div class="">
+            <cart-component restaurant ="{{ $restaurant }}"></cart-component>
         </div>
     </div>
 </div>
