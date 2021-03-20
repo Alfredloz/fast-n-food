@@ -19,6 +19,7 @@
             </div>
 
             <h3>Total: {{getTotal()}}</h3>
+            <a class="btn btn-primary" href="#" v-if="toCheckoutPage">Checkout</a>
         </div>
         
     </div>
@@ -43,6 +44,11 @@
         },
         mounted() {
             this.checkLocalStorage()
+        },
+        computed: {
+            toCheckoutPage() {
+                return (this.getTotal() > 0) && ( window.location.pathname == "/restaurant/" + this.restaurant_info.slug );
+            }
         },
         methods : {
             checkLocalStorage(){

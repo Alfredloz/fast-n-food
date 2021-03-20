@@ -1982,6 +1982,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant"],
@@ -2002,6 +2003,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.checkLocalStorage();
+  },
+  computed: {
+    toCheckoutPage: function toCheckoutPage() {
+      return this.getTotal() > 0 && window.location.pathname == "/restaurant/" + this.restaurant_info.slug;
+    }
   },
   methods: {
     checkLocalStorage: function checkLocalStorage() {
@@ -38749,7 +38755,13 @@ var render = function() {
           ])
         }),
         _vm._v(" "),
-        _c("h3", [_vm._v("Total: " + _vm._s(_vm.getTotal()))])
+        _c("h3", [_vm._v("Total: " + _vm._s(_vm.getTotal()))]),
+        _vm._v(" "),
+        _vm.toCheckoutPage
+          ? _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+              _vm._v("Checkout")
+            ])
+          : _vm._e()
       ],
       2
     )
