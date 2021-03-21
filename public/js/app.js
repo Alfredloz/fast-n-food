@@ -1987,6 +1987,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant"],
@@ -38705,6 +38706,8 @@ var render = function() {
   return _c("div", { staticClass: "cart" }, [
     _vm._m(0),
     _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
     _c(
       "div",
       [
@@ -38795,6 +38798,14 @@ var staticRenderFns = [
     return _c("div", { staticClass: "shopping" }, [
       _c("i", { staticClass: "fas fa-cart-arrow-down" }),
       _c("h1", [_vm._v("Shopping Cart")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "shopping" }, [
+      _c("img", { attrs: { width: "140px", src: "/images/Artwork.svg" } })
     ])
   }
 ]
@@ -38920,7 +38931,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "restaurant-container-2" }, [
+  return _c("div", {}, [
     _c("div", { staticClass: "restaurant-name" }, [
       _c("h1", [
         _c("i", { staticClass: "fas fa-utensils" }),
