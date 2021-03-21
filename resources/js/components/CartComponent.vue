@@ -2,6 +2,7 @@
     <div class="cart">
         
         <div class="shopping"><i class="fas fa-cart-arrow-down"></i><h1>Shopping Cart</h1></div>
+        <div class="shopping"><img width="140px" src="/images/Artwork.svg"></div>
         <div>
             <div v-for="plate in plates_bought" :key="plate.id">
                 <h4>{{plate.name}}</h4>

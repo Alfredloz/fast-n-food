@@ -1,5 +1,5 @@
 <template>
-    <div class="restaurant-container-2">     
+    <div class="">     
         <div class="restaurant-name">
             <h1><i class="fas fa-utensils"></i> {{restaurant_info.restaurant_name}}</h1>
             <div>
