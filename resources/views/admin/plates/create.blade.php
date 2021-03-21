@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="login-container">
-    <h1>Create your Dish</h1   >
+    <h1>Create your Dish</h1>
     @include('layouts.partials.errors')
 
     <form action="{{route('admin.plates.store')}}" method="post" enctype="multipart/form-data">
