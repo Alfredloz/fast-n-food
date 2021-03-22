@@ -1,18 +1,18 @@
 <template>
-    <div class="">     
+    <div class="">
         <div class="restaurant-name">
             <h1><i class="fas fa-utensils"></i> {{restaurant_info.restaurant_name}}</h1>
             <div>
                 <h6><i class="fas fa-map-marker-alt"></i><b>{{restaurant_info.address}}</b></h6>
                 <p><i class="fas fa-phone"></i><b>{{restaurant_info.phone_number}}</b></p>
-            </div>   
+            </div>
         </div>
-        
+
         <h2>I più venduti <i class="fas fa-hamburger"></i></h2>
         <div class="plate-list">
             <div class="plate" v-for="plate in visiblePlates" :key="plate.id">
                 <div class="plate-info">
-                    <img src="/images/restaurants/ristorante4.jpg">
+                    <img :src="'/storage/'+plate.picture" alt="">
                     <h3>{{plate.name}}</h3>
                     <h4>{{plate.description_ingredients}}</h4>
                     <h5>€ {{plate.price}}</h5>
@@ -105,7 +105,7 @@
             },
             /**
              * Get the position of a plate bought in the plates_bought array, -1 otherwise
-             * 
+             *
              * @param plate - the plate to look for
              * @return the position of the plate or -1 if the plate is not in plates_bought
             */
@@ -124,14 +124,14 @@
                 // splice and push back:  necessary for VUE to notice the change in the quantity of the plate
                 this.plates_bought.splice(position, 1);
                 this.plates_bought.push(oldPlate);
-                
+
                 this.savePlate();
             },
             decreaseQuantity(plate){
                 const position = this.getBoughtPosition(plate);
-                
+
                 if(position == -1) return
-                
+
                 if(this.plates_bought[position].quantity <= 1){
                     this.removePlate(plate);
                     return
@@ -144,7 +144,7 @@
                 // splice and push back:  necessary for VUE to notice the change in the quantity of the plate
                 this.plates_bought.splice(position, 1);
                 this.plates_bought.push(oldPlate);
-                
+
                 this.savePlate();
             },
             getPlateQuantity(plate) {
