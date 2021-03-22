@@ -19,7 +19,7 @@
 </div>
 
 <section id="typologies"></section>
-<div class="slider-container">
+<!-- <div class="slider-container">
   <div class="slider-container-2">
     <h1>Seleziona una o più tipologie</h1>
       <div class="slider-container-3">
@@ -39,7 +39,7 @@
         <button id="slide" type="button"><i class="fas fa-caret-right"></i></button>
       </div>
   </div>
-</div>
+</div> -->
 
 <div id="app">
   <home-component></home-component>
