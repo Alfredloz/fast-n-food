@@ -5,10 +5,10 @@
             <div class="col-md-12 checkboxes">
                 <div class="form-check"  v-for="typology in typologies" :key="typology.id">
                   <label class="form-check-label checkbox">
-                    <input type="checkbox" class="form-check-input" :id="'typology' + typology.id" :value="typology.id" v-model="typologies_ids">
-                    {{typology.name}}
+                    <input style="opacity: 0.2" type="checkbox" class="form-check-input" :id="'typology' + typology.id" :value="typology.id" v-model="typologies_ids">
+                    <img :src="typology.img" class="" alt="">
+                    <span>{{typology.name}}</span>
                   </label>
-                  <img :src="typology.img" class="" alt="">
                 </div>
             </div>
             <h1>Ristoranti</h1>

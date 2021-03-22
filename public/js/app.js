@@ -38897,6 +38897,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-check-input",
+                staticStyle: { opacity: "0.2" },
                 attrs: { type: "checkbox", id: "typology" + typology.id },
                 domProps: {
                   value: typology.id,
@@ -38926,14 +38927,11 @@ var render = function() {
                   }
                 }
               }),
-              _vm._v(
-                "\n                " +
-                  _vm._s(typology.name) +
-                  "\n              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("img", { attrs: { src: typology.img, alt: "" } })
+              _vm._v(" "),
+              _c("img", { attrs: { src: typology.img, alt: "" } }),
+              _vm._v(" "),
+              _c("span", [_vm._v(_vm._s(typology.name))])
+            ])
           ])
         }),
         0

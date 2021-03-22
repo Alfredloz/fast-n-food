@@ -11149,6 +11149,15 @@ body {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
+.home-component .typologies .checkboxes .checkbox img {
+  height: 70px;
+  width: auto;
+}
+
+.home-component .typologies .checkboxes .checkbox span {
+  display: block;
+}
+
 .home-component .typologies .checkboxes .checkbox:hover {
   transition: 0.2s;
   transition: 0.5s ease;
