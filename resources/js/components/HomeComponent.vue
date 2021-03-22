@@ -1,16 +1,16 @@
 <template>
     <div class="home-component">
         <div class="typologies">
-            <!-- <h1>Seleziona una o più tipologie</h1>
+             <h1>Seleziona una o più tipologie</h1>
             <div class="col-md-12 checkboxes">
                 <div class="form-check"  v-for="typology in typologies" :key="typology.id">
                   <label class="form-check-label checkbox">
                     <input type="checkbox" class="form-check-input" :id="'typology' + typology.id" :value="typology.id" v-model="typologies_ids">
                     {{typology.name}}
                   </label>
+                  <img :src="typology.img" class="" alt="">
                 </div>
-            </div> -->
-
+            </div>
             <h1>Ristoranti</h1>
             <div class="restaurant-list">
                 <div v-for="restaurant in restaurants" :key="restaurant.id">
