@@ -38879,6 +38879,66 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "home-component" }, [
     _c("div", { staticClass: "typologies" }, [
+      _c("h1", [_vm._v("Seleziona una o più tipologie")]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-md-12 checkboxes" },
+        _vm._l(_vm.typologies, function(typology) {
+          return _c("div", { key: typology.id, staticClass: "form-check" }, [
+            _c("label", { staticClass: "form-check-label checkbox" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.typologies_ids,
+                    expression: "typologies_ids"
+                  }
+                ],
+                staticClass: "form-check-input",
+                attrs: { type: "checkbox", id: "typology" + typology.id },
+                domProps: {
+                  value: typology.id,
+                  checked: Array.isArray(_vm.typologies_ids)
+                    ? _vm._i(_vm.typologies_ids, typology.id) > -1
+                    : _vm.typologies_ids
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.typologies_ids,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = typology.id,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.typologies_ids = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.typologies_ids = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.typologies_ids = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(
+                "\n                " +
+                  _vm._s(typology.name) +
+                  "\n              "
+              )
+            ]),
+            _vm._v(" "),
+            _c("img", { attrs: { src: typology.img, alt: "" } })
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
       _c("h1", [_vm._v("Ristoranti")]),
       _vm._v(" "),
       _c(
@@ -51626,8 +51686,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\user\Documents\Boolean\Esercizi\laravel\fast-n-food\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\user\Documents\Boolean\Esercizi\laravel\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/alfredoloz/Boolean/fast-n-food/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/alfredoloz/Boolean/fast-n-food/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

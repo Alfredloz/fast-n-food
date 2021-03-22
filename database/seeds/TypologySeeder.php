@@ -3,7 +3,7 @@
 use App\Typology;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
-
+use Illuminate\Support\Facades\DB;
 class TypologySeeder extends Seeder
 {
     /**
@@ -11,12 +11,15 @@ class TypologySeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
-        for ($i=0; $i < 20; $i++) { 
-            $newTypology = new Typology();
-            $newTypology->name = $faker->unique()->word();
-            $newTypology->save();
-        }
+        DB::table('typologies')->insert([
+            'name' => 'pancake',
+            'img' => '/images/typologies/001-pancake.png'
+        ]);
+        DB::table('typologies')->insert([
+            'name' => 'pizza',
+            'img' => '/images/typologies/007-pancake.png'
+        ]);
     }
 }
