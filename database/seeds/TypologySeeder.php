@@ -12,14 +12,14 @@ class TypologySeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        DB::table('typologies')->insert([
-            'name' => 'pancake',
-            'img' => '/images/typologies/001-pancake.png'
-        ]);
-        DB::table('typologies')->insert([
-            'name' => 'pizza',
-            'img' => '/images/typologies/007-pancake.png'
-        ]);
+    {   
+        $typologies = config('typologies');
+        foreach ($typologies as $typology) {
+            $newCategory = new Typology();
+            $newCategory->name = $typology['name'];
+            $newCategory->img = $typology['img'];
+            $newCategory->save();
+        }
+        
     }
 }

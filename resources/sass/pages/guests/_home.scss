@@ -96,6 +96,13 @@ body {
                 -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
                 -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
                 box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+                img{
+                    height: 70px;
+                    width: auto;
+                }
+                span{
+                    display: block;
+                }
                 &:hover {
                     transition: 0.2s;
                     transition: 0.5s ease;
