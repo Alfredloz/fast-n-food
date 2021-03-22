@@ -5,6 +5,9 @@
 
 @section('content')
 
+  <div id="app">
+      <cart-component restaurant ="{{ $restaurant }}"></cart-component>
+  </div>
 
   <h1>Il pagamento qua sotto dovrebbe funzionare</h1>
     <div id="dropin-wrapper">
@@ -28,9 +31,10 @@
   }, function (createErr, instance) {
     button.addEventListener('click', function () {
       instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
-        $.get('{{ route('payment') }}', {payload}, function (response) {
+        $.get('{{ route('payment') }}', { payload, totale:document.getElementById('total_price').innerHTML }, function (response) {
           if (response.success) {
             console.log(response);
+            console.log(payload);
             alert('Payment successfull!');
           } else {
             alert('Payment failed');

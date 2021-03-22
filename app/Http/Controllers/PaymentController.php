@@ -16,7 +16,9 @@ class PaymentController extends Controller
       // del pagamento stesso come il prezzo o altro
       $payload = $request->input('payload', false);
       $nonce = $payload['nonce'];
-      $amount = '76.46';
+      //$amount = '76.46';
+      $amount = $request->input('totale');
+
 
       $status = Braintree\Transaction::sale([
         'amount' => $amount,
