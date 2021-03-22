@@ -5,8 +5,25 @@
 
 @section('content')
 
+  <div id="app">
+      <cart-component restaurant ="{{ $restaurant }}"></cart-component>
+  </div>
 
-  <h1>Il pagamento qua sotto dovrebbe funzionare</h1>
+    <div class="info_delivery">
+      <label for="name">Nome</label>
+      <input type="text" name="name" id="name" required>
+      <small id="error_name"></small>
+
+      <label for="phone">Telefono</label>
+      <input type="text" name="phone" id="phone" required>
+      <small id="error_phone"></small>
+
+      <label for="address">Indirizzo</label>
+      <input type="text" name="address" id="address" required>
+      <small id="error_address"></small>
+
+    </div>
+
     <div id="dropin-wrapper">
       <div id="checkout-message"></div>
       <div style="width:60%; margin:auto;">
@@ -27,18 +44,49 @@
     container: '#dropin-container'
   }, function (createErr, instance) {
     button.addEventListener('click', function () {
-      instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
-        $.get('{{ route('payment') }}', {payload}, function (response) {
-          if (response.success) {
-            console.log(response);
-            alert('Payment successfull!');
-          } else {
-            alert('Payment failed');
-            console.log(payload);
-          }
-        }, 'json');
-      });
+      if ( deliveryInfoValidation() ){
+        instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+          $.get('{{ route('payment') }}', { payload, totale:document.getElementById('total_price').innerHTML }, function (response) {
+            if (response.success) {
+              console.log(response);
+              console.log(payload);
+              alert('Payment successfull!');
+            } else {
+              alert('Payment failed');
+              console.log(payload);
+            }
+          }, 'json');
+        });
+      }
     });
   });
+
+  /**
+   * Javascript validation for delivery info
+   * @return true if the data are validated, false otherwise
+   */
+  function deliveryInfoValidation() {
+    const inpName = document.getElementById("name");
+    const inpPhone = document.getElementById("phone");
+    const inpAddress = document.getElementById("address");
+
+    if (!inpName.checkValidity()) {
+      document.getElementById("error_name").innerHTML = inpName.validationMessage;
+    } else {
+      document.getElementById("error_name").innerHTML = '';
+    }
+    if (!inpPhone.checkValidity()) {
+      document.getElementById("error_phone").innerHTML = inpPhone.validationMessage;
+    } else {
+      document.getElementById("error_phone").innerHTML = '';
+    }
+    if (!inpAddress.checkValidity()) {
+      document.getElementById("error_address").innerHTML = inpAddress.validationMessage;
+    } else {
+      document.getElementById("error_address").innerHTML = '';
+    }
+
+    return inpName.checkValidity() && inpPhone.checkValidity() && inpAddress.checkValidity();
+  }
 </script>
 @endsection

@@ -18,6 +18,7 @@ Route::get('/', 'PageController@index')->name('homepage');
 
 Route::prefix('restaurant')->name('restaurant.')->group(function(){
     Route::get('{user}', 'PageController@restaurant')->name('restaurant');
+    Route::get('{user}/checkout', 'PageController@checkout')->name('checkout');
 });
 
 Auth::routes();
@@ -26,7 +27,7 @@ Auth::routes();
 Route::get('/payment', 'PaymentController@make')->name('payment');
 
 // !route provvisoria checkout tramite pagecontroller
-Route::get('/checkout', 'PageController@checkout')->name('checkout');
+//Route::get('/checkout', 'PageController@checkout')->name('checkout');
 
 // !route provvisoria checkout forse in RESTAURANT
 // Route::get('/checkout', function(){

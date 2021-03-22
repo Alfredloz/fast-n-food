@@ -4,6 +4,11 @@
         <div class="shopping"><i class="fas fa-cart-arrow-down"></i><h1>Shopping Cart</h1></div>
         <div class="shopping"><img width="140px" src="/images/Artwork.svg"></div>
         <div>
+            <div class="checkout">
+                <h3><i class="fas fa-tags"></i><b>Total:</b> € <span id="total_price">{{getTotal()}}</span></h3>
+                <a class="checkout-btn" :href="'/restaurant/'+restaurant_info.slug+'/checkout'" v-if="toCheckoutPage"><i class="fas fa-check"></i> Checkout</a>
+            </div>
+
             <div v-for="plate in plates_bought" :key="plate.id">
                 <h4>{{plate.name}}</h4>
                 <button class="remove-cart-btn" @click="removePlate(plate)">
@@ -21,10 +26,7 @@
                 </div>
             </div>
 
-            <div class="checkout">
-                <h3><i class="fas fa-tags"></i><b>Total:</b> € {{getTotal()}}</h3>
-                <a class="checkout-btn" href="#" v-if="toCheckoutPage"><i class="fas fa-check"></i> Checkout</a>
-            </div>
+            
         </div>
         
     </div>

@@ -16,13 +16,15 @@ class PageController extends Controller
         return view('guests.index');
     }
 
-    /** index page
-     * index return
+    /** checkout page
+     * checkout return
      *
      */
-    public function checkout()
+    public function checkout(User $user)
     {   
-      return view('guests.checkout');
+        $restaurant = $this->restaurantInfoJson($user);
+
+        return view('guests.checkout', compact('restaurant'));
     }
 
      /** single restaurant
@@ -31,19 +33,24 @@ class PageController extends Controller
      */
     public function restaurant(User $user)
     {
-        $restaurant = json_encode( [
-        'id' => $user->id,
-        'restaurant_name' => $user->restaurant_name,
-        'restaurant_description' => $user->restaurant_description,
-        'restaurant_logo' => $user->restaurant_logo,
-        'restaurant_banner' => $user->restaurant_banner,
-        'address' => $user->address,
-        'phone_number' => $user->phone_number,
-        'slug' => $user->slug,
-        'typologies' => $user->typologies
-        ] );
+        $restaurant = $this->restaurantInfoJson($user);
         $plates = json_encode( $user->plates );
         //dd($restaurant, $plates);
         return view('guests.restaurant', compact('restaurant', 'plates'));
+    }
+
+    private function restaurantInfoJson(User $user)
+    {
+        return json_encode( [
+            'id' => $user->id,
+            'restaurant_name' => $user->restaurant_name,
+            'restaurant_description' => $user->restaurant_description,
+            'restaurant_logo' => $user->restaurant_logo,
+            'restaurant_banner' => $user->restaurant_banner,
+            'address' => $user->address,
+            'phone_number' => $user->phone_number,
+            'slug' => $user->slug,
+            'typologies' => $user->typologies
+        ] );
     }
 }

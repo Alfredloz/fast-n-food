@@ -1988,6 +1988,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant"],
@@ -38711,6 +38713,31 @@ var render = function() {
     _c(
       "div",
       [
+        _c("div", { staticClass: "checkout" }, [
+          _c("h3", [
+            _c("i", { staticClass: "fas fa-tags" }),
+            _c("b", [_vm._v("Total:")]),
+            _vm._v(" € "),
+            _c("span", { attrs: { id: "total_price" } }, [
+              _vm._v(_vm._s(_vm.getTotal()))
+            ])
+          ]),
+          _vm._v(" "),
+          _vm.toCheckoutPage
+            ? _c(
+                "a",
+                {
+                  staticClass: "checkout-btn",
+                  attrs: {
+                    href:
+                      "/restaurant/" + _vm.restaurant_info.slug + "/checkout"
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-check" }), _vm._v(" Checkout")]
+              )
+            : _vm._e()
+        ]),
+        _vm._v(" "),
         _vm._l(_vm.plates_bought, function(plate) {
           return _c("div", { key: plate.id }, [
             _c("h4", [_vm._v(_vm._s(plate.name))]),
@@ -38769,22 +38796,7 @@ var render = function() {
               )
             ])
           ])
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "checkout" }, [
-          _c("h3", [
-            _c("i", { staticClass: "fas fa-tags" }),
-            _c("b", [_vm._v("Total:")]),
-            _vm._v(" € " + _vm._s(_vm.getTotal()))
-          ]),
-          _vm._v(" "),
-          _vm.toCheckoutPage
-            ? _c("a", { staticClass: "checkout-btn", attrs: { href: "#" } }, [
-                _c("i", { staticClass: "fas fa-check" }),
-                _vm._v(" Checkout")
-              ])
-            : _vm._e()
-        ])
+        })
       ],
       2
     )
@@ -51682,8 +51694,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Alessandro\Desktop\Boolean Classe 23\fast-n-food\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Alessandro\Desktop\Boolean Classe 23\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\DATI\Corso Boolean\Esercizi\fast-n-food\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\DATI\Corso Boolean\Esercizi\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
