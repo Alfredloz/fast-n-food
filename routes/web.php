@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 
 Route::get('/', 'PageController@index')->name('homepage');
 
@@ -32,10 +31,16 @@ Route::get('/checkout', function(){
 });
 
 
-
-
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+  
+  // Home route
   Route::get('/', 'HomeController@index')->name('index');
+  
+  // Statistic routes
+  Route::get('statistics/orders', 'StatisticController@orders')->name('orders');
+  Route::get('statistics/sold', 'StatisticController@sold')->name('sold');
+  
+  // Crud routes
   Route::resource('plates', 'PlateController');
   Route::put('plates/{plate}/visibility', 'PlateController@visibility')->name('plates.visibility');
 });
