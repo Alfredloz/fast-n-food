@@ -17,19 +17,19 @@
                     <a :href="/restaurant/+restaurant.slug">
                         <div class="restaurant">
                             <div class="restaurant-info">
-                                <img :src="'storage/'+restaurant.restaurant_banner" alt="">
+                                <img :src="'/storage/'+restaurant.restaurant_banner" alt="">
                                 <h4>{{restaurant.restaurant_name}}</h4>
                                 <p>{{restaurant.restaurant_description}}</p>
                                 <!-- <h5>Tipologie del ristorante</h5>
                                 <ul>
                                     <li v-for="type in restaurant.typologies" :key="type.id">{{type.name}}</li>
                                 </ul> -->
-                            </div>   
+                            </div>
                         </div>
-                    </a>                  
+                    </a>
                 </div>
-            </div>           
-        </div>       
+            </div>
+        </div>
     </div>
 </template>
 
@@ -68,7 +68,7 @@
         },
         mounted() {
             this.loadTypologies();
-            this.loadRestaurants();       
+            this.loadRestaurants();
         }
     }
 </script>

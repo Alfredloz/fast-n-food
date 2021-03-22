@@ -4,11 +4,15 @@
 @endsection
 
 @section('content')
+
+
   <h1>Il pagamento qua sotto dovrebbe funzionare</h1>
     <div id="dropin-wrapper">
       <div id="checkout-message"></div>
-      <div id="dropin-container"></div>
-      <button id="submit-button">Submit payment</button>
+      <div style="width:60%; margin:auto;">
+        <div id="dropin-container"></div>
+      </div>
+      <button style="background-color:yellow" id="submit-button">Submit payment</button>
     </div>
 
     <h2>La doc di braintree è brutta forte e malvagia</h2>
@@ -16,7 +20,7 @@
 
 <script>
   var button = document.querySelector('#submit-button');
-  
+
   braintree.dropin.create({
     // la tokenization key per mostrare il form di pagamento viene generata dinamicamente
     authorization: "{{ Braintree\ClientToken::generate() }}",

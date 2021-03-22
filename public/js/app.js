@@ -2350,7 +2350,7 @@ __webpack_require__.r(__webpack_exports__);
 
     /**
      * Get the position of a plate bought in the plates_bought array, -1 otherwise
-     * 
+     *
      * @param plate - the plate to look for
      * @return the position of the plate or -1 if the plate is not in plates_bought
     */
@@ -38891,7 +38891,7 @@ var render = function() {
                 _c("div", { staticClass: "restaurant-info" }, [
                   _c("img", {
                     attrs: {
-                      src: "storage/" + restaurant.restaurant_banner,
+                      src: "/storage/" + restaurant.restaurant_banner,
                       alt: ""
                     }
                   }),
@@ -38959,9 +38959,7 @@ var render = function() {
       _vm._l(_vm.visiblePlates, function(plate) {
         return _c("div", { key: plate.id, staticClass: "plate" }, [
           _c("div", { staticClass: "plate-info" }, [
-            _c("img", {
-              attrs: { src: "/images/restaurants/ristorante4.jpg" }
-            }),
+            _c("img", { attrs: { src: "/storage/" + plate.picture, alt: "" } }),
             _vm._v(" "),
             _c("h3", [_vm._v(_vm._s(plate.name))]),
             _vm._v(" "),
@@ -51626,8 +51624,13 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! /Users/alfredoloz/Boolean/fast-n-food/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /Users/alfredoloz/Boolean/fast-n-food/resources/sass/app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! C:\Users\Alessandro\Desktop\Boolean Classe 23\fast-n-food\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Alessandro\Desktop\Boolean Classe 23\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> 620061a17251a18d67a9be7dc230931aa45ede79
 
 
 /***/ })
