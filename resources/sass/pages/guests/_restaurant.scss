@@ -24,7 +24,7 @@
     }
     .plates {
         display: flex;
-        width: 70%;
+        width: 75%;
         margin: auto;
         justify-content: space-around;
     }
@@ -72,6 +72,7 @@
         font-size: 50px;
         font-weight: bold;
         color: $tertiary-color;
+        margin-right: 20px;
     }
     i {
         padding-right: 20px;
