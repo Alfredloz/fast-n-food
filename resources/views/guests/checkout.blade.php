@@ -61,7 +61,7 @@
               const inpName = document.getElementById("name").value;
               const inpPhone = document.getElementById("phone").value;
               const inpAddress = document.getElementById("address").value;
-              window.location.href = "{{route('ordine')}}"+`?name=${inpName}&phone=${inpPhone}&address=${inpAddress}`;
+              // window.location.href = "{{route('ordine')}}"+`?name=${inpName}&phone=${inpPhone}&address=${inpAddress}`;
             } else {
               alert('Payment failed');
               console.log(payload);
@@ -70,7 +70,7 @@
         });
       } else if( parseFloat( document.getElementById('total_price').innerHTML ) <= 0){
         window.location.href = "{{route('homepage')}}"
-      } 
+      }
     });
   });
 

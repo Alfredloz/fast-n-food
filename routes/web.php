@@ -21,6 +21,11 @@ Route::prefix('restaurant')->name('restaurant.')->group(function(){
     Route::get('{user}/checkout', 'PageController@checkout')->name('checkout');
 });
 
+// Route::get('email', function () {
+//   return view('email');
+// });
+
+
 Auth::routes();
 
 // !PaymentController
