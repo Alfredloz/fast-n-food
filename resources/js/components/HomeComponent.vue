@@ -7,11 +7,11 @@
                         <div class="slider-container-3">
                             <div id="slider-typologies">
                                 <div class="form-check"  v-for="typology in typologies" :key="typology.id" >
-                                    <label class="form-check-label checkbox">
-                                        <input style="opacity: 0.2" type="checkbox" class="form-check-input" :id="'typology' + typology.id" :value="typology.id" v-model="typologies_ids" >
+                                    <div class="typology_box">
+                                        <input type="checkbox" class="check_input" :id="'typology' + typology.id" :value="typology.id" v-model="typologies_ids" >
                                         <img :src="typology.img" class="" alt="" :class="{'active' : typology.selected}" @click="$set(typology, 'selected', !typology.selected)">
                                         <p>{{typology.name}}</p>
-                                    </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>  

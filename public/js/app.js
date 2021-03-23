@@ -38917,7 +38917,7 @@ var render = function() {
                   "div",
                   { key: typology.id, staticClass: "form-check" },
                   [
-                    _c("label", { staticClass: "form-check-label checkbox" }, [
+                    _c("div", { staticClass: "typology_box" }, [
                       _c("input", {
                         directives: [
                           {
@@ -38927,8 +38927,7 @@ var render = function() {
                             expression: "typologies_ids"
                           }
                         ],
-                        staticClass: "form-check-input",
-                        staticStyle: { opacity: "0.2" },
+                        staticClass: "check_input",
                         attrs: {
                           type: "checkbox",
                           id: "typology" + typology.id

@@ -11134,41 +11134,6 @@ body {
   color: #435070;
 }
 
-.home-component .typologies .checkboxes {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 50px;
-}
-
-.home-component .typologies .checkboxes .checkbox {
-  transition: 0.5s;
-  font-size: 15px;
-  margin: 10px 20px;
-  padding: 5px 30px;
-  border-radius: 50px;
-  border: 1px solid white;
-  cursor: pointer;
-  background: #fe7d0d;
-  color: white;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-}
-
-.home-component .typologies .checkboxes .checkbox img {
-  height: 70px;
-  width: auto;
-}
-
-.home-component .typologies .checkboxes .checkbox span {
-  display: block;
-}
-
-.home-component .typologies .checkboxes .checkbox:hover {
-  transition: 0.2s;
-  transition: 0.5s ease;
-  transform: scale(1.15);
-  background: #435070;
-}
-
 .home-component .typologies .restaurant-list {
   display: flex;
   justify-content: space-around;
@@ -11305,7 +11270,25 @@ body {
   justify-content: space-around;
 }
 
-.slider-container .slider-container-2 #slider-typologies img {
+.slider-container .slider-container-2 #slider-typologies .typology_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.slider-container .slider-container-2 #slider-typologies .typology_box .check_input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 100%;
+  transform: scale(3);
+  border-radius: 50%;
+}
+
+.slider-container .slider-container-2 #slider-typologies .typology_box img {
   cursor: pointer;
   margin: 20px 20px;
   transition: 0.5s;
@@ -11313,12 +11296,6 @@ body {
   box-shadow: 2px 2px 5px 2px #888888;
   height: 100px;
   padding: 20px;
-}
-
-.slider-container .slider-container-2 #slider-typologies img:hover {
-  transform: scale(1.3);
-  transition: 0.5s;
-  box-shadow: 2px 2px 5px 2px orange;
 }
 
 html {

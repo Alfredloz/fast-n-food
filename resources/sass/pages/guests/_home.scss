@@ -83,38 +83,6 @@ body {
             font-weight: bold;
             color: $tertiary-color;
         }
-        .checkboxes {
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
-            .checkbox {
-                transition: 0.5s;
-                font-size: 15px;
-                margin: 10px 20px;
-                padding: 5px 30px;
-                border-radius: 50px;
-                border: 1px solid white;
-                cursor: pointer;
-                background: rgb(254,125,13);
-                color: white;
-                -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-                -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-                box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-                img{
-                    height: 70px;
-                    width: auto;
-                }
-                span{
-                    display: block;
-                }
-                &:hover {
-                    transition: 0.2s;
-                    transition: 0.5s ease;
-                    transform: scale(1.15);
-                    background: $tertiary-color;
-                }
-            }
-        }
         .restaurant-list {
             display: flex;
             justify-content: space-around;
@@ -230,20 +198,39 @@ body {
             margin: auto;
             text-align: center;
             justify-content: space-around;
-            img {
-                cursor: pointer;
-                margin: 20px 20px;
-                transition: 0.5s;
-                border-radius: 50%;
-                box-shadow: 2px 2px 5px 2px #888888;
-                height: 100px;
-                padding: 20px;
-                &:hover{
-                    transform: scale(1.3);
+            .typology_box{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+
+                .check_input{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    padding: 100%;
+                    transform: scale(3);
+                    border-radius: 50%;
+                }    
+                img {
+                    cursor: pointer;
+                    margin: 20px 20px;
                     transition: 0.5s;
-                    box-shadow: 2px 2px 5px 2px orange;
+                    border-radius: 50%;
+                    box-shadow: 2px 2px 5px 2px #888888;
+                    height: 100px;
+                    padding: 20px;
+                    // &:hover{
+                    //     transform: scale(1.3);
+                    //     transition: 0.5s;
+                    //     box-shadow: 2px 2px 5px 2px orange;
+                    // }
                 }
+
             }
+           
         }
     }
 }
