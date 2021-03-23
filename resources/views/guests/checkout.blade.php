@@ -6,7 +6,7 @@
 @section('content')
 
   <div id="app">
-      <cart-component restaurant ="{{ $restaurant }}"></cart-component>
+      <cart-component restaurant ="{{ $restaurant }}" style="position:relative"></cart-component>
   </div>
 
     <div class="info_delivery">
@@ -45,19 +45,32 @@
   }, function (createErr, instance) {
     button.addEventListener('click', function () {
       if ( deliveryInfoValidation() ){
+        const total = document.getElementById('total_price').innerHTML
         instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
-          $.get('{{ route('payment') }}', { payload, totale:document.getElementById('total_price').innerHTML }, function (response) {
+          $.get('{{ route('payment') }}', { payload, total }, function (response) {
             if (response.success) {
-              console.log(response);
-              console.log(payload);
+              const plates_bought = JSON.parse(localStorage.getItem('plates_bought'));
+              // Invio dati per l'ordine al server
+              $.get( '{{ route('order') }}', { plates_bought, total} , function(response){
+                  console.log(response);
+              });
+              // Rimuovere il carrello da localStorage
+              localStorage.removeItem('plates_bought');
               alert('Payment successfull!');
+
+              const inpName = document.getElementById("name").value;
+              const inpPhone = document.getElementById("phone").value;
+              const inpAddress = document.getElementById("address").value;
+              window.location.href = "{{route('ordine')}}"+`?name=${inpName}&phone=${inpPhone}&address=${inpAddress}`;
             } else {
               alert('Payment failed');
               console.log(payload);
             }
           }, 'json');
         });
-      }
+      } else if( parseFloat( document.getElementById('total_price').innerHTML ) <= 0){
+        window.location.href = "{{route('homepage')}}"
+      } 
     });
   });
 
@@ -69,6 +82,7 @@
     const inpName = document.getElementById("name");
     const inpPhone = document.getElementById("phone");
     const inpAddress = document.getElementById("address");
+    const total_price = parseFloat( document.getElementById('total_price').innerHTML );
 
     if (!inpName.checkValidity()) {
       document.getElementById("error_name").innerHTML = inpName.validationMessage;
@@ -86,7 +100,8 @@
       document.getElementById("error_address").innerHTML = '';
     }
 
-    return inpName.checkValidity() && inpPhone.checkValidity() && inpAddress.checkValidity();
+
+    return inpName.checkValidity() && inpPhone.checkValidity() && inpAddress.checkValidity() && total_price > 0;
   }
 </script>
 @endsection

@@ -18,7 +18,7 @@ class CreateOrderPlateTable extends Migration
             $table->foreign('order_id')->references('id')->on('orders');
 
             $table->unsignedBigInteger('plate_id');
-            $table->foreign('plate_id')->references('id')->on('users');
+            $table->foreign('plate_id')->references('id')->on('plates');
 
             $table->unsignedTinyInteger('plate_quantity');
         });
