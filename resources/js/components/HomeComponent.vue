@@ -6,10 +6,10 @@
                     <h1>Seleziona una o più tipologie</h1>
                         <div class="slider-container-3">
                             <div id="slider-typologies">
-                                <div class="form-check"  v-for="typology in typologies" :key="typology.id">
+                                <div class="form-check"  v-for="typology in typologies" :key="typology.id" >
                                     <label class="form-check-label checkbox">
-                                        <input style="opacity: 0.2" type="checkbox" class="form-check-input" :id="'typology' + typology.id" :value="typology.id" v-model="typologies_ids">
-                                        <img :src="typology.img" class="" alt="">
+                                        <input style="opacity: 0.2" type="checkbox" class="form-check-input" :id="'typology' + typology.id" :value="typology.id" v-model="typologies_ids" >
+                                        <img :src="typology.img" class="" alt="" :class="{'active' : typology.selected}" @click="$set(typology, 'selected', !typology.selected)">
                                         <p>{{typology.name}}</p>
                                     </label>
                                 </div>
@@ -46,7 +46,8 @@
             return {
                 typologies: null,
                 restaurants: null,
-                typologies_ids: []
+                typologies_ids: [],
+                selected: undefined,
             }
         },
         watch :{

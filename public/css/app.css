@@ -11048,6 +11048,10 @@ body {
   }
 }
 
+.active {
+  background-color: #435070;
+}
+
 .banner-container {
   background: linear-gradient(90deg, #fe7d0d 0%, #fd1d1d 0%, #fcb045 100%);
 }
