@@ -46,21 +46,21 @@
     button.addEventListener('click', function () {
       if ( deliveryInfoValidation() ){
         const total = document.getElementById('total_price').innerHTML
+        const inpName = document.getElementById("name").value;
+        const inpPhone = document.getElementById("phone").value;
+        const inpAddress = document.getElementById("address").value;
+        const clientInfo = [inpName, inpPhone, inpAddress];
         instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
           $.get('{{ route('payment') }}', { payload, total }, function (response) {
             if (response.success) {
               const plates_bought = JSON.parse(localStorage.getItem('plates_bought'));
               // Invio dati per l'ordine al server
-              $.get( '{{ route('order') }}', { plates_bought, total} , function(response){
+              $.get( '{{ route('order') }}', { plates_bought, total, clientInfo} , function(response){
                   console.log(response);
               });
               // Rimuovere il carrello da localStorage
               localStorage.removeItem('plates_bought');
-              alert('Payment successfull!');
-
-              const inpName = document.getElementById("name").value;
-              const inpPhone = document.getElementById("phone").value;
-              const inpAddress = document.getElementById("address").value;
+              // alert('Payment successfull!');
               window.location.href = "{{route('ordine')}}"+`?name=${inpName}&phone=${inpPhone}&address=${inpAddress}`;
             } else {
               alert('Payment failed');
@@ -70,7 +70,7 @@
         });
       } else if( parseFloat( document.getElementById('total_price').innerHTML ) <= 0){
         window.location.href = "{{route('homepage')}}"
-      } 
+      }
     });
   });
 
@@ -99,7 +99,6 @@
     } else {
       document.getElementById("error_address").innerHTML = '';
     }
-
 
     return inpName.checkValidity() && inpPhone.checkValidity() && inpAddress.checkValidity() && total_price > 0;
   }
