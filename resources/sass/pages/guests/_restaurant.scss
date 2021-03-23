@@ -8,20 +8,14 @@
     position: absolute; 
     bottom: 0;
     width: 100%;
-    -webkit-box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    -moz-box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 .restaurant-container {
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
-    width: 60%;
+    flex-wrap: wrap-reverse;
+    width: 80%;
     margin: auto;
     margin-bottom: 100px;
-    .plates {
-        width: 100%;
-    }
     h2 {
         font-size: 30px;
         font-weight: bold;
@@ -30,6 +24,7 @@
     }
     .plate-list {
         display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
         width: 100%;
     }
@@ -37,28 +32,22 @@
         -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-        border-radius: 10px;
-        margin: 50px 20px;
-        padding-bottom: 20px;
-        max-width: 280px;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 40px;
+        max-width: 1000px;
         min-width: 200px;
         color: $tertiary-color;
-        text-align: center;
-        transition: 1s;
-        &:hover {
-            transition: 0.2s;
-            transition: 1s ease;
-            -webkit-box-shadow:0 5px 10px rgba(0, 0, 0, 0.3), 0 0 80px rgba(0, 0, 0, 0.1) inset;
-            -moz-box-shadow:0 5px 10px rgba(0, 0, 0, 0.3), 0 0 80px rgba(0, 0, 0, 0.1) inset;
-            box-shadow:0 5px 10px rgba(0, 0, 0, 0.3), 0 0 80px rgba(0, 0, 0, 0.1) inset;
-        }
         h3 {
             font-size: 30px;
             font-weight: bold;
-            padding-top: 20px;
         }
         img {
-            width: 100%;
+            width: 30%;
+        }
+        .plate-info {
+            display: flex;
+            margin: 30px;
         }
     }
 }
@@ -67,7 +56,6 @@
     -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     padding: 30px;
-    border-radius: 10px;
     max-width: 800px;   
     min-width: 270px;
     transform: translate(0px, -50px);
@@ -89,17 +77,18 @@
     -webkit-box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     -moz-box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    transform: translate(0px, -50px);
     padding: 30px;
-    border-radius: 10px;
-    transform: translate(-100px, -440px);
-    position: fixed;
     background-color: white;
     color: $tertiary-color;
     overflow-y: scroll;
-    max-height: 700px;
     min-width: 300px;
+    margin-bottom: 50px;
     h2 {
         font-weight: bold;
+    }
+    h4 {
+        margin-top: 20px;
     }
     i {
         font-size: 30px;
@@ -117,11 +106,10 @@
     }
     .checkout {
         text-align: center;
-        margin-top: 20px;
         border-top: 2px solid $tertiary-color;
         padding: 10px;
         h3 {
-            margin: 10px 0px 20px 0px;
+            margin: 10px 0px 30px 0px;
         }
         i {
             font-size: 20px;
@@ -131,16 +119,27 @@
 
 // buttons
 .add-cart-btn {
-    background-color: $add-color;
+    color: orange;
+    background: none;
     border: none;
-    color: white;
-    padding: 5px 20px;
-    font-size: 15px;
-    border-radius: 10px;
+    font-size: 30px;
+    border-radius: 50%;
     transition: 0.5s;
-    margin-top: 20px;
+    margin: 20px;
     &:hover {
-        background-color: $tertiary-color;
+        color: $tertiary-color;
+        transition: 0.5s;
+    }
+}
+.remove-item-btn {
+    color: $remove-color;
+    background: none;
+    border: none;
+    font-size: 30px;
+    transition: 0.5s;
+    margin: 20px;
+    &:hover {
+        color: $tertiary-color;
         transition: 0.5s;
     }
 }
@@ -200,19 +199,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .cart {
-        position: absolute;
-        top: 0;
-        right: 0;
-        transform: translate(0px, 0px);
-        max-height: 350px;
-        margin-top: 150px;
-        margin-right: 30px;
-    }
     .restaurant-banner-container img {
         top: 0;
-    }
-    .shopping img {
-        display: none;
     }
 }

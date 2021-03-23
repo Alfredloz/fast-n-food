@@ -4,7 +4,6 @@
 @section('content')
 <div class="restaurant-banner-container">
     <img class="banner-restaurant" src="{{ asset('/images/restaurants/ristorante4.jpg') }}" alt="Banner ristorante">
-
 </div>
 <div id="app">
     <div class="restaurant-container">

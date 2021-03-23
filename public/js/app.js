@@ -2288,6 +2288,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant", "plates"],
@@ -39072,81 +39077,51 @@ var render = function() {
       { staticClass: "plate-list" },
       _vm._l(_vm.visiblePlates, function(plate) {
         return _c("div", { key: plate.id, staticClass: "plate" }, [
+          _c("img", { attrs: { src: "/storage/" + plate.picture, alt: "" } }),
+          _vm._v(" "),
           _c("div", { staticClass: "plate-info" }, [
-            _c("img", { attrs: { src: "/storage/" + plate.picture, alt: "" } }),
+            _c("div", [
+              _c("h3", [_vm._v(_vm._s(plate.name))]),
+              _vm._v(" "),
+              _c("h4", [_vm._v(_vm._s(plate.description_ingredients))]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("h5", [_vm._v("€ " + _vm._s(plate.price))])
+            ]),
             _vm._v(" "),
-            _c("h3", [_vm._v(_vm._s(plate.name))]),
-            _vm._v(" "),
-            _c("h4", [_vm._v(_vm._s(plate.description_ingredients))]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("€ " + _vm._s(plate.price))]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "add-cart-btn",
-                class: _vm.alreadyInCart(plate) ? "hide" : "show",
-                attrs: { disabled: _vm.alreadyInCart(plate) },
-                on: {
-                  click: function($event) {
-                    return _vm.addPlate(plate)
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "add-cart-btn",
+                  class: _vm.alreadyInCart(plate) ? "hide" : "show",
+                  attrs: { disabled: _vm.alreadyInCart(plate) },
+                  on: {
+                    click: function($event) {
+                      return _vm.addPlate(plate)
+                    }
                   }
-                }
-              },
-              [
-                _c("i", { staticClass: "fas fa-plus-circle" }),
-                _vm._v(" Add to Cart\n                ")
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "remove-cart-btn",
-              class: _vm.alreadyInCart(plate) ? "show" : "hide",
-              attrs: { disabled: !_vm.alreadyInCart(plate) },
-              on: {
-                click: function($event) {
-                  return _vm.removePlate(plate)
-                }
-              }
-            },
-            [
-              _c("i", { staticClass: "fas fa-trash-alt" }),
-              _vm._v(" Remove from Cart\n            ")
-            ]
-          ),
-          _vm._v(" "),
-          _vm.alreadyInCart(plate)
-            ? _c("div", { staticClass: "quantity_wrapper" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "less-plus-button",
-                    on: {
-                      click: function($event) {
-                        return _vm.decreaseQuantity(plate)
-                      }
+                },
+                [_c("i", { staticClass: "fas fa-plus-circle" })]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "remove-item-btn",
+                  class: _vm.alreadyInCart(plate) ? "show" : "hide",
+                  attrs: { disabled: !_vm.alreadyInCart(plate) },
+                  on: {
+                    click: function($event) {
+                      return _vm.removePlate(plate)
                     }
-                  },
-                  [_c("i", { staticClass: "fas fa-minus-circle fa-lg fa-fw" })]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "less-plus-button",
-                    on: {
-                      click: function($event) {
-                        return _vm.increaseQuantity(plate)
-                      }
-                    }
-                  },
-                  [_c("i", { staticClass: "fas fa-plus-circle fa-lg fa-fw" })]
-                )
-              ])
-            : _vm._e()
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-trash-alt" })]
+              )
+            ])
+          ])
         ])
       }),
       0
