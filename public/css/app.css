@@ -11256,6 +11256,8 @@ body {
 .slider-container .slider-container-2 .slider-container-3 {
   display: flex;
   align-items: center;
+  max-height: 350px;
+  overflow-y: scroll;
 }
 
 .slider-container .slider-container-2 .slider-container-3 i {
@@ -11288,13 +11290,12 @@ body {
 
 .slider-container .slider-container-2 #slider-typologies {
   display: flex;
-  overflow: auto;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 70%;
+  flex-wrap: wrap;
+  width: 100%;
   padding: 0px 0px 20px 0px;
   margin: auto;
-  justify-content: space-between;
+  text-align: center;
+  justify-content: space-around;
 }
 
 .slider-container .slider-container-2 #slider-typologies img {
@@ -11366,7 +11367,6 @@ html {
 
 .restaurant-container .plate-list {
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
 }
@@ -11375,8 +11375,8 @@ html {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 40px;
-  max-width: 1000px;
+  margin: 20px;
+  max-width: 500px;
   min-width: 200px;
   color: #435070;
 }
@@ -11387,7 +11387,7 @@ html {
 }
 
 .restaurant-container .plate img {
-  width: 30%;
+  width: 100%;
 }
 
 .restaurant-container .plate .plate-info {

@@ -2194,8 +2194,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38910,8 +38908,6 @@ var render = function() {
           _c("h1", [_vm._v("Seleziona una o più tipologie")]),
           _vm._v(" "),
           _c("div", { staticClass: "slider-container-3" }, [
-            _vm._m(0),
-            _vm._v(" "),
             _c(
               "div",
               { attrs: { id: "slider-typologies" } },
@@ -38968,15 +38964,13 @@ var render = function() {
                       _vm._v(" "),
                       _c("img", { attrs: { src: typology.img, alt: "" } }),
                       _vm._v(" "),
-                      _c("span", [_vm._v(_vm._s(typology.name))])
+                      _c("p", [_vm._v(_vm._s(typology.name))])
                     ])
                   ]
                 )
               }),
               0
-            ),
-            _vm._v(" "),
-            _vm._m(1)
+            )
           ])
         ])
       ]),
@@ -39011,24 +39005,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { attrs: { id: "slideBack", type: "button" } }, [
-      _c("i", { staticClass: "fas fa-caret-left" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { attrs: { id: "slide", type: "button" } }, [
-      _c("i", { staticClass: "fas fa-caret-right" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
