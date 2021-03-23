@@ -6,7 +6,7 @@
 @section('content')
 
   <div id="app">
-      <cart-component restaurant ="{{ $restaurant }}"></cart-component>
+      <cart-component restaurant ="{{ $restaurant }}" style="position:relative"></cart-component>
   </div>
 
     <div class="info_delivery">
@@ -45,11 +45,15 @@
   }, function (createErr, instance) {
     button.addEventListener('click', function () {
       if ( deliveryInfoValidation() ){
+        const total = document.getElementById('total_price').innerHTML
         instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
-          $.get('{{ route('payment') }}', { payload, totale:document.getElementById('total_price').innerHTML }, function (response) {
+          $.get('{{ route('payment') }}', { payload, total }, function (response) {
             if (response.success) {
-              console.log(response);
-              console.log(payload);
+              const plates_bought = JSON.parse(localStorage.getItem('plates_bought'));
+              // Invio dati per l'ordine al server
+              $.get( '{{ route('order') }}', { plates_bought, total} , function(response){
+                  console.log(response);
+              });
               alert('Payment successfull!');
             } else {
               alert('Payment failed');

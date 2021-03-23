@@ -1,0 +1,1 @@
+dd($plate_bought);

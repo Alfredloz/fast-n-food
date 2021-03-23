@@ -25,6 +25,7 @@ Auth::routes();
 
 // !PaymentController
 Route::get('/payment', 'PaymentController@make')->name('payment');
+Route::get('/order', 'OrderController@index')->name('order');
 
 // !route provvisoria checkout tramite pagecontroller
 //Route::get('/checkout', 'PageController@checkout')->name('checkout');
