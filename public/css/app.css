@@ -11365,10 +11365,16 @@ html {
   color: #435070;
 }
 
+.restaurant-container .plates {
+  display: flex;
+  width: 70%;
+  margin: auto;
+  justify-content: space-around;
+}
+
 .restaurant-container .plate-list {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
 }
 
 .restaurant-container .plate {
