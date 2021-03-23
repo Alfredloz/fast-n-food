@@ -5,17 +5,15 @@
                 <div class="slider-container-2">
                     <h1>Seleziona una o più tipologie</h1>
                         <div class="slider-container-3">
-                            <button id="slideBack" type="button"><i class="fas fa-caret-left"></i></button>
                             <div id="slider-typologies">
                                 <div class="form-check"  v-for="typology in typologies" :key="typology.id">
                                     <label class="form-check-label checkbox">
                                         <input style="opacity: 0.2" type="checkbox" class="form-check-input" :id="'typology' + typology.id" :value="typology.id" v-model="typologies_ids">
                                         <img :src="typology.img" class="" alt="">
-                                        <span>{{typology.name}}</span>
+                                        <p>{{typology.name}}</p>
                                     </label>
                                 </div>
                             </div>
-                            <button id="slide" type="button"><i class="fas fa-caret-right"></i></button>
                         </div>  
                 </div>
             </div>

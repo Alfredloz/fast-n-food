@@ -24,7 +24,6 @@
     }
     .plate-list {
         display: flex;
-        flex-direction: column;
         flex-wrap: wrap;
         width: 100%;
     }
@@ -34,8 +33,8 @@
         box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         display: flex;
         flex-wrap: wrap;
-        margin-top: 40px;
-        max-width: 1000px;
+        margin: 20px;
+        max-width: 500px;
         min-width: 200px;
         color: $tertiary-color;
         h3 {
@@ -43,7 +42,7 @@
             font-weight: bold;
         }
         img {
-            width: 30%;
+            width: 100%;
         }
         .plate-info {
             display: flex;
