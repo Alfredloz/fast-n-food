@@ -54,14 +54,20 @@
               $.get( '{{ route('order') }}', { plates_bought, total} , function(response){
                   console.log(response);
               });
+              // Rimuovere il carrello da localStorage
+              localStorage.removeItem('plates_bought');
               alert('Payment successfull!');
+
+              window.location.href = "{{route('ordine')}}"
             } else {
               alert('Payment failed');
               console.log(payload);
             }
           }, 'json');
         });
-      }
+      } else if( parseFloat( document.getElementById('total_price').innerHTML ) <= 0){
+        window.location.href = "{{route('homepage')}}"
+      } 
     });
   });
 
@@ -73,6 +79,7 @@
     const inpName = document.getElementById("name");
     const inpPhone = document.getElementById("phone");
     const inpAddress = document.getElementById("address");
+    const total_price = parseFloat( document.getElementById('total_price').innerHTML );
 
     if (!inpName.checkValidity()) {
       document.getElementById("error_name").innerHTML = inpName.validationMessage;
@@ -90,7 +97,8 @@
       document.getElementById("error_address").innerHTML = '';
     }
 
-    return inpName.checkValidity() && inpPhone.checkValidity() && inpAddress.checkValidity();
+
+    return inpName.checkValidity() && inpPhone.checkValidity() && inpAddress.checkValidity() && total_price > 0;
   }
 </script>
 @endsection

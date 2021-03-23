@@ -27,6 +27,11 @@ Auth::routes();
 Route::get('/payment', 'PaymentController@make')->name('payment');
 Route::get('/order', 'OrderController@index')->name('order');
 
+//rotta temporanea
+Route::get('/ordine', function(){
+  return view('guests.ordine');
+})->name('ordine');
+
 // !route provvisoria checkout tramite pagecontroller
 //Route::get('/checkout', 'PageController@checkout')->name('checkout');
 
