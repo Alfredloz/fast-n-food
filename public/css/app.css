@@ -10997,7 +10997,7 @@ footer {
 }
 
 .credits {
-  width: 60%;
+  width: 70%;
   margin: auto;
   color: white;
   display: flex;
@@ -11175,15 +11175,18 @@ body {
 .home-component .typologies .restaurant-list .restaurant {
   transition: 1s;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  width: 300px;
+  max-width: 450px;
   margin: 50px 20px;
   padding-bottom: 20px;
 }
 
 .home-component .typologies .restaurant-list .restaurant h4 {
+  font-size: 30px;
   font-weight: bold;
+}
+
+.home-component .typologies .restaurant-list .restaurant p {
+  font-size: 20px;
 }
 
 .home-component .typologies .restaurant-list .restaurant ul {
@@ -11218,7 +11221,7 @@ body {
   flex-wrap: wrap;
   margin: auto;
   margin-bottom: 100px;
-  width: 60%;
+  width: 70%;
   text-align: center;
 }
 
@@ -11367,7 +11370,7 @@ html {
 
 .restaurant-container .plates {
   display: flex;
-  width: 70%;
+  width: 75%;
   margin: auto;
   justify-content: space-around;
 }
@@ -11418,6 +11421,7 @@ html {
   font-size: 50px;
   font-weight: bold;
   color: #435070;
+  margin-right: 20px;
 }
 
 .restaurant-name i {
