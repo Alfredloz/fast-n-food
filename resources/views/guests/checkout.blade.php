@@ -58,7 +58,10 @@
               localStorage.removeItem('plates_bought');
               alert('Payment successfull!');
 
-              window.location.href = "{{route('ordine')}}"
+              const inpName = document.getElementById("name").value;
+              const inpPhone = document.getElementById("phone").value;
+              const inpAddress = document.getElementById("address").value;
+              window.location.href = "{{route('ordine')}}"+`?name=${inpName}&phone=${inpPhone}&address=${inpAddress}`;
             } else {
               alert('Payment failed');
               console.log(payload);
