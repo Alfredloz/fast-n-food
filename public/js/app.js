@@ -2199,7 +2199,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       typologies: null,
       restaurants: null,
-      typologies_ids: []
+      typologies_ids: [],
+      selected: undefined
     };
   },
   watch: {
@@ -38962,7 +38963,19 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("img", { attrs: { src: typology.img, alt: "" } }),
+                      _c("img", {
+                        class: { active: typology.selected },
+                        attrs: { src: typology.img, alt: "" },
+                        on: {
+                          click: function($event) {
+                            return _vm.$set(
+                              typology,
+                              "selected",
+                              !typology.selected
+                            )
+                          }
+                        }
+                      }),
                       _vm._v(" "),
                       _c("p", [_vm._v(_vm._s(typology.name))])
                     ])
@@ -51690,8 +51703,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\user\Documents\Boolean\Esercizi\laravel\fast-n-food\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\user\Documents\Boolean\Esercizi\laravel\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/alfredoloz/Boolean/fast-n-food/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/alfredoloz/Boolean/fast-n-food/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
