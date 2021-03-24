@@ -11276,6 +11276,8 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+  border-radius: 50%;
+  margin: 2rem;
 }
 
 .slider-container .slider-container-2 #slider-typologies .typology_box .check_input {
@@ -11290,12 +11292,12 @@ body {
 
 .slider-container .slider-container-2 #slider-typologies .typology_box img {
   cursor: pointer;
-  margin: 20px 20px;
+  margin: 0;
   transition: 0.5s;
   border-radius: 50%;
   box-shadow: 2px 2px 5px 2px #888888;
   height: 100px;
-  padding: 20px;
+  padding: 10px;
 }
 
 html {

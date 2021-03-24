@@ -38917,7 +38917,7 @@ var render = function() {
                   "div",
                   { key: typology.id, staticClass: "form-check" },
                   [
-                    _c("div", { staticClass: "typology_box" }, [
+                    _c("label", { staticClass: "typology_box" }, [
                       _c("input", {
                         directives: [
                           {
@@ -38929,6 +38929,7 @@ var render = function() {
                         ],
                         staticClass: "check_input",
                         attrs: {
+                          hidden: "",
                           type: "checkbox",
                           id: "typology" + typology.id
                         },
@@ -38974,10 +38975,10 @@ var render = function() {
                             )
                           }
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(typology.name))])
-                    ])
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(typology.name))])
                   ]
                 )
               }),
