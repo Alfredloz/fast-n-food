@@ -22,3 +22,11 @@
 @import 'pages/admin/show';
 @import 'pages/admin/edit';
 @import 'pages/admin/create';
+
+// general settings
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+// /general settings
