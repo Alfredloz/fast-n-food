@@ -18,20 +18,20 @@ const orders_info = {!! $orders !!};
 
 console.log(orders_info);
 
-let monthTtlAmount = 0;
-let yearTtlAmount = [];
+const yearTtlAmount = [];
 
 for (let i = 1; i < 13; i++) {
+  
+  var monthTtlAmount = 0;
+  
   orders_info.forEach(order => {
     let month = moment(order.created_at).isBetween('2021-' + [i] + '-01', '2021-' + [i] + '-31'); 
 
       if (month == true) {
         monthTtlAmount += order.total_price; 
-      } else {
-        monthTtlAmount = 0;
-      }; 
-  });
-  yearTtlAmount.push(monthTtlAmount);
+      } 
+    });
+    yearTtlAmount.push(monthTtlAmount);
 };
 
 console.log(yearTtlAmount);
