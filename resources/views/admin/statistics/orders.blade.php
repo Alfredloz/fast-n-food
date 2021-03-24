@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Statistica degli ordini singoli singoli in cui si vedono i dettagli dei singoli ordini</h1>
+<h1>Statistica degli ordini e ricavi</h1>
 <div class="card">
     <div class="card-body">
       <canvas id="myChart"></canvas>
@@ -12,31 +12,50 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">
-// import Chart from 'chart.js';
+//import Chart from 'chart.js';
 
+
+// Dati ordini provenienti dal db
 const orders_info = {!! $orders !!};
 
-console.log(orders_info);
+//console.log(orders_info);
 
+//Array dei ricavi totali per ognuno dei 12 mese
 const yearTtlAmount = [];
 
-for (let i = 1; i < 13; i++) {
+//Array delle etichette degli ultimi 11 mesi 
+const labels = [];
+
+//Array contente il numero di ordini di ciascun mese
+const orderCounters = [];
+
+//Ciclo per i calcoli degli ordini dal mese attuale fino agli 11 mesi precedenti 
+for (let i = 11; i >= 0; i--) {
   
   var monthTtlAmount = 0;
-  
-  orders_info.forEach(order => {
-    let month = moment(order.created_at).isBetween('2021-' + [i] + '-01', '2021-' + [i] + '-31'); 
+  var orderCounter = 0;
+  var checkMonth = moment().subtract(i, 'month'); // Sottrazione di [i] mesi dalla data corrente 
+  var firstDay = checkMonth.startOf('month').format('YYYY MM DD'); 
+  var lastDay = checkMonth.endOf('month').format('YYYY MM DD');
+  labels.push(checkMonth.format('MMMM YY'));
 
+  //Ciclo dei dati provenienti dal db
+  orders_info.forEach(order => {
+    let month = moment(order.created_at).isBetween(firstDay, lastDay); 
+
+      //Se l'ordine appartiene al mese considerato in questo ciclo:
       if (month == true) {
-        monthTtlAmount += order.total_price; 
+        monthTtlAmount += order.total_price;
+        orderCounter++; 
       } 
     });
     yearTtlAmount.push(monthTtlAmount);
+    orderCounters.push(orderCounter);
 };
+//console.log(yearTtlAmount);
+//console.log(monthTtlAmount);
 
-console.log(yearTtlAmount);
-console.log(monthTtlAmount);
-
+//Struttura Chart,Js --> Prendo il contesto del tag canvas
 var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
@@ -44,28 +63,25 @@ var ctx = document.getElementById('myChart').getContext('2d');
 
         // The data for our dataset
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-            datasets: [{
-                label: 'My Orders',
-                backgroundColor: ['red','orange', 'green', 'yellow', 'blue', 'purlple', 'pink', 'white', 'lightgrey', 'grey', 'brown', 'black'],
-                borderColor: 'black',
+            labels: labels,
+            datasets: [
+              {
+                label: 'Totale ricavi (€)',
+                backgroundColor: 'rgba(254, 157, 42, 0.5)',
+                borderColor: 'rgb(250, 100, 0)', 
                 borderWidth: 1,
 
-                data: [
-                  yearTtlAmount[0],
-                  yearTtlAmount[1],
-                  yearTtlAmount[2],
-                  yearTtlAmount[3],
-                  yearTtlAmount[4],
-                  yearTtlAmount[5],
-                  yearTtlAmount[6],
-                  yearTtlAmount[7],
-                  yearTtlAmount[8],
-                  yearTtlAmount[9],
-                  yearTtlAmount[10],
-                  yearTtlAmount[11]
-                ]
-            }]
+                data: yearTtlAmount
+            },
+            {
+                label: 'Numeri ordini',
+                backgroundColor: 'rgba(255, 0, 0, 0.5)',
+                borderColor: 'rgb(250, 0, 0)', 
+                borderWidth: 1,
+                type: 'line',
+                data: orderCounters
+            }
+          ]
         },
 
         // Configuration options go here
