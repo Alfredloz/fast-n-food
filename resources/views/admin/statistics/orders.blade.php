@@ -20,12 +20,20 @@ console.log(orders_info);
 
 const yearTtlAmount = [];
 
-for (let i = 1; i < 13; i++) {
+//let startingDate = moment().subtract(11, 'month');
+//console.log(startingDate.format('YYYY MM DD'));
+
+for (let i = 11; i >= 0; i--) {
   
   var monthTtlAmount = 0;
-  
+  var checkMonth = moment().subtract(i, 'month');
+  var firstDay = checkMonth.startOf('month').format('YYYY MM DD');
+  var lastDay = checkMonth.endOf('month').format('YYYY MM DD');
+
+  console.log(firstDay, lastDay);
+
   orders_info.forEach(order => {
-    let month = moment(order.created_at).isBetween('2021-' + [i] + '-01', '2021-' + [i] + '-31'); 
+    let month = moment(order.created_at).isBetween(firstDay, lastDay); 
 
       if (month == true) {
         monthTtlAmount += order.total_price; 
