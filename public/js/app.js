@@ -38965,7 +38965,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("img", {
                         class: { active: typology.selected },
-                        attrs: { src: typology.img, alt: "" },
+                        attrs: { src: typology.img, alt: "immagini categorie" },
                         on: {
                           click: function($event) {
                             return _vm.$set(
@@ -39007,7 +39007,19 @@ var render = function() {
                   _vm._v(" "),
                   _c("h4", [_vm._v(_vm._s(restaurant.restaurant_name))]),
                   _vm._v(" "),
-                  _c("p", [_vm._v(_vm._s(restaurant.restaurant_description))])
+                  _c("p", [_vm._v(_vm._s(restaurant.restaurant_description))]),
+                  _vm._v(" "),
+                  _c("h5", [_vm._v("Tipologie del ristorante")]),
+                  _vm._v(" "),
+                  _c(
+                    "ul",
+                    _vm._l(restaurant.typologies, function(type) {
+                      return _c("li", { key: type.id }, [
+                        _vm._v(_vm._s(type.name))
+                      ])
+                    }),
+                    0
+                  )
                 ])
               ])
             ])

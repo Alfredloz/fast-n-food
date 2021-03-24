@@ -11149,29 +11149,40 @@ body {
   padding-bottom: 20px;
 }
 
-.home-component .typologies .restaurant-list .restaurant h4 {
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.home-component .typologies .restaurant-list .restaurant p {
-  font-size: 20px;
-}
-
-.home-component .typologies .restaurant-list .restaurant ul {
-  padding-bottom: 20px;
-}
-
-.home-component .typologies .restaurant-list .restaurant img {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
 .home-component .typologies .restaurant-list .restaurant:hover {
   filter: grayscale(100%);
   transition: 0.2s;
   transition: 1s ease;
   transform: scale(1.15);
+}
+
+.home-component .typologies .restaurant-list .restaurant .restaurant-info {
+  text-align: center;
+}
+
+.home-component .typologies .restaurant-list .restaurant .restaurant-info h4 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.home-component .typologies .restaurant-list .restaurant .restaurant-info p {
+  font-size: 20px;
+}
+
+.home-component .typologies .restaurant-list .restaurant .restaurant-info ul {
+  list-style: none;
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.home-component .typologies .restaurant-list .restaurant .restaurant-info ul li {
+  padding: 5px;
+}
+
+.home-component .typologies .restaurant-list .restaurant .restaurant-info img {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .home-component .typologies .restaurant-list a {
@@ -11298,6 +11309,12 @@ body {
   box-shadow: 2px 2px 5px 2px #888888;
   height: 100px;
   padding: 10px;
+}
+
+.slider-container .slider-container-2 #slider-typologies .typology_box img:hover {
+  transform: scale(1.3);
+  transition: 0.5s;
+  box-shadow: 2px 2px 5px 2px orange;
 }
 
 html {

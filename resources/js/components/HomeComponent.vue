@@ -27,10 +27,10 @@
                                 <img :src="'/storage/'+restaurant.restaurant_banner" alt="">
                                 <h4>{{restaurant.restaurant_name}}</h4>
                                 <p>{{restaurant.restaurant_description}}</p>
-                                <!-- <h5>Tipologie del ristorante</h5>
+                                <h5>Tipologie del ristorante</h5>
                                 <ul>
                                     <li v-for="type in restaurant.typologies" :key="type.id">{{type.name}}</li>
-                                </ul> -->
+                                </ul>
                             </div>
                         </div>
                     </a>
