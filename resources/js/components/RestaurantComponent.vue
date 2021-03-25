@@ -18,27 +18,31 @@
         <h2>I più venduti <i class="fas fa-hamburger"></i></h2>
         <div class="plate-list">
             <div class="plate" v-for="plate in visiblePlates" :key="plate.id">
-                <img :src="'/storage/'+plate.picture" alt="">
+                <div class="plate-image">
+                    <img :src="'/storage/'+plate.picture" alt="">
+                </div>
                 <div class="plate-info">
                     <div>
                         <h3>{{plate.name}}</h3>
                         <h4>{{plate.description_ingredients}}</h4>
                         <hr>
                         <h5>€ {{plate.price}}</h5>
-                        <div class="quantity-plate" v-if="alreadyInCart(plate)">
-                            <h5>Quantity: {{getPlateQuantity(plate)}}x</h5>
+                    </div>
+                    <div class="quantity-plate">
+                        <div>
+                            <button class="add-cart-btn" :class="alreadyInCart(plate) ? 'hide' : 'show' " @click="addPlate(plate)" :disabled="alreadyInCart(plate)">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                            <button class="remove-item-btn" :class="alreadyInCart(plate) ? 'show' : 'hide' " @click="removePlate(plate)" :disabled="!alreadyInCart(plate)">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                        <div v-if="alreadyInCart(plate)">
+                            <span>Quantity: {{getPlateQuantity(plate)}}x</span>
                             <button class="less-plus-button" @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
                             <!-- <input type="number" :value="getPlateQuantity(plate)" disabled> -->
                             <button class="less-plus-button" @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
                         </div>
-                    </div>
-                    <div>
-                        <button class="add-cart-btn" :class="alreadyInCart(plate) ? 'hide' : 'show' " @click="addPlate(plate)" :disabled="alreadyInCart(plate)">
-                            <i class="fas fa-plus-circle"></i>
-                        </button>
-                        <button class="remove-item-btn" :class="alreadyInCart(plate) ? 'show' : 'hide' " @click="removePlate(plate)" :disabled="!alreadyInCart(plate)">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
                     </div>
                     
                 </div>

@@ -2300,6 +2300,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant", "plates"],
@@ -39098,7 +39102,9 @@ var render = function() {
       { staticClass: "plate-list" },
       _vm._l(_vm.visiblePlates, function(plate) {
         return _c("div", { key: plate.id, staticClass: "plate" }, [
-          _c("img", { attrs: { src: "/storage/" + plate.picture, alt: "" } }),
+          _c("div", { staticClass: "plate-image" }, [
+            _c("img", { attrs: { src: "/storage/" + plate.picture, alt: "" } })
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "plate-info" }, [
             _c("div", [
@@ -39108,11 +39114,45 @@ var render = function() {
               _vm._v(" "),
               _c("hr"),
               _vm._v(" "),
-              _c("h5", [_vm._v("€ " + _vm._s(plate.price))]),
+              _c("h5", [_vm._v("€ " + _vm._s(plate.price))])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "quantity-plate" }, [
+              _c("div", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "add-cart-btn",
+                    class: _vm.alreadyInCart(plate) ? "hide" : "show",
+                    attrs: { disabled: _vm.alreadyInCart(plate) },
+                    on: {
+                      click: function($event) {
+                        return _vm.addPlate(plate)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-plus-circle" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "remove-item-btn",
+                    class: _vm.alreadyInCart(plate) ? "show" : "hide",
+                    attrs: { disabled: !_vm.alreadyInCart(plate) },
+                    on: {
+                      click: function($event) {
+                        return _vm.removePlate(plate)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-trash-alt" })]
+                )
+              ]),
               _vm._v(" "),
               _vm.alreadyInCart(plate)
-                ? _c("div", { staticClass: "quantity-plate" }, [
-                    _c("h5", [
+                ? _c("div", [
+                    _c("span", [
                       _vm._v(
                         "Quantity: " + _vm._s(_vm.getPlateQuantity(plate)) + "x"
                       )
@@ -39153,38 +39193,6 @@ var render = function() {
                     )
                   ])
                 : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "button",
-                {
-                  staticClass: "add-cart-btn",
-                  class: _vm.alreadyInCart(plate) ? "hide" : "show",
-                  attrs: { disabled: _vm.alreadyInCart(plate) },
-                  on: {
-                    click: function($event) {
-                      return _vm.addPlate(plate)
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "fas fa-plus-circle" })]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "remove-item-btn",
-                  class: _vm.alreadyInCart(plate) ? "show" : "hide",
-                  attrs: { disabled: !_vm.alreadyInCart(plate) },
-                  on: {
-                    click: function($event) {
-                      return _vm.removePlate(plate)
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "fas fa-trash-alt" })]
-              )
             ])
           ])
         ])

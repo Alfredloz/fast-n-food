@@ -11399,17 +11399,29 @@ html {
   color: #435070;
 }
 
+.restaurant-container .plate .quantity-plate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restaurant-container .plate .plate-image {
+  height: 280px;
+  overflow: hidden;
+}
+
+.restaurant-container .plate .plate-image img {
+  width: 100%;
+}
+
 .restaurant-container .plate h3 {
   font-size: 30px;
   font-weight: bold;
 }
 
-.restaurant-container .plate img {
-  width: 100%;
-}
-
 .restaurant-container .plate .plate-info {
   display: flex;
+  flex-direction: column;
   margin: 30px;
 }
 
@@ -11520,7 +11532,6 @@ html {
   font-size: 30px;
   border-radius: 50%;
   transition: 0.5s;
-  margin: 20px;
 }
 
 .add-cart-btn:hover {
@@ -11534,7 +11545,6 @@ html {
   border: none;
   font-size: 30px;
   transition: 0.5s;
-  margin: 20px;
 }
 
 .remove-item-btn:hover {
@@ -11550,7 +11560,6 @@ html {
   font-size: 15px;
   border-radius: 10px;
   transition: 0.5s;
-  margin: 20px 0px;
 }
 
 .remove-cart-btn i {
