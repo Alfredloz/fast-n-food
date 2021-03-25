@@ -10975,7 +10975,7 @@ a.text-dark:focus {
 .navbar .nav-link {
   font-weight: bold;
   font-size: 15px;
-  color: #FF9D2B !important;
+  color: #ff9b29 !important;
   text-align: center;
   background-color: white;
   width: 100px;
@@ -11540,7 +11540,7 @@ html {
 }
 
 .remove-item-btn {
-  color: #C1213F;
+  color: #c0213e;
   background: none;
   border: none;
   font-size: 30px;
@@ -11553,7 +11553,7 @@ html {
 }
 
 .remove-cart-btn {
-  background-color: #C1213F;
+  background-color: #c0213e;
   border: none;
   color: white;
   padding: 5px 20px;
@@ -11701,6 +11701,134 @@ form {
 .login-container .login-container a:hover {
   text-decoration: none;
   color: lightgrey;
+}
+
+.presentation {
+  color: #435070;
+}
+
+.presentation h1 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #435070;
+  margin: 30px 0;
+  text-align: center;
+}
+
+.presentation p {
+  text-align: left;
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+.dashboard_menu {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0;
+}
+
+.dashboard_menu .img_dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard_menu .img_dashboard img {
+  width: 100px;
+  margin: 0 60px 30px 60px;
+}
+
+.dashboard_menu .img_dashboard h3 {
+  text-decoration: none;
+  font-weight: bold;
+  color: #435070;
+}
+
+.statistic h1 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #435070;
+  margin: 50px 0;
+}
+
+.plates_list {
+  display: flex;
+  flex-direction: column;
+}
+
+.plates_list .plate_card {
+  display: flex;
+  margin-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid lightgray;
+}
+
+.plates_list .plate_card img {
+  width: 300px;
+  height: 180px;
+  border-radius: 10px;
+}
+
+.plates_list .plate_card .plate_info {
+  display: flex;
+  align-items: center;
+  color: #435070;
+}
+
+.plates_list .plate_card .plate_info h3 {
+  width: 150px;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.plates_list .plate_card .plate_info p {
+  width: 400px;
+  padding: 0 50px;
+}
+
+.plates_list .plate_card .plate_info .group_button {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+
+h2 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #435070;
+  margin: 30px 0;
+}
+
+.show {
+  display: flex;
+}
+
+.show img {
+  width: 500px;
+  margin: 0 50px 100px 0;
+  border-radius: 10px;
+}
+
+.show .info_show {
+  display: flex;
+  flex-direction: column;
+}
+
+.show .info_show h3 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #435070;
+  margin-bottom: 20px;
+}
+
+.show .info_show span,
+.show .info_show p,
+.show .info_show i {
+  font-size: 20px;
+  color: #435070;
+  margin: 10px;
 }
 
 * {

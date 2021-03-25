@@ -7,17 +7,21 @@
 
   <h2>Info plate</h2>
 
-  <img src="{{ asset('storage/' . $plate->picture) }}" style="width: 20rem; height: 15rem" alt="">
-  <ul class="list-group mt-3">
-    <li class="list-group-item">{{$plate->name}}</li>
-    <li class="list-group-item">Eur {{$plate->price}}</li>
-    <li class="list-group-item">{{$plate->description_ingredients}}</li>
-    @if ($plate->visibility == 1)
-    <li class="list-group-item">Available</li>
-    @else
-    <li class="list-group-item">Not available</li>      
-    @endif
-  </ul>
+  <div class="show">
+    <div class="img_show">
+      <img src="{{ asset('storage/' . $plate->picture) }}" alt="">
+    </div>
+    <div class="info_show">
+      <h3>{{$plate->name}}</h3>
+      <span><i class="fas fa-tags"></i> {{$plate->price}} €</span>
+      <p><i class="fas fa-align-left"></i> {{$plate->description_ingredients}}</p>
+      @if ($plate->visibility == 1)
+      <span><i class="fas fa-check-circle"></i> Available</span>
+      @else
+      <span><i class="fas fa-times-circle"></i> Not available</span>      
+      @endif
+    </div>
+  </div>
 @endcan
 
 @cannot ('access-plate', $plate)
