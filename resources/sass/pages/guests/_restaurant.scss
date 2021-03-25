@@ -3,11 +3,14 @@
     height: 500px; 
     width: 100%; 
     margin-bottom: 0px;
-}
-.restaurant-banner-container img { 
-    position: absolute; 
-    bottom: 0;
-    width: 100%;
+    overflow: hidden;
+    img { 
+        position: absolute; 
+        bottom: 0;
+        width: 100%;
+        transform: translateY(300px);
+    
+    }
 }
 .restaurant-container {
     display: flex;
@@ -42,40 +45,74 @@
         max-width: 500px;
         min-width: 200px;
         color: $tertiary-color;
+        .quantity-plate {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .plate-image {
+            height: 280px;
+            overflow: hidden;
+            img {
+                width: 100%;
+            }
+        }
         h3 {
             font-size: 30px;
             font-weight: bold;
         }
-        img {
-            width: 100%;
-        }
         .plate-info {
             display: flex;
+            flex-direction: column;
             margin: 30px;
         }
     }
 }
-.restaurant-name {
-    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    padding: 30px;
-    max-width: 800px;   
-    min-width: 270px;
-    transform: translate(0px, -50px);
-    background-color: white;
+.restaurant-logo-name {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    h1 {
-        font-size: 50px;
-        font-weight: bold;
-        color: $tertiary-color;
-        margin-right: 20px;
+    justify-content: flex-start;
+    .restaurant-name {
+        -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        padding: 30px;
+        max-width: 800px;   
+        min-width: 270px;
+        transform: translate(0px, -50px);
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        h1 {
+            font-size: 50px;
+            font-weight: bold;
+            color: $tertiary-color;
+            margin-right: 20px;
+        }
+        i {
+            padding-right: 20px;
+        }
+        img {
+            width: 300px;
+        }
     }
-    i {
-        padding-right: 20px;
+    .restaurant-logo {
+        width: 270px;
+        height: 270px;
+        -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        transform: translate(0px, -50px);
+        margin-right: 20px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        overflow: hidden;
+        img {
+            height: 100%;
+            display: block;
+        }
     }
 }
 .cart {
@@ -130,7 +167,6 @@
     font-size: 30px;
     border-radius: 50%;
     transition: 0.5s;
-    margin: 20px;
     &:hover {
         color: $tertiary-color;
         transition: 0.5s;
@@ -142,7 +178,6 @@
     border: none;
     font-size: 30px;
     transition: 0.5s;
-    margin: 20px;
     &:hover {
         color: $tertiary-color;
         transition: 0.5s;
@@ -156,7 +191,6 @@
     font-size: 15px;
     border-radius: 10px;
     transition: 0.5s;
-    margin: 20px 0px;
     i {
         font-size: 15px;
     }

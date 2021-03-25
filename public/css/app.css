@@ -11007,7 +11007,7 @@ footer {
 }
 
 .credits div {
-  margin: 50px 40px 50px 0px;
+  margin: 50px auto;
   width: 200px;
 }
 
@@ -11037,7 +11037,7 @@ footer {
 }
 
 body {
-  background-color: white;
+  background-color: #F8F9FD;
   margin-top: 75px;
 }
 
@@ -11117,7 +11117,7 @@ body {
 }
 
 .home-component {
-  background-color: white;
+  background-color: #F8F9FD;
   margin: auto;
   text-align: center;
 }
@@ -11138,6 +11138,7 @@ body {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin: auto;
   margin-bottom: 200px;
 }
 
@@ -11145,15 +11146,16 @@ body {
   transition: 1s;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   max-width: 450px;
-  margin: 50px 20px;
-  padding-bottom: 20px;
+  max-height: 600px;
+  margin: 50px auto;
+  border-radius: 10px;
 }
 
 .home-component .typologies .restaurant-list .restaurant:hover {
-  filter: grayscale(100%);
   transition: 0.2s;
   transition: 1s ease;
   transform: scale(1.15);
+  filter: grayscale(100%);
 }
 
 .home-component .typologies .restaurant-list .restaurant .restaurant-info {
@@ -11166,23 +11168,41 @@ body {
 }
 
 .home-component .typologies .restaurant-list .restaurant .restaurant-info p {
+  padding: 10px 20px 30px 20px;
   font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .home-component .typologies .restaurant-list .restaurant .restaurant-info ul {
   list-style: none;
-  padding-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-right: 20px;
 }
 
 .home-component .typologies .restaurant-list .restaurant .restaurant-info ul li {
-  padding: 5px;
+  padding: 10px;
+}
+
+.home-component .typologies .restaurant-list .restaurant .restaurant-info ul li img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 5px 2px #888888;
+  padding: 10px;
 }
 
 .home-component .typologies .restaurant-list .restaurant .restaurant-info img {
+  display: block;
   width: 100%;
+  max-height: 300px;
   margin-bottom: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .home-component .typologies .restaurant-list a {
@@ -11196,10 +11216,10 @@ body {
 
 .lavora-con-noi-container {
   display: flex;
-  justify-content: space-around;
+  margin: auto;
+  justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
-  margin: auto;
   margin-bottom: 100px;
   width: 70%;
   text-align: center;
@@ -11209,7 +11229,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px 30px;
+  margin: 20px auto;
 }
 
 .lavora-con-noi-container h1 {
@@ -11226,12 +11246,12 @@ body {
 .slider-container {
   margin-top: 150px;
   margin-bottom: 50px;
-  background-color: white;
+  background-color: #F8F9FD;
   border-radius: 1000px/50px;
 }
 
 .slider-container .slider-container-2 {
-  max-width: 1000px;
+  max-width: 70%;
   margin: auto;
   text-align: center;
 }
@@ -11239,9 +11259,8 @@ body {
 .slider-container .slider-container-2 .slider-container-3 {
   display: flex;
   align-items: center;
-  max-height: 350px;
+  max-height: 400px;
   overflow-y: scroll;
-  -webkit-box-shadow: 0 10px 22px -22px #FF9D2B inset, 0 -10px 22px -22px #FF9D2B inset;
 }
 
 .slider-container .slider-container-2 .slider-container-3::-webkit-scrollbar-thumb {
@@ -11262,11 +11281,11 @@ body {
 .slider-container .slider-container-2 #slider-typologies {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   width: 100%;
   padding: 0px 0px 20px 0px;
   margin: auto;
   text-align: center;
-  justify-content: space-around;
 }
 
 .slider-container .slider-container-2 #slider-typologies .typology_box {
@@ -11276,7 +11295,7 @@ body {
   align-items: center;
   position: relative;
   border-radius: 50%;
-  margin: 2rem;
+  margin: 1.2rem;
 }
 
 .slider-container .slider-container-2 #slider-typologies .typology_box .check_input {
@@ -11332,12 +11351,14 @@ html {
   height: 500px;
   width: 100%;
   margin-bottom: 0px;
+  overflow: hidden;
 }
 
 .restaurant-banner-container img {
   position: absolute;
   bottom: 0;
   width: 100%;
+  transform: translateY(300px);
 }
 
 .restaurant-container {
@@ -11378,21 +11399,38 @@ html {
   color: #435070;
 }
 
+.restaurant-container .plate .quantity-plate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restaurant-container .plate .plate-image {
+  height: 280px;
+  overflow: hidden;
+}
+
+.restaurant-container .plate .plate-image img {
+  width: 100%;
+}
+
 .restaurant-container .plate h3 {
   font-size: 30px;
   font-weight: bold;
 }
 
-.restaurant-container .plate img {
-  width: 100%;
-}
-
 .restaurant-container .plate .plate-info {
   display: flex;
+  flex-direction: column;
   margin: 30px;
 }
 
-.restaurant-name {
+.restaurant-logo-name {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.restaurant-logo-name .restaurant-name {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   padding: 30px;
   max-width: 800px;
@@ -11405,15 +11443,36 @@ html {
   flex-wrap: wrap;
 }
 
-.restaurant-name h1 {
+.restaurant-logo-name .restaurant-name h1 {
   font-size: 50px;
   font-weight: bold;
   color: #435070;
   margin-right: 20px;
 }
 
-.restaurant-name i {
+.restaurant-logo-name .restaurant-name i {
   padding-right: 20px;
+}
+
+.restaurant-logo-name .restaurant-name img {
+  width: 300px;
+}
+
+.restaurant-logo-name .restaurant-logo {
+  width: 270px;
+  height: 270px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  transform: translate(0px, -50px);
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
+}
+
+.restaurant-logo-name .restaurant-logo img {
+  height: 100%;
+  display: block;
 }
 
 .cart {
@@ -11473,7 +11532,6 @@ html {
   font-size: 30px;
   border-radius: 50%;
   transition: 0.5s;
-  margin: 20px;
 }
 
 .add-cart-btn:hover {
@@ -11487,7 +11545,6 @@ html {
   border: none;
   font-size: 30px;
   transition: 0.5s;
-  margin: 20px;
 }
 
 .remove-item-btn:hover {
@@ -11503,7 +11560,6 @@ html {
   font-size: 15px;
   border-radius: 10px;
   transition: 0.5s;
-  margin: 20px 0px;
 }
 
 .remove-cart-btn i {

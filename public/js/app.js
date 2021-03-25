@@ -2211,7 +2211,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2270,6 +2269,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39033,7 +39045,7 @@ var render = function() {
         { staticClass: "restaurant-list" },
         _vm._l(_vm.restaurants, function(restaurant) {
           return _c("div", { key: restaurant.id }, [
-            _c("a", { attrs: { href: /restaurant/ + restaurant.slug } }, [
+            _c("a", { attrs: { href: "/restaurant/" + restaurant.slug } }, [
               _c("div", { staticClass: "restaurant" }, [
                 _c("div", { staticClass: "restaurant-info" }, [
                   _c("img", {
@@ -39047,13 +39059,11 @@ var render = function() {
                   _vm._v(" "),
                   _c("p", [_vm._v(_vm._s(restaurant.restaurant_description))]),
                   _vm._v(" "),
-                  _c("h5", [_vm._v("Tipologie del ristorante")]),
-                  _vm._v(" "),
                   _c(
                     "ul",
                     _vm._l(restaurant.typologies, function(type) {
                       return _c("li", { key: type.id }, [
-                        _vm._v(_vm._s(type.name))
+                        _c("img", { attrs: { src: type.img, alt: "" } })
                       ])
                     }),
                     0
@@ -39091,21 +39101,34 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", {}, [
-    _c("div", { staticClass: "restaurant-name" }, [
-      _c("h1", [
-        _c("i", { staticClass: "fas fa-utensils" }),
-        _vm._v(" " + _vm._s(_vm.restaurant_info.restaurant_name))
+    _c("div", { staticClass: "restaurant-logo-name" }, [
+      _c("div", { staticClass: "restaurant-logo" }, [
+        _c("img", {
+          attrs: {
+            src: "/storage/" + _vm.restaurant_info.restaurant_logo,
+            alt: ""
+          }
+        })
       ]),
       _vm._v(" "),
-      _c("div", [
-        _c("h6", [
-          _c("i", { staticClass: "fas fa-map-marker-alt" }),
-          _c("b", [_vm._v(_vm._s(_vm.restaurant_info.address))])
+      _c("div", { staticClass: "restaurant-name" }, [
+        _c("h1", [
+          _c("i", { staticClass: "fas fa-utensils" }),
+          _vm._v(" " + _vm._s(_vm.restaurant_info.restaurant_name))
         ]),
         _vm._v(" "),
-        _c("p", [
-          _c("i", { staticClass: "fas fa-phone" }),
-          _c("b", [_vm._v(_vm._s(_vm.restaurant_info.phone_number))])
+        _c("h3", [_vm._v(_vm._s(_vm.restaurant_info.restaurant_description))]),
+        _vm._v(" "),
+        _c("div", [
+          _c("h6", [
+            _c("i", { staticClass: "fas fa-map-marker-alt" }),
+            _c("b", [_vm._v(_vm._s(_vm.restaurant_info.address))])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("i", { staticClass: "fas fa-phone" }),
+            _c("b", [_vm._v(_vm._s(_vm.restaurant_info.phone_number))])
+          ])
         ])
       ])
     ]),
@@ -39117,7 +39140,9 @@ var render = function() {
       { staticClass: "plate-list" },
       _vm._l(_vm.visiblePlates, function(plate) {
         return _c("div", { key: plate.id, staticClass: "plate" }, [
-          _c("img", { attrs: { src: "/storage/" + plate.picture, alt: "" } }),
+          _c("div", { staticClass: "plate-image" }, [
+            _c("img", { attrs: { src: "/storage/" + plate.picture, alt: "" } })
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "plate-info" }, [
             _c("div", [
@@ -39130,36 +39155,82 @@ var render = function() {
               _c("h5", [_vm._v("€ " + _vm._s(plate.price))])
             ]),
             _vm._v(" "),
-            _c("div", [
-              _c(
-                "button",
-                {
-                  staticClass: "add-cart-btn",
-                  class: _vm.alreadyInCart(plate) ? "hide" : "show",
-                  attrs: { disabled: _vm.alreadyInCart(plate) },
-                  on: {
-                    click: function($event) {
-                      return _vm.addPlate(plate)
+            _c("div", { staticClass: "quantity-plate" }, [
+              _c("div", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "add-cart-btn",
+                    class: _vm.alreadyInCart(plate) ? "hide" : "show",
+                    attrs: { disabled: _vm.alreadyInCart(plate) },
+                    on: {
+                      click: function($event) {
+                        return _vm.addPlate(plate)
+                      }
                     }
-                  }
-                },
-                [_c("i", { staticClass: "fas fa-plus-circle" })]
-              ),
+                  },
+                  [_c("i", { staticClass: "fas fa-plus-circle" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "remove-item-btn",
+                    class: _vm.alreadyInCart(plate) ? "show" : "hide",
+                    attrs: { disabled: !_vm.alreadyInCart(plate) },
+                    on: {
+                      click: function($event) {
+                        return _vm.removePlate(plate)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-trash-alt" })]
+                )
+              ]),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "remove-item-btn",
-                  class: _vm.alreadyInCart(plate) ? "show" : "hide",
-                  attrs: { disabled: !_vm.alreadyInCart(plate) },
-                  on: {
-                    click: function($event) {
-                      return _vm.removePlate(plate)
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "fas fa-trash-alt" })]
-              )
+              _vm.alreadyInCart(plate)
+                ? _c("div", [
+                    _c("span", [
+                      _vm._v(
+                        "Quantity: " + _vm._s(_vm.getPlateQuantity(plate)) + "x"
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "less-plus-button",
+                        on: {
+                          click: function($event) {
+                            return _vm.decreaseQuantity(plate)
+                          }
+                        }
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "fas fa-minus-circle fa-lg fa-fw"
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "less-plus-button",
+                        on: {
+                          click: function($event) {
+                            return _vm.increaseQuantity(plate)
+                          }
+                        }
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "fas fa-plus-circle fa-lg fa-fw"
+                        })
+                      ]
+                    )
+                  ])
+                : _vm._e()
             ])
           ])
         ])

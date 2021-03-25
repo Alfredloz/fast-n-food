@@ -34,9 +34,10 @@ class PageController extends Controller
     public function restaurant(User $user)
     {
         $restaurant = $this->restaurantInfoJson($user);
+        $banner = $user->restaurant_banner;
         $plates = json_encode( $user->plates );
         //dd($restaurant, $plates);
-        return view('guests.restaurant', compact('restaurant', 'plates'));
+        return view('guests.restaurant', compact('restaurant', 'plates', 'banner'));
     }
 
     /** restaurantInfoJson method   
