@@ -14,8 +14,11 @@
             </div>         
         </div>
         
+        <div class="no-plates" v-if="noPlates">
+            <h2>Il ristorante è momentaneamente chiuso</h2>
+        </div>
 
-        <h2>I più venduti <i class="fas fa-hamburger"></i></h2>
+        <h2 v-if="!noPlates">I più venduti <i class="fas fa-hamburger"></i></h2>
         <div class="plate-list">
             <div class="plate" v-for="plate in visiblePlates" :key="plate.id">
                 <div class="plate-image">
@@ -40,7 +43,6 @@
                         <div v-if="alreadyInCart(plate)">
                             <span>Quantity: {{getPlateQuantity(plate)}}x</span>
                             <button class="less-plus-button" @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
-                            <!-- <input type="number" :value="getPlateQuantity(plate)" disabled> -->
                             <button class="less-plus-button" @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
                         </div>
                     </div>
@@ -79,6 +81,9 @@
                 return this.plates_info.filter((plate)=>{
                     return plate.visibility == 1;
                 })
+            },
+            noPlates(){
+                return this.visiblePlates.length == 0;
             }
         },
         methods : {

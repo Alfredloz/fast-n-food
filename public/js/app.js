@@ -2211,11 +2211,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       typologies: null,
-      restaurants: null,
+      restaurants: [],
       typologies_ids: [],
       selected: undefined
     };
@@ -2225,6 +2230,11 @@ __webpack_require__.r(__webpack_exports__);
       handler: function handler() {
         this.loadRestaurants();
       }
+    }
+  },
+  computed: {
+    emptyRestaurants: function emptyRestaurants() {
+      return this.restaurants.length == 0;
     }
   },
   methods: {
@@ -2322,6 +2332,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant", "plates"],
@@ -2350,6 +2362,9 @@ __webpack_require__.r(__webpack_exports__);
       return this.plates_info.filter(function (plate) {
         return plate.visibility == 1;
       });
+    },
+    noPlates: function noPlates() {
+      return this.visiblePlates.length == 0;
     }
   },
   methods: {
@@ -38839,7 +38854,7 @@ var render = function() {
         _c("div", { staticClass: "checkout" }, [
           _c("h3", [
             _c("i", { staticClass: "fas fa-tags" }),
-            _c("b", [_vm._v("Total:")]),
+            _c("strong", [_vm._v("Totale:")]),
             _vm._v(" € "),
             _c("span", { attrs: { id: "total_price" } }, [
               _vm._v(_vm._s(_vm.getTotal()))
@@ -39040,6 +39055,16 @@ var render = function() {
       _vm._v(" "),
       _c("h1", [_vm._v("Ristoranti")]),
       _vm._v(" "),
+      _vm.emptyRestaurants
+        ? _c("div", { staticClass: "no-restaurant" }, [
+            _c("h3", [
+              _vm._v("Nessun ristorante ha tutte le tipologie selezionate")
+            ]),
+            _vm._v(" "),
+            _c("p", [_vm._v("Prova a deselezionare una o più tipologie")])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "restaurant-list" },
@@ -39133,7 +39158,18 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0),
+    _vm.noPlates
+      ? _c("div", { staticClass: "no-plates" }, [
+          _c("h2", [_vm._v("Il ristorante è momentaneamente chiuso")])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    !_vm.noPlates
+      ? _c("h2", [
+          _vm._v("I più venduti "),
+          _c("i", { staticClass: "fas fa-hamburger" })
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c(
       "div",
@@ -39239,17 +39275,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", [
-      _vm._v("I più venduti "),
-      _c("i", { staticClass: "fas fa-hamburger" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

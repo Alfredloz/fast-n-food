@@ -19,6 +19,11 @@
             </div>
         
             <h1>Ristoranti</h1>
+            <div class="no-restaurant" v-if="emptyRestaurants">
+                <h3>Nessun ristorante ha tutte le tipologie selezionate</h3>
+                <p>Prova a deselezionare una o più tipologie</p>
+            </div>
+
             <div class="restaurant-list">
                 <div v-for="restaurant in restaurants" :key="restaurant.id">
                     <a :href="'/restaurant/'+restaurant.slug">
@@ -44,7 +49,7 @@
         data(){
             return {
                 typologies: null,
-                restaurants: null,
+                restaurants: [],
                 typologies_ids: [],
                 selected: undefined,
             }
@@ -54,6 +59,11 @@
                 handler(){
                     this.loadRestaurants();
                 }
+            }
+        },
+        computed: {
+            emptyRestaurants() {
+                return this.restaurants.length == 0;
             }
         },
         methods: {
