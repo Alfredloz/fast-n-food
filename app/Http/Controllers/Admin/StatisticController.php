@@ -17,6 +17,8 @@ class StatisticController extends Controller
 
     public function sold()
     {
-        return view('admin.statistics.sold');
+        $bills = Auth::user()->orders;
+        //dd($bill);
+        return view('admin.statistics.sold', compact('bills'));
     }
 }
