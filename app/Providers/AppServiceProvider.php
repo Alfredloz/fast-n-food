@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // passing all BRAINTREE enviorment for payment, from .ENV file.
         \Braintree\Configuration::environment(env('BRAINTREE_ENV'));
         \Braintree\Configuration::environment(env('BRAINTREE_ENV'));
         \Braintree\Configuration::merchantId(env('BRAINTREE_MERCHANT_ID'));

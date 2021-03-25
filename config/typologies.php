@@ -1,4 +1,5 @@
-<?php  
+<?php 
+// array for typoliges to seed the database 
 return [
     [
         'name' => 'dessert',

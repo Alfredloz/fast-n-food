@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class StatisticController extends Controller
 {
+
+    /** StatistiController@orders method.
+     * @param Illuminate\Support\Facades\Auth
+     * @return string path and compact data
+     */
     public function orders()
     {
         $orders = json_encode(Auth::user()->orders);
@@ -15,6 +20,10 @@ class StatisticController extends Controller
         return view('admin.statistics.orders', compact('orders'));
     }
 
+    /** StatistiController@orders method.
+     * @param Illuminate\Support\Facades\Auth
+     * @return string path and compact data
+     */
     public function sold()
     {
         $bills = Auth::user()->orders;

@@ -9,7 +9,13 @@ use App\User;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
-{
+{   
+
+    /** index method 
+     * @param Request -> $request
+     * 
+     * creation of the order after payment.
+     */
     public function index(Request $request)
     {
         $plates_bought = $request->input('plates_bought');
@@ -22,13 +28,16 @@ class OrderController extends Controller
         ]);
 
         $newOrder->save();
+        
 
+        // foreach loop to attach plate qty and id to the newOrder
         foreach($plates_bought as $plate){
             $newOrder->plates()->attach($plate['id'], ['plate_quantity' => $plate['quantity']]);
         }
 
         $user = User::find($plates_bought[0]['user_id']);
 
+        // send the e=mail after the payment ( success!).
         Mail::to($user->email)->send(new Email($plates_bought, $total, $clientInfo));
 
         return response()->json($plates_bought);

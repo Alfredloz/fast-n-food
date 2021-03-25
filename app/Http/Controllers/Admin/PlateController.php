@@ -42,6 +42,7 @@ class PlateController extends Controller
     {
         $request['slug'] = Str::slug($request->name . '-' . Auth::user()->id);
 
+        // validation data for single plate
         $validatedData = $request->validate([
             'name' => 'required',
             'description_ingredients' => 'required',
@@ -93,7 +94,7 @@ class PlateController extends Controller
      */
     public function update(Request $request, Plate $plate)
     {
-      // dd($request->all());
+        // update plate
         $validatedData = $request->validate([
             'name' => 'required',
             'description_ingredients' => 'required',
@@ -115,15 +116,18 @@ class PlateController extends Controller
 
         return redirect()->route('admin.plates.show', $plate);
     }
-
+    /** Plate@controller@visibility method.
+     * update visibility for the single plate
+     * 
+     * @param \Illuminate\Http\Request
+     * @param   int  $id
+     */
     public function visibility(Request $request, Plate $plate)
     {
-      // dd($plate);
         $validatedData = $request->validate([
             'visibility' => 'required'
         ]);
         $plate->update($validatedData);
-        // dd($validatedData, $plate);
         return redirect()->route('admin.plates.index');
     }
 

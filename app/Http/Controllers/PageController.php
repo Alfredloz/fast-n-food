@@ -28,8 +28,8 @@ class PageController extends Controller
     }
 
      /** single restaurant
-     * single restaurant return
-     *
+     *  @param User -> $user
+     *  single restaurant return as json array (plates).
      */
     public function restaurant(User $user)
     {
@@ -39,6 +39,11 @@ class PageController extends Controller
         return view('guests.restaurant', compact('restaurant', 'plates'));
     }
 
+    /** restaurantInfoJson method   
+     * @param User -> $user
+     * 
+     * return a json array of the restaurant informations.
+     */
     private function restaurantInfoJson(User $user)
     {
         return json_encode( [

@@ -8,7 +8,10 @@ use App\Typology;
 use Illuminate\Http\Request;
 
 class TypologyController extends Controller
-{
+{   
+    /** TypologyController@index method 
+     * return all typology like a collection
+     */
     public function index()
     {
         return TypologyResource::collection(Typology::all());
