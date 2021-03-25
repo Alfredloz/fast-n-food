@@ -11660,8 +11660,68 @@ form {
 }
 
 .presentation p {
-  font-size: 20px;
   text-align: left;
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+.dashboard_menu {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0;
+}
+
+.dashboard_menu .img_dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard_menu .img_dashboard img {
+  width: 100px;
+  margin: 0 60px 30px 60px;
+}
+
+.dashboard_menu .img_dashboard h3 {
+  text-decoration: none;
+  font-weight: bold;
+  color: #435070;
+}
+
+h2 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #435070;
+  margin: 30px 0;
+}
+
+.show {
+  display: flex;
+}
+
+.show img {
+  width: 500px;
+  margin: 0 50px 100px 0;
+  border-radius: 10px;
+}
+
+.show .info_show {
+  display: flex;
+  flex-direction: column;
+}
+
+.show .info_show h3 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #435070;
+  margin-bottom: 20px;
+}
+
+.show .info_show p,
+.show .info_show span {
+  font-size: 20px;
+  color: #435070;
 }
 
 * {
