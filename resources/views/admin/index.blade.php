@@ -5,8 +5,7 @@
   <div class="presentation">
     <h1>Benvenuto nella tua personale dashboard</h1>
     <hr>
-    <p>Ciao Boss, da qui puoi gestire il tuo ristorante: puoi creare, modificare o cancellare tutti i tuoi piatti e specialità direttamente dal tuo Menù.</p>
-    <p>Inoltre puoi controllare le tue statistiche di vendita degli ultimi 12 mesi e l'elenco completo di tutti i piatti venduti.</p>
+    <p>Ciao Boss, da qui puoi gestire il tuo ristorante: puoi creare, modificare o cancellare tutti i tuoi piatti e specialità direttamente dal tuo menù.<br>Inoltre puoi controllare le tue statistiche di vendita degli ultimi 12 mesi e l'elenco completo di tutti i piatti venduti.</p>
   </div>
 
   <div class="dashboard_menu">

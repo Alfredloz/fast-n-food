@@ -2,11 +2,11 @@
 
 @section('content')
 
-<h1>Statistica degli ordini e ricavi</h1>
-<div class="card">
-    <div class="card-body">
-      <canvas id="myChart"></canvas>
-    </div>
+<div class="statistic">
+  <h1>Statistica degli ordini e guadagni</h1>
+  <div class="container">
+    <canvas id="myChart"></canvas>
+  </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
@@ -57,7 +57,15 @@ for (let i = 11; i >= 0; i--) {
 
 //Struttura Chart,Js --> Prendo il contesto del tag canvas
 var ctx = document.getElementById('myChart').getContext('2d');
+  
+  //Global Options
+  Chart.defaults.global.defaultFontSize = 18;
+  Chart.defaults.global.defaultFontStyle = 'bold';
+  Chart.defaults.global.defaultFontColor = '#435070';
+    
     var chart = new Chart(ctx, {
+
+
         // The type of chart we want to create
         type: 'line',
 
@@ -66,26 +74,43 @@ var ctx = document.getElementById('myChart').getContext('2d');
             labels: labels,
             datasets: [
               {
-                label: 'Totale ricavi (€)',
-                backgroundColor: 'rgba(254, 157, 42, 0.5)',
+                label: 'Totale incasso (€)',
+                backgroundColor: 'rgba(255, 155, 41, 0.5)',
                 borderColor: 'rgb(250, 100, 0)', 
-                borderWidth: 1,
-
+                borderWidth: 2,
+                hoverBorderWidth: 4, 
+                hoverBorderColor: 'rgb(67, 80, 112)', 
                 data: yearTtlAmount
             },
             {
                 label: 'Numeri ordini',
-                backgroundColor: 'rgba(255, 0, 0, 0.5)',
-                borderColor: 'rgb(250, 0, 0)', 
-                borderWidth: 1,
+                backgroundColor: 'rgba(192, 33, 62, 0.5)', 
+                borderColor: 'rgb(192, 33, 62)', 
+                borderWidth: 2,
                 type: 'line',
                 data: orderCounters
             }
           ]
         },
 
-        // Configuration options go here
-        options: {}
+        options: {
+          title: {
+            display: true,
+            text: 'Ordini ricevuti e guadagni',
+            fontSize: 25
+          },
+          legend: {
+            position: 'top',
+          },
+          // layout: {
+          //   padding: {
+          //       left: 100,
+          //       right: 100,
+          //       top: 20,
+          //       bottom: 70
+          //   }
+          // }  
+        }
     });
 
 </script>

@@ -10975,7 +10975,7 @@ a.text-dark:focus {
 .navbar .nav-link {
   font-weight: bold;
   font-size: 15px;
-  color: #FF9D2B !important;
+  color: #ff9b29 !important;
   text-align: center;
   background-color: white;
   width: 100px;
@@ -11241,7 +11241,7 @@ body {
   align-items: center;
   max-height: 350px;
   overflow-y: scroll;
-  -webkit-box-shadow: 0 10px 22px -22px #FF9D2B inset, 0 -10px 22px -22px #FF9D2B inset;
+  -webkit-box-shadow: 0 10px 22px -22px #ff9b29 inset, 0 -10px 22px -22px #ff9b29 inset;
 }
 
 .slider-container .slider-container-2 .slider-container-3::-webkit-scrollbar-thumb {
@@ -11482,7 +11482,7 @@ html {
 }
 
 .remove-item-btn {
-  color: #C1213F;
+  color: #c0213e;
   background: none;
   border: none;
   font-size: 30px;
@@ -11496,7 +11496,7 @@ html {
 }
 
 .remove-cart-btn {
-  background-color: #C1213F;
+  background-color: #c0213e;
   border: none;
   color: white;
   padding: 5px 20px;
@@ -11687,6 +11687,13 @@ form {
   text-decoration: none;
   font-weight: bold;
   color: #435070;
+}
+
+.statistic h1 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #435070;
+  margin: 50px 0;
 }
 
 .plates_list {
