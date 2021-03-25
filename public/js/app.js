@@ -1990,6 +1990,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant"],
@@ -2014,6 +2018,12 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     toCheckoutPage: function toCheckoutPage() {
       return this.getTotal() > 0 && window.location.pathname == "/restaurant/" + this.restaurant_info.slug;
+    },
+    emptyCart: function emptyCart() {
+      return this.plates_bought.length == 0;
+    },
+    inCheckoutPage: function inCheckoutPage() {
+      return window.location.pathname == "/restaurant/" + this.restaurant_info.slug + "/checkout";
     }
   },
   methods: {
@@ -2051,7 +2061,11 @@ __webpack_require__.r(__webpack_exports__);
       var parsed = JSON.stringify(this.plates_bought);
       localStorage.setItem('plates_bought', parsed); // Emit the event localStorageUpdated through the eventBus
 
-      _app__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$emit('CartLocalStorageUpdated');
+      _app__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$emit('CartLocalStorageUpdated'); // if you are in the checkout page and the cart is empty you will be redirected back to the restaurant page
+
+      if (this.inCheckoutPage && this.emptyCart) {
+        window.history.back();
+      }
     },
 
     /**
@@ -2104,6 +2118,10 @@ __webpack_require__.r(__webpack_exports__);
         var subtotal = total + plate.price * plate.quantity;
         return Math.round(subtotal * 100) / 100; // round to 2 decimals places
       }, 0);
+    },
+    deleteCart: function deleteCart() {
+      this.plates_bought.splice(0, this.plates_bought.length);
+      this.savePlate();
     }
   }
 });
@@ -38726,31 +38744,6 @@ var render = function() {
     _c(
       "div",
       [
-        _c("div", { staticClass: "checkout" }, [
-          _c("h3", [
-            _c("i", { staticClass: "fas fa-tags" }),
-            _c("b", [_vm._v("Total:")]),
-            _vm._v(" € "),
-            _c("span", { attrs: { id: "total_price" } }, [
-              _vm._v(_vm._s(_vm.getTotal()))
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.toCheckoutPage
-            ? _c(
-                "a",
-                {
-                  staticClass: "checkout-btn",
-                  attrs: {
-                    href:
-                      "/restaurant/" + _vm.restaurant_info.slug + "/checkout"
-                  }
-                },
-                [_c("i", { staticClass: "fas fa-check" }), _vm._v(" Checkout")]
-              )
-            : _vm._e()
-        ]),
-        _vm._v(" "),
         _vm._l(_vm.plates_bought, function(plate) {
           return _c("div", { key: plate.id }, [
             _c("h4", [_vm._v(_vm._s(plate.name))]),
@@ -38767,12 +38760,12 @@ var render = function() {
               },
               [
                 _c("i", { staticClass: "fas fa-trash-alt" }),
-                _vm._v(" Remove from Cart\n            ")
+                _vm._v(" Rimuovi dal Carrello\n            ")
               ]
             ),
             _vm._v(" "),
             _c("h5", [
-              _vm._v("Quantity: " + _vm._s(_vm.getPlateQuantity(plate)) + "x")
+              _vm._v("Quantità: " + _vm._s(_vm.getPlateQuantity(plate)) + "x")
             ]),
             _vm._v(" "),
             _c("hr"),
@@ -38809,7 +38802,52 @@ var render = function() {
               )
             ])
           ])
-        })
+        }),
+        _vm._v(" "),
+        !_vm.emptyCart
+          ? _c("div", { staticClass: "delete_cart" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "remove-cart-btn",
+                  on: {
+                    click: function($event) {
+                      return _vm.deleteCart()
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-trash-alt" }),
+                  _vm._v(" Svuota Carrello\n            ")
+                ]
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "checkout" }, [
+          _c("h3", [
+            _c("i", { staticClass: "fas fa-tags" }),
+            _c("b", [_vm._v("Total:")]),
+            _vm._v(" € "),
+            _c("span", { attrs: { id: "total_price" } }, [
+              _vm._v(_vm._s(_vm.getTotal()))
+            ])
+          ]),
+          _vm._v(" "),
+          _vm.toCheckoutPage
+            ? _c(
+                "a",
+                {
+                  staticClass: "checkout-btn",
+                  attrs: {
+                    href:
+                      "/restaurant/" + _vm.restaurant_info.slug + "/checkout"
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-check" }), _vm._v(" Checkout")]
+              )
+            : _vm._e()
+        ])
       ],
       2
     )
@@ -38822,7 +38860,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "shopping" }, [
       _c("i", { staticClass: "fas fa-cart-arrow-down" }),
-      _c("h1", [_vm._v("Shopping Cart")])
+      _c("h1", [_vm._v("Carrello")])
     ])
   },
   function() {
@@ -51715,8 +51753,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\mirko\Documents\Boolean\final_project\fast-n-food\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\mirko\Documents\Boolean\final_project\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\DATI\Corso Boolean\Esercizi\fast-n-food\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\DATI\Corso Boolean\Esercizi\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

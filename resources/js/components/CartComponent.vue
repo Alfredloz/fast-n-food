@@ -1,32 +1,36 @@
 <template>
     <div class="cart">
         
-        <div class="shopping"><i class="fas fa-cart-arrow-down"></i><h1>Shopping Cart</h1></div>
+        <div class="shopping"><i class="fas fa-cart-arrow-down"></i><h1>Carrello</h1></div>
         <div class="shopping"><img width="140px" src="/images/Artwork.svg"></div>
         <div>
-            <div class="checkout">
-                <h3><i class="fas fa-tags"></i><b>Total:</b> € <span id="total_price">{{getTotal()}}</span></h3>
-                <a class="checkout-btn" :href="'/restaurant/'+restaurant_info.slug+'/checkout'" v-if="toCheckoutPage"><i class="fas fa-check"></i> Checkout</a>
-            </div>
-
+            
             <div v-for="plate in plates_bought" :key="plate.id">
                 <h4>{{plate.name}}</h4>
                 <button class="remove-cart-btn" @click="removePlate(plate)">
-                    <i class="fas fa-trash-alt"></i> Remove from Cart
+                    <i class="fas fa-trash-alt"></i> Rimuovi dal Carrello
                 </button>
-                <h5>Quantity: {{getPlateQuantity(plate)}}x</h5>
+                <h5>Quantità: {{getPlateQuantity(plate)}}x</h5>
                 <hr>
                 <h6>€ {{plate.price}}</h6>
                 <hr>
 
                 <div class="quantity_wrapper">
                     <button class="less-plus-button" @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
-                    <!-- <input type="number" :value="getPlateQuantity(plate)" disabled> -->
                     <button class="less-plus-button" @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
                 </div>
             </div>
 
-            
+            <div class="delete_cart" v-if="!emptyCart">
+                <button class="remove-cart-btn" @click="deleteCart()">
+                    <i class="fas fa-trash-alt"></i> Svuota Carrello
+                </button>
+            </div>
+
+            <div class="checkout">
+                <h3><i class="fas fa-tags"></i><b>Total:</b> € <span id="total_price">{{getTotal()}}</span></h3>
+                <a class="checkout-btn" :href="'/restaurant/'+restaurant_info.slug+'/checkout'" v-if="toCheckoutPage"><i class="fas fa-check"></i> Checkout</a>
+            </div>
         </div>
         
     </div>
@@ -55,6 +59,12 @@
         computed: {
             toCheckoutPage() {
                 return (this.getTotal() > 0) && ( window.location.pathname == "/restaurant/" + this.restaurant_info.slug );
+            },
+            emptyCart() {
+                return this.plates_bought.length == 0;
+            },
+            inCheckoutPage() {
+                return window.location.pathname == "/restaurant/" + this.restaurant_info.slug + "/checkout";
             }
         },
         methods : {
@@ -93,6 +103,10 @@
                 localStorage.setItem('plates_bought', parsed);
                 // Emit the event localStorageUpdated through the eventBus
                 eventBus.$emit('CartLocalStorageUpdated');
+                // if you are in the checkout page and the cart is empty you will be redirected back to the restaurant page
+                if( this.inCheckoutPage && this.emptyCart ){
+                    window.history.back();
+                }
             },
             /**
              * Get the position of a plate bought in the plates_bought array, -1 otherwise
@@ -151,6 +165,10 @@
                     const subtotal = total + (plate.price * plate.quantity)
                     return Math.round( subtotal * 100 ) / 100; // round to 2 decimals places
                 }, 0);
+            },
+            deleteCart(){
+                this.plates_bought.splice(0, this.plates_bought.length);
+                this.savePlate();
             }
         }
     }
