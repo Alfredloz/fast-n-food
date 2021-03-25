@@ -2193,7 +2193,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -39009,13 +39008,11 @@ var render = function() {
                   _vm._v(" "),
                   _c("p", [_vm._v(_vm._s(restaurant.restaurant_description))]),
                   _vm._v(" "),
-                  _c("h5", [_vm._v("Tipologie del ristorante")]),
-                  _vm._v(" "),
                   _c(
                     "ul",
                     _vm._l(restaurant.typologies, function(type) {
                       return _c("li", { key: type.id }, [
-                        _vm._v(_vm._s(type.name))
+                        _c("img", { attrs: { src: type.img, alt: "" } })
                       ])
                     }),
                     0
@@ -51715,8 +51712,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\mirko\Documents\Boolean\final_project\fast-n-food\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\mirko\Documents\Boolean\final_project\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\user\Documents\Boolean\Esercizi\laravel\fast-n-food\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\user\Documents\Boolean\Esercizi\laravel\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
