@@ -13,12 +13,12 @@
     </div>
     <div class="info_show">
       <h3>{{$plate->name}}</h3>
-      <span>{{$plate->price}} €</span>
-      <p>{{$plate->description_ingredients}}</p>
+      <span><i class="fas fa-tags"></i> {{$plate->price}} €</span>
+      <p><i class="fas fa-align-left"></i> {{$plate->description_ingredients}}</p>
       @if ($plate->visibility == 1)
-      <span>Available</span>
+      <span><i class="fas fa-check-circle"></i> Available</span>
       @else
-      <span>Not available</span>      
+      <span><i class="fas fa-times-circle"></i> Not available</span>      
       @endif
     </div>
   </div>

@@ -25,9 +25,12 @@ h2 {
             margin-bottom: 20px;
         }
 
-        p, span {
+        span, p, i {
             font-size: 20px;
             color: $tertiary-color;
+            margin: 10px;
         }
+
+        
     }
 }

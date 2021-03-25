@@ -1,0 +1,41 @@
+.plates_list {
+    display: flex;
+    flex-direction: column;
+    
+    .plate_card {
+        display: flex;
+        margin-top: 30px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid lightgray;
+
+        img {
+            width: 300px;
+            height: 180px;
+            border-radius: 10px;
+        }
+
+        .plate_info {
+            display: flex;
+            align-items: center;
+            color: $tertiary-color;
+            
+            h3 {
+                width: 150px;
+                text-align: center;
+                font-weight: bold;
+                padding: 10px;
+            }
+
+            p {
+                width: 400px;
+                padding: 0 50px;
+            }
+
+            .group_button {
+                display: flex;
+                flex-direction: column;
+                width: 100px;
+            }
+        }
+    }
+}
