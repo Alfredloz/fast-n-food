@@ -21,7 +21,7 @@
             <h1>Ristoranti</h1>
             <div class="restaurant-list">
                 <div v-for="restaurant in restaurants" :key="restaurant.id">
-                    <a :href="/restaurant/+restaurant.slug">
+                    <a :href="'/restaurant/'+restaurant.slug">
                         <div class="restaurant">
                             <div class="restaurant-info">
                                 <img :src="'/storage/'+restaurant.restaurant_banner" alt="">

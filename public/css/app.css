@@ -11351,12 +11351,14 @@ html {
   height: 500px;
   width: 100%;
   margin-bottom: 0px;
+  overflow: hidden;
 }
 
 .restaurant-banner-container img {
   position: absolute;
   bottom: 0;
   width: 100%;
+  transform: translateY(300px);
 }
 
 .restaurant-container {
@@ -11411,7 +11413,12 @@ html {
   margin: 30px;
 }
 
-.restaurant-name {
+.restaurant-logo-name {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.restaurant-logo-name .restaurant-name {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   padding: 30px;
   max-width: 800px;
@@ -11424,15 +11431,36 @@ html {
   flex-wrap: wrap;
 }
 
-.restaurant-name h1 {
+.restaurant-logo-name .restaurant-name h1 {
   font-size: 50px;
   font-weight: bold;
   color: #435070;
   margin-right: 20px;
 }
 
-.restaurant-name i {
+.restaurant-logo-name .restaurant-name i {
   padding-right: 20px;
+}
+
+.restaurant-logo-name .restaurant-name img {
+  width: 300px;
+}
+
+.restaurant-logo-name .restaurant-logo {
+  width: 270px;
+  height: 270px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  transform: translate(0px, -50px);
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
+}
+
+.restaurant-logo-name .restaurant-logo img {
+  height: 100%;
+  display: block;
 }
 
 .cart {

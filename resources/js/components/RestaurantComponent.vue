@@ -1,12 +1,19 @@
 <template>
     <div class="">
-        <div class="restaurant-name">
-            <h1><i class="fas fa-utensils"></i> {{restaurant_info.restaurant_name}}</h1>
-            <div>
-                <h6><i class="fas fa-map-marker-alt"></i><b>{{restaurant_info.address}}</b></h6>
-                <p><i class="fas fa-phone"></i><b>{{restaurant_info.phone_number}}</b></p>
+        <div class="restaurant-logo-name">
+            <div class="restaurant-logo">
+                <img :src="'/storage/'+restaurant_info.restaurant_logo" alt="">
             </div>
+            <div class="restaurant-name">
+                <h1><i class="fas fa-utensils"></i> {{restaurant_info.restaurant_name}}</h1>
+                <h3>{{restaurant_info.restaurant_description}}</h3>
+                <div>
+                    <h6><i class="fas fa-map-marker-alt"></i><b>{{restaurant_info.address}}</b></h6>
+                    <p><i class="fas fa-phone"></i><b>{{restaurant_info.phone_number}}</b></p>
+                </div>
+            </div>         
         </div>
+        
 
         <h2>I più venduti <i class="fas fa-hamburger"></i></h2>
         <div class="plate-list">
@@ -18,6 +25,12 @@
                         <h4>{{plate.description_ingredients}}</h4>
                         <hr>
                         <h5>€ {{plate.price}}</h5>
+                        <div class="quantity-plate" v-if="alreadyInCart(plate)">
+                            <h5>Quantity: {{getPlateQuantity(plate)}}x</h5>
+                            <button class="less-plus-button" @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
+                            <!-- <input type="number" :value="getPlateQuantity(plate)" disabled> -->
+                            <button class="less-plus-button" @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
+                        </div>
                     </div>
                     <div>
                         <button class="add-cart-btn" :class="alreadyInCart(plate) ? 'hide' : 'show' " @click="addPlate(plate)" :disabled="alreadyInCart(plate)">
@@ -26,12 +39,8 @@
                         <button class="remove-item-btn" :class="alreadyInCart(plate) ? 'show' : 'hide' " @click="removePlate(plate)" :disabled="!alreadyInCart(plate)">
                             <i class="fas fa-trash-alt"></i>
                         </button>
-                        <!-- <div class="quantity_wrapper" v-if="alreadyInCart(plate)">
-                            <button class="less-plus-button" @click="decreaseQuantity(plate)"><i class="fas fa-minus-circle fa-lg fa-fw"></i></button>
-                            <input type="number" :value="getPlateQuantity(plate)" disabled>
-                            <button class="less-plus-button" @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
-                        </div> -->
                     </div>
+                    
                 </div>
             </div>
         </div>

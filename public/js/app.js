@@ -2291,6 +2291,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["restaurant", "plates"],
@@ -38994,7 +39003,7 @@ var render = function() {
         { staticClass: "restaurant-list" },
         _vm._l(_vm.restaurants, function(restaurant) {
           return _c("div", { key: restaurant.id }, [
-            _c("a", { attrs: { href: /restaurant/ + restaurant.slug } }, [
+            _c("a", { attrs: { href: "/restaurant/" + restaurant.slug } }, [
               _c("div", { staticClass: "restaurant" }, [
                 _c("div", { staticClass: "restaurant-info" }, [
                   _c("img", {
@@ -39050,21 +39059,34 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", {}, [
-    _c("div", { staticClass: "restaurant-name" }, [
-      _c("h1", [
-        _c("i", { staticClass: "fas fa-utensils" }),
-        _vm._v(" " + _vm._s(_vm.restaurant_info.restaurant_name))
+    _c("div", { staticClass: "restaurant-logo-name" }, [
+      _c("div", { staticClass: "restaurant-logo" }, [
+        _c("img", {
+          attrs: {
+            src: "/storage/" + _vm.restaurant_info.restaurant_logo,
+            alt: ""
+          }
+        })
       ]),
       _vm._v(" "),
-      _c("div", [
-        _c("h6", [
-          _c("i", { staticClass: "fas fa-map-marker-alt" }),
-          _c("b", [_vm._v(_vm._s(_vm.restaurant_info.address))])
+      _c("div", { staticClass: "restaurant-name" }, [
+        _c("h1", [
+          _c("i", { staticClass: "fas fa-utensils" }),
+          _vm._v(" " + _vm._s(_vm.restaurant_info.restaurant_name))
         ]),
         _vm._v(" "),
-        _c("p", [
-          _c("i", { staticClass: "fas fa-phone" }),
-          _c("b", [_vm._v(_vm._s(_vm.restaurant_info.phone_number))])
+        _c("h3", [_vm._v(_vm._s(_vm.restaurant_info.restaurant_description))]),
+        _vm._v(" "),
+        _c("div", [
+          _c("h6", [
+            _c("i", { staticClass: "fas fa-map-marker-alt" }),
+            _c("b", [_vm._v(_vm._s(_vm.restaurant_info.address))])
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("i", { staticClass: "fas fa-phone" }),
+            _c("b", [_vm._v(_vm._s(_vm.restaurant_info.phone_number))])
+          ])
         ])
       ])
     ]),
@@ -39086,7 +39108,51 @@ var render = function() {
               _vm._v(" "),
               _c("hr"),
               _vm._v(" "),
-              _c("h5", [_vm._v("€ " + _vm._s(plate.price))])
+              _c("h5", [_vm._v("€ " + _vm._s(plate.price))]),
+              _vm._v(" "),
+              _vm.alreadyInCart(plate)
+                ? _c("div", { staticClass: "quantity-plate" }, [
+                    _c("h5", [
+                      _vm._v(
+                        "Quantity: " + _vm._s(_vm.getPlateQuantity(plate)) + "x"
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "less-plus-button",
+                        on: {
+                          click: function($event) {
+                            return _vm.decreaseQuantity(plate)
+                          }
+                        }
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "fas fa-minus-circle fa-lg fa-fw"
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "less-plus-button",
+                        on: {
+                          click: function($event) {
+                            return _vm.increaseQuantity(plate)
+                          }
+                        }
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "fas fa-plus-circle fa-lg fa-fw"
+                        })
+                      ]
+                    )
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", [
