@@ -28,7 +28,7 @@
             </div>
 
             <div class="checkout">
-                <h3><i class="fas fa-tags"></i><b>Total:</b> € <span id="total_price">{{getTotal()}}</span></h3>
+                <h3><i class="fas fa-tags"></i><strong>Totale:</strong> € <span id="total_price">{{getTotal()}}</span></h3>
                 <a class="checkout-btn" :href="'/restaurant/'+restaurant_info.slug+'/checkout'" v-if="toCheckoutPage"><i class="fas fa-check"></i> Checkout</a>
             </div>
         </div>
