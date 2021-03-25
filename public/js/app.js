@@ -2021,6 +2021,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     emptyCart: function emptyCart() {
       return this.plates_bought.length == 0;
+    },
+    inCheckoutPage: function inCheckoutPage() {
+      return window.location.pathname == "/restaurant/" + this.restaurant_info.slug + "/checkout";
     }
   },
   methods: {
@@ -2058,7 +2061,11 @@ __webpack_require__.r(__webpack_exports__);
       var parsed = JSON.stringify(this.plates_bought);
       localStorage.setItem('plates_bought', parsed); // Emit the event localStorageUpdated through the eventBus
 
-      _app__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$emit('CartLocalStorageUpdated');
+      _app__WEBPACK_IMPORTED_MODULE_0__["eventBus"].$emit('CartLocalStorageUpdated'); // if you are in the checkout page and the cart is empty you will be redirected back to the restaurant page
+
+      if (this.inCheckoutPage && this.emptyCart) {
+        window.history.back();
+      }
     },
 
     /**

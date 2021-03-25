@@ -62,6 +62,9 @@
             },
             emptyCart() {
                 return this.plates_bought.length == 0;
+            },
+            inCheckoutPage() {
+                return window.location.pathname == "/restaurant/" + this.restaurant_info.slug + "/checkout";
             }
         },
         methods : {
@@ -100,6 +103,10 @@
                 localStorage.setItem('plates_bought', parsed);
                 // Emit the event localStorageUpdated through the eventBus
                 eventBus.$emit('CartLocalStorageUpdated');
+                // if you are in the checkout page and the cart is empty you will be redirected back to the restaurant page
+                if( this.inCheckoutPage && this.emptyCart ){
+                    window.history.back();
+                }
             },
             /**
              * Get the position of a plate bought in the plates_bought array, -1 otherwise
