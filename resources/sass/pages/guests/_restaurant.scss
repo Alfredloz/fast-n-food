@@ -115,56 +115,58 @@
         }
     }
 }
-.cart {
-    -webkit-box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    -moz-box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    transform: translate(0px, -50px);
-    padding: 30px;
-    background-color: white;
-    color: $tertiary-color;
-    overflow-y: scroll;
-    min-width: 300px;
-    margin-bottom: 50px;
-    h2 {
-        font-weight: bold;
-    }
-    h4 {
-        margin-top: 20px;
-    }
-    i {
-        font-size: 30px;
-        padding-right: 20px;
-    }
-    .shopping {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-around;
-        padding-bottom: 30px;
-        h1 {
-            font-size: 30px;
+.cart-restaurant {
+    .cart {
+        -webkit-box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        -moz-box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        transform: translate(0px, -50px);
+        padding: 30px;
+        background-color: white;
+        color: $tertiary-color;
+        overflow-y: scroll;
+        min-width: 300px;
+        margin-bottom: 50px;
+        h2 {
             font-weight: bold;
         }
-    }
-    .checkout {
-        text-align: center;
-        border-top: 2px solid $tertiary-color;
-        padding: 10px;
-        h3 {
-            margin: 10px 0px 30px 0px;
+        h4 {
+            margin-top: 20px;
         }
         i {
             font-size: 20px;
+            padding-right: 20px;
+        }
+        .shopping {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-around;
+            padding-bottom: 30px;
+            h1 {
+                font-size: 30px;
+                font-weight: bold;
+            }
+        }
+        .checkout {
+            text-align: center;
+            border-top: 1px solid $tertiary-color;
+            padding: 10px;
+            h3 {
+                margin: 10px 0px 30px 0px;
+            }
+            i {
+                font-size: 20px;
+            }
         }
     }
+    
 }
-
 // buttons
 .add-cart-btn {
     color: orange;
     background: none;
     border: none;
-    font-size: 30px;
+    font-size: 25px;
     border-radius: 50%;
     transition: 0.5s;
     &:hover {
@@ -176,7 +178,7 @@
     color: $remove-color;
     background: none;
     border: none;
-    font-size: 30px;
+    font-size: 25px;
     transition: 0.5s;
     &:hover {
         color: $tertiary-color;
@@ -188,6 +190,8 @@
     border: none;
     color: white;
     padding: 5px 20px;
+    margin: 15px auto;
+    min-width: 200px;
     font-size: 15px;
     border-radius: 10px;
     transition: 0.5s;
@@ -204,7 +208,7 @@
     color: $tertiary-color;
     background-color: rgba(0, 0, 0, 0);
     transition: 0.5s;
-    font-size: 20px;
+    font-size: 15px;
     &:hover {
         color: lightgrey;
         transition: 0.5s;

@@ -11,7 +11,7 @@
             <restaurant-component restaurant ="{{ $restaurant }}" plates = "{{ $plates }}"></restaurant-component>
             
         </div>
-        <div class="">
+        <div class="cart-restaurant">
             <cart-component restaurant ="{{ $restaurant }}"></cart-component>
         </div>
     </div>
