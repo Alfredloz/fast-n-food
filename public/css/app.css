@@ -10976,7 +10976,7 @@ a.text-dark:focus {
   transform: scale(1.1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 575px) {
   .navbar .list_item {
     margin: 0.5rem;
   }
@@ -11000,7 +11000,7 @@ a.text-dark:focus {
   transition: 0.5s;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 575px) {
   .navbar .nav_btns {
     background-color: inherit;
     color: white;
@@ -11017,7 +11017,7 @@ a.text-dark:focus {
   right: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 575px) {
   .collapse .right_nav {
     position: initial;
     left: 0;
@@ -11395,6 +11395,22 @@ html {
   transform: translateY(300px);
 }
 
+@media screen and (max-width: 1220px) {
+  .restaurant-banner-container img {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 575px) {
+  .restaurant-banner-container {
+    height: 100px;
+  }
+
+  .restaurant-banner-container img {
+    display: none;
+  }
+}
+
 .restaurant-container {
   display: flex;
   justify-content: space-around;
@@ -11514,20 +11530,36 @@ html {
 }
 
 .restaurant-logo-name .restaurant-logo {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
   width: 270px;
   height: 270px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   transform: translate(0px, -50px);
   margin-right: 20px;
-  display: flex;
-  justify-content: center;
-  align-content: center;
   overflow: hidden;
 }
 
 .restaurant-logo-name .restaurant-logo img {
   height: 100%;
   display: block;
+}
+
+@media screen and (max-width: 1500px) {
+  .restaurant-logo-name {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .restaurant-logo-name .restaurant-name {
+    margin: 2rem 0;
+  }
+
+  .restaurant-logo-name .restaurant-logo {
+    margin: 0;
+  }
 }
 
 .cart-restaurant {

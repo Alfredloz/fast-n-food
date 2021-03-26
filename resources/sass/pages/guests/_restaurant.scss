@@ -9,7 +9,18 @@
         bottom: 0;
         width: 100%;
         transform: translateY(300px);
-
+        // breakpoint per smappamento banner
+        @media screen and (max-width: 1220px) {
+            transform: translateY(0);
+        }
+    }
+    // media query
+    @media #{$smartphone} {
+        height: 100px;        
+        img{
+            display: none;
+            
+        }
     }
 }
 .restaurant-container {
@@ -89,6 +100,7 @@
 .restaurant-logo-name {
     display: flex;
     justify-content: flex-start;
+    
     .restaurant-name {
         -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -116,6 +128,10 @@
         }
     }
     .restaurant-logo {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-content: center;
         width: 270px;
         height: 270px;
         -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -123,13 +139,23 @@
         box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         transform: translate(0px, -50px);
         margin-right: 20px;
-        display: flex;
-        justify-content: center;
-        align-content: center;
         overflow: hidden;
         img {
             height: 100%;
             display: block;
+        }
+    }
+
+    // media query breakpoint
+    @media  screen and (max-width: 1500px) {
+        flex-direction: column;
+        align-items: center;
+        //restaurant info div
+        .restaurant-name{
+            margin: 2rem 0;
+        }
+        .restaurant-logo{
+            margin: 0;
         }
     }
 }
