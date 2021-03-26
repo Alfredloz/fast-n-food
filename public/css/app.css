@@ -11441,12 +11441,12 @@ html {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  color: #435070;
 }
 
 .restaurant-logo-name .restaurant-name h1 {
   font-size: 50px;
   font-weight: bold;
-  color: #435070;
   margin-right: 20px;
 }
 
@@ -11511,6 +11511,11 @@ html {
   font-weight: bold;
 }
 
+.cart-restaurant .cart .cart_plates {
+  margin: 50px 0;
+  max-width: 230px;
+}
+
 .cart-restaurant .cart .checkout {
   text-align: center;
   border-top: 1px solid #435070;
@@ -11518,11 +11523,16 @@ html {
 }
 
 .cart-restaurant .cart .checkout h3 {
+  font-size: 20px;
   margin: 10px 0px 30px 0px;
 }
 
 .cart-restaurant .cart .checkout i {
   font-size: 20px;
+}
+
+.cart-restaurant .cart .delete_cart .remove-cart-btn {
+  background-color: #fa6400;
 }
 
 .add-cart-btn {

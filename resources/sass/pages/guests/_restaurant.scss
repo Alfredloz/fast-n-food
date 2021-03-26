@@ -1,15 +1,15 @@
-.restaurant-banner-container { 
-    position: relative; 
-    height: 500px; 
-    width: 100%; 
+.restaurant-banner-container {
+    position: relative;
+    height: 500px;
+    width: 100%;
     margin-bottom: 0px;
     overflow: hidden;
-    img { 
-        position: absolute; 
+    img {
+        position: absolute;
         bottom: 0;
         width: 100%;
         transform: translateY(300px);
-    
+
     }
 }
 .restaurant-container {
@@ -76,7 +76,7 @@
         -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         padding: 30px;
-        max-width: 800px;   
+        max-width: 800px;
         min-width: 270px;
         transform: translate(0px, -50px);
         background-color: white;
@@ -84,10 +84,10 @@
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
+        color: $tertiary-color;
         h1 {
             font-size: 50px;
             font-weight: bold;
-            color: $tertiary-color;
             margin-right: 20px;
         }
         i {
@@ -147,19 +147,29 @@
                 font-weight: bold;
             }
         }
+        .cart_plates{
+          margin: 50px 0;
+          max-width: 230px;
+        }
         .checkout {
             text-align: center;
             border-top: 1px solid $tertiary-color;
             padding: 10px;
             h3 {
+              font-size: 20px;
                 margin: 10px 0px 30px 0px;
             }
             i {
                 font-size: 20px;
             }
         }
+        .delete_cart{
+          .remove-cart-btn{
+            background-color: $primary-color;
+          }
+        }
     }
-    
+
 }
 // buttons
 .add-cart-btn {

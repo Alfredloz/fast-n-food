@@ -6,14 +6,14 @@
             </div>
             <div class="restaurant-name">
                 <h1><i class="fas fa-utensils"></i> {{restaurant_info.restaurant_name}}</h1>
-                <h3>{{restaurant_info.restaurant_description}}</h3>
+                <h3><em>{{restaurant_info.restaurant_description}}</em></h3>
                 <div>
                     <h6><i class="fas fa-map-marker-alt"></i><b>{{restaurant_info.address}}</b></h6>
                     <p><i class="fas fa-phone"></i><b>{{restaurant_info.phone_number}}</b></p>
                 </div>
-            </div>         
+            </div>
         </div>
-        
+
         <div class="no-plates" v-if="noPlates">
             <h2>Il ristorante è momentaneamente chiuso</h2>
         </div>
@@ -46,7 +46,7 @@
                             <button class="less-plus-button" @click="increaseQuantity(plate)"><i class="fas fa-plus-circle fa-lg fa-fw"></i></button>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
