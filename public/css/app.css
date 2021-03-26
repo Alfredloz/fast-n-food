@@ -12057,8 +12057,8 @@ form {
   margin-left: 15px;
 }
 
-.plates_list .plate_card .plate_info .visibility {
-  width: 140px;
+.plates_list .plate_card .plate_info .visibility-form {
+  width: 170px;
 }
 
 .plates_list .plate_card .plate_info p {
@@ -12069,6 +12069,70 @@ form {
   display: flex;
   flex-direction: column;
   width: 120px;
+}
+
+.plates_list .plate_card .plate_info .group_button .mi2 {
+  margin: 1rem 0;
+}
+
+@media screen and (max-width: 576px) {
+  .custom_center {
+    text-align: center;
+  }
+
+  .plates_list {
+    width: 70%;
+    justify-content: space-around;
+    margin: auto;
+  }
+
+  .plates_list .plate_card {
+    flex-direction: column;
+  }
+
+  .plates_list .plate_card .plate_img {
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+  .plates_list .plate_card .plate_info {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  .plates_list .plate_card .plate_info h3 {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+  }
+
+  .plates_list .plate_card .plate_info .visibility-form {
+    width: 100%;
+    margin: auto;
+  }
+
+  .plates_list .plate_card .plate_info .visibility-form .form-check-block {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .plates_list .plate_card .plate_info p {
+    text-align: center;
+  }
+
+  .plates_list .plate_card .plate_info .group_button {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 35px;
+  }
+
+  .plates_list .plate_card .plate_info .group_button .mi2 {
+    margin: 0;
+  }
 }
 
 h2 {
