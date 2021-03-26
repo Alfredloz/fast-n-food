@@ -17,30 +17,6 @@
 
   <div class="curvature"></div>
 </div>
-
-<section id="typologies"></section>
-<!-- <div class="slider-container">
-  <div class="slider-container-2">
-    <h1>Seleziona una o più tipologie</h1>
-      <div class="slider-container-3">
-        <button id="slideBack" type="button"><i class="fas fa-caret-left"></i></button>
-        <div id="slider-typologies">
-          <img src="{{ asset('/images/typologies/007-pizza.png') }}" alt="Logo brand">
-          <img src="{{ asset('/images/typologies/013-sandwich.png') }}" alt="Logo brand">
-          <img src="{{ asset('/images/typologies/002-sushi.png') }}" alt="Logo brand">
-          <img src="{{ asset('/images/typologies/011-salad.png') }}" alt="Logo brand">
-          <img src="{{ asset('/images/typologies/015-cake.png') }}" alt="Logo brand">
-          <img src="{{ asset('/images/typologies/026-ramen.png') }}" alt="Logo brand">
-          <img src="{{ asset('/images/typologies/029-burger.png') }}" alt="Logo brand">
-          <img src="{{ asset('/images/typologies/012-fried chicken.png') }}" alt="Logo brand">
-          <img src="{{ asset('/images/typologies/016-barbecue.png') }}" alt="Logo brand">
-          <img src="{{ asset('/images/typologies/001-pancake.png') }}" alt="Logo brand">
-        </div>
-        <button id="slide" type="button"><i class="fas fa-caret-right"></i></button>
-      </div>
-  </div>
-</div> -->
-
 <div id="app">
   <home-component></home-component>
 </div>

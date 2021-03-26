@@ -1,3 +1,12 @@
+// media variables
+$smartphone: "(max-width: 768px)";
+// 
+
+// utility classes
+.d_flex{
+    display: flex;
+}
+// /utility classes
 .navbar {
     background: rgb(254,125,13);
     background: linear-gradient(90deg, rgba(254,125,13,1) 0%, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);
@@ -11,8 +20,8 @@
         font-weight: bold;
         font-size: 20px;
     }
-    .navbar-toggler {
-        margin-right: 20px;
+    .nav_container{
+        justify-content: space-around;
     }
     .navbar-brand {
         margin-left: 20px;
@@ -22,21 +31,46 @@
             transform: scale(1.1);
         }
     }
-    .nav-link {
+    .list_item{
+         // media query for smartphone
+         @media #{$smartphone} {
+            margin: 0.5rem;
+
+        }
+    }
+    .nav_btns {
         font-weight: bold;
         font-size: 15px;
-        color: $secondary-color!important;
+        color: $secondary-color;
         text-align: center;
         background-color: white;
         width: 100px;
         border-radius: 10px;
-        padding: 5px 10px;
+        padding: 7px 12px;
         margin-left: 20px;
         transition: 0.5s;
+        
         &:hover {
             background-color: $tertiary-color;
             transition: 0.5s;
         }
+        @media #{$smartphone} {
+            background-color: inherit;
+            color: $white;
+            font-size: 1.3rem;
+        }
     }
 
+}
+.collapse{
+    position: relative;
+
+    .right_nav{
+      position: absolute;
+      right: 0; 
+      @media #{$smartphone} {
+        position: initial;
+        left: 0;
+    }
+    }
 }
