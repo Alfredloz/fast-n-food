@@ -122,7 +122,6 @@
         }
     }
 }
-
 .submit-payment {
     background-color: $secondary-color;
     border: none;
@@ -140,4 +139,9 @@
 }
 .braintree-show-card {
     z-index: 0;
+}
+.error-checkout {
+    color: $remove-color;
+    margin-left: 20px;
+    font-weight: bold;
 }
