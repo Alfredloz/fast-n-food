@@ -12030,6 +12030,7 @@ form {
 
 .plates_list .plate_card {
   display: flex;
+  width: 100%;
   margin-top: 30px;
   padding-bottom: 30px;
   border-bottom: 2px solid lightgray;
@@ -12044,25 +12045,30 @@ form {
 .plates_list .plate_card .plate_info {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 300px);
   color: #435070;
 }
 
 .plates_list .plate_card .plate_info h3 {
   width: 150px;
-  text-align: center;
+  text-align: left;
   font-weight: bold;
-  padding: 10px;
+  margin-left: 15px;
+}
+
+.plates_list .plate_card .plate_info .visibility {
+  width: 140px;
 }
 
 .plates_list .plate_card .plate_info p {
-  width: 400px;
-  padding: 0 50px;
+  width: 300px;
 }
 
 .plates_list .plate_card .plate_info .group_button {
   display: flex;
   flex-direction: column;
-  width: 100px;
+  width: 120px;
 }
 
 h2 {

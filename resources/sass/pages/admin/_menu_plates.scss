@@ -4,6 +4,7 @@
     
     .plate_card {
         display: flex;
+        width: 100%;
         margin-top: 30px;
         padding-bottom: 30px;
         border-bottom: 2px solid lightgray;
@@ -17,24 +18,30 @@
         .plate_info {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            width: calc(100% - 300px);
             color: $tertiary-color;
+            
             
             h3 {
                 width: 150px;
-                text-align: center;
+                text-align: left;
                 font-weight: bold;
-                padding: 10px;
+                margin-left: 15px;
+            }
+
+            .visibility {
+                width: 140px;
             }
 
             p {
-                width: 400px;
-                padding: 0 50px;
+                width: 300px;
             }
 
             .group_button {
                 display: flex;
                 flex-direction: column;
-                width: 100px;
+                width: 120px;
             }
         }
     }
