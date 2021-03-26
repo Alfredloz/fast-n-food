@@ -16,21 +16,21 @@
       <div class="input-container">
         <!-- <label for="name">Nome</label> -->
         <i class="far fa-user"></i><input class="form-control" placeholder="Nome" type="text" name="name" id="name" required>
-        <p class="error-checkout" id="error_name"></p>
+        <small class="error-checkout" id="error_name"></small>
       </div>
       <hr>
 
       <div class="input-container">
         <!-- <label for="phone">Telefono</label> -->
         <i class="fas fa-phone"></i><input class="form-control" type="text" placeholder="Telefono" name="phone" id="phone" required>
-        <small id="error_phone"></small>
+        <small class="error-checkout" id="error_phone"></small>
       </div>
       <hr>
       
       <div class="input-container">
         <!-- <label for="address">Indirizzo</label> -->
         <i class="fas fa-map-marker-alt"></i><input class="form-control" type="text" placeholder="Indirizzo" name="address" id="address" required>
-        <small id="error_address"></small>
+        <small class="error-checkout" id="error_address"></small>
       </div>
 
     </div>

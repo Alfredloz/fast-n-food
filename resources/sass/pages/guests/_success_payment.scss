@@ -1,0 +1,18 @@
+.success-payment {
+    width: 80%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    i {
+        font-size: 30px;
+        margin-right: 20px;
+        color: $secondary-color;
+    }
+    h1 {
+        font-size: 30px;
+        display: inline-block;
+    }
+    h2 {
+        font-size: 20px;
+    }
+}
