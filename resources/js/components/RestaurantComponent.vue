@@ -25,10 +25,9 @@
                     <img :src="'/storage/'+plate.picture" alt="">
                 </div>
                 <div class="plate-info">
-                    <div>
+                    <div class="plate_info_description">
                         <h3>{{plate.name}}</h3>
                         <h4>{{plate.description_ingredients}}</h4>
-                        <hr>
                         <h5>€ {{plate.price}}</h5>
                     </div>
                     <div class="quantity-plate">

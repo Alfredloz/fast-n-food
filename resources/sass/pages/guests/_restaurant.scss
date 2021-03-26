@@ -45,11 +45,6 @@
         max-width: 500px;
         min-width: 200px;
         color: $tertiary-color;
-        .quantity-plate {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
         .plate-image {
             height: 280px;
             overflow: hidden;
@@ -57,14 +52,37 @@
                 width: 100%;
             }
         }
-        h3 {
-            font-size: 30px;
-            font-weight: bold;
-        }
         .plate-info {
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
             margin: 30px;
+            .plate_info_description{
+              height: 200px;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              align-items: flex-start;
+              h3 {
+                font-size: 30px;
+                font-weight: bold;
+              }
+              h4{
+                margin-bottom: auto;
+              }
+              h5{
+                width: 100%;
+                padding-top: 10px;
+                border-top: 1px solid $tertiary-color;
+              }
+            }
+            .quantity-plate {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
         }
     }
 }
@@ -116,7 +134,11 @@
     }
 }
 .cart-restaurant {
+  position: relative;
     .cart {
+      position: sticky;
+      top: 170px;
+      right: 0;
         -webkit-box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         -moz-box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -126,6 +148,7 @@
         color: $tertiary-color;
         overflow-y: scroll;
         min-width: 300px;
+        max-height: 85vh;
         margin-bottom: 50px;
         h2 {
             font-weight: bold;
