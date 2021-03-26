@@ -11433,12 +11433,6 @@ html {
   color: #435070;
 }
 
-.restaurant-container .plate .quantity-plate {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .restaurant-container .plate .plate-image {
   height: 280px;
   overflow: hidden;
@@ -11448,15 +11442,42 @@ html {
   width: 100%;
 }
 
-.restaurant-container .plate h3 {
+.restaurant-container .plate .plate-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 30px;
+}
+
+.restaurant-container .plate .plate-info .plate_info_description {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.restaurant-container .plate .plate-info .plate_info_description h3 {
   font-size: 30px;
   font-weight: bold;
 }
 
-.restaurant-container .plate .plate-info {
+.restaurant-container .plate .plate-info .plate_info_description h4 {
+  margin-bottom: auto;
+}
+
+.restaurant-container .plate .plate-info .plate_info_description h5 {
+  width: 100%;
+  padding-top: 10px;
+  border-top: 1px solid #435070;
+}
+
+.restaurant-container .plate .plate-info .quantity-plate {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  margin: 30px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .restaurant-logo-name {
@@ -11475,12 +11496,12 @@ html {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  color: #435070;
 }
 
 .restaurant-logo-name .restaurant-name h1 {
   font-size: 50px;
   font-weight: bold;
-  color: #435070;
   margin-right: 20px;
 }
 
@@ -11509,7 +11530,14 @@ html {
   display: block;
 }
 
+.cart-restaurant {
+  position: relative;
+}
+
 .cart-restaurant .cart {
+  position: sticky;
+  top: 170px;
+  right: 0;
   box-shadow: 0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   transform: translate(0px, -50px);
   padding: 30px;
@@ -11517,6 +11545,7 @@ html {
   color: #435070;
   overflow-y: scroll;
   min-width: 300px;
+  max-height: 85vh;
   margin-bottom: 50px;
 }
 
@@ -11545,6 +11574,11 @@ html {
   font-weight: bold;
 }
 
+.cart-restaurant .cart .cart_plates {
+  margin: 50px 0;
+  max-width: 230px;
+}
+
 .cart-restaurant .cart .checkout {
   text-align: center;
   border-top: 1px solid #435070;
@@ -11552,11 +11586,16 @@ html {
 }
 
 .cart-restaurant .cart .checkout h3 {
+  font-size: 20px;
   margin: 10px 0px 30px 0px;
 }
 
 .cart-restaurant .cart .checkout i {
   font-size: 20px;
+}
+
+.cart-restaurant .cart .delete_cart .remove-cart-btn {
+  background-color: #fa6400;
 }
 
 .add-cart-btn {

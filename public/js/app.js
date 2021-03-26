@@ -2070,7 +2070,7 @@ __webpack_require__.r(__webpack_exports__);
 
     /**
      * Get the position of a plate bought in the plates_bought array, -1 otherwise
-     * 
+     *
      * @param plate - the plate to look for
      * @return the position of the plate or -1 if the plate is not in plates_bought
     */
@@ -2279,7 +2279,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
-//
 //
 //
 //
@@ -38772,8 +38771,8 @@ var render = function() {
       "div",
       [
         _vm._l(_vm.plates_bought, function(plate) {
-          return _c("div", { key: plate.id }, [
-            _c("h4", [_vm._v(_vm._s(plate.name))]),
+          return _c("div", { key: plate.id, staticClass: "cart_plates" }, [
+            _c("h4", [_c("strong", [_vm._v(" " + _vm._s(plate.name) + " ")])]),
             _vm._v(" "),
             _c(
               "button",
@@ -38787,7 +38786,7 @@ var render = function() {
               },
               [
                 _c("i", { staticClass: "fas fa-trash-alt" }),
-                _vm._v(" Rimuovi dal Carrello\n            ")
+                _vm._v(" Rimuovi\n            ")
               ]
             ),
             _vm._v(" "),
@@ -39142,7 +39141,9 @@ var render = function() {
           _vm._v(" " + _vm._s(_vm.restaurant_info.restaurant_name))
         ]),
         _vm._v(" "),
-        _c("h3", [_vm._v(_vm._s(_vm.restaurant_info.restaurant_description))]),
+        _c("h3", [
+          _c("em", [_vm._v(_vm._s(_vm.restaurant_info.restaurant_description))])
+        ]),
         _vm._v(" "),
         _c("div", [
           _c("h6", [
@@ -39181,12 +39182,10 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "plate-info" }, [
-            _c("div", [
+            _c("div", { staticClass: "plate_info_description" }, [
               _c("h3", [_vm._v(_vm._s(plate.name))]),
               _vm._v(" "),
               _c("h4", [_vm._v(_vm._s(plate.description_ingredients))]),
-              _vm._v(" "),
-              _c("hr"),
               _vm._v(" "),
               _c("h5", [_vm._v("€ " + _vm._s(plate.price))])
             ]),
@@ -51850,13 +51849,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! C:\Users\user\Documents\Boolean\Esercizi\laravel\fast-n-food\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\user\Documents\Boolean\Esercizi\laravel\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! /Users/alfredoloz/Boolean/fast-n-food/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/alfredoloz/Boolean/fast-n-food/resources/sass/app.scss */"./resources/sass/app.scss");
->>>>>>> navbar-fix
+__webpack_require__(/*! C:\Users\Alessandro\Desktop\Boolean Classe 23\fast-n-food\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Alessandro\Desktop\Boolean Classe 23\fast-n-food\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
