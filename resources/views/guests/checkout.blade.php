@@ -6,21 +6,32 @@
 @section('content')
 
   <div id="app">
+    <div class="cart-checkout">
       <cart-component restaurant ="{{ $restaurant }}" style="position:relative"></cart-component>
+    </div>
   </div>
 
-    <div class="info_delivery">
-      <label for="name">Nome</label>
-      <input type="text" name="name" id="name" required>
-      <small id="error_name"></small>
+    <div class="login-container">
+    <h1>Procedi con il pagamento</h1>
+      <div class="input-container">
+        <!-- <label for="name">Nome</label> -->
+        <i class="far fa-user"></i><input class="form-control" placeholder="Nome" type="text" name="name" id="name" required>
+        <p class="error-checkout" id="error_name"></p>
+      </div>
+      <hr>
 
-      <label for="phone">Telefono</label>
-      <input type="text" name="phone" id="phone" required>
-      <small id="error_phone"></small>
-
-      <label for="address">Indirizzo</label>
-      <input type="text" name="address" id="address" required>
-      <small id="error_address"></small>
+      <div class="input-container">
+        <!-- <label for="phone">Telefono</label> -->
+        <i class="fas fa-phone"></i><input class="form-control" type="text" placeholder="Telefono" name="phone" id="phone" required>
+        <small id="error_phone"></small>
+      </div>
+      <hr>
+      
+      <div class="input-container">
+        <!-- <label for="address">Indirizzo</label> -->
+        <i class="fas fa-map-marker-alt"></i><input class="form-control" type="text" placeholder="Indirizzo" name="address" id="address" required>
+        <small id="error_address"></small>
+      </div>
 
     </div>
 
@@ -29,12 +40,11 @@
       <div style="width:60%; margin:auto;">
         <div id="dropin-container"></div>
       </div>
-      <button style="background-color:yellow" id="submit-button">Submit payment</button>
+      <div class="login-container">
+        <button id="submit-button" class="submit-payment">Submit payment</button>
+      </div>
     </div>
-
-    <h2>La doc di braintree è brutta forte e malvagia</h2>
-
-
+    
 <script>
   var button = document.querySelector('#submit-button');
 
