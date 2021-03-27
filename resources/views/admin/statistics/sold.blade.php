@@ -2,21 +2,27 @@
 
 @section('content')
 
-  <h1>Ricevute degli ordini</h1>
+  <h1 class="title_bills">Ricevute degli ordini</h1>
 
-  @foreach ($bills as $bill)  
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Ordine del: {{ $bill->created_at }}</h4>
-        <hr>
-        @foreach ($bill->plates as $plate)
-          <p class="card-text">Piatto: {{ $plate->name}} x{{ $plate->pivot->plate_quantity}}</p>
-          <p class="card-text">Prezzo: {{ $plate->price}} €</p>
-        @endforeach
-        <hr>
-        <p class="card-text">Totale: {{ $bill->total_price}} €</p>
+  <div class="card_container">
+    @foreach ($bills as $bill)
+      <div class="card-scontrino">
+        <img class="card_image" src="{{asset("/images/back_office/scontrino.png")}}" alt="">
+
+        <div class="card-body">
+          <h4 class="card-title">Ordine del: {{ $bill->created_at }}</h4>
+          @foreach ($bill->plates as $plate)
+            <div class="card_info">
+              <p class="card_plate_name">x{{ $plate->pivot->plate_quantity}} - {{ $plate->name}}</p>
+              <p class="card_plate_price">{{ $plate->price}} €</p>
+          </div>
+          @endforeach
+          <p class="card-text card_total">Totale: {{ $bill->total_price}} €</p>
+        </div>
+
+
       </div>
-    </div>         
   @endforeach
+</div>
 
 @endsection

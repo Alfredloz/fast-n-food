@@ -1,0 +1,87 @@
+.title_bills{
+  margin-top: 30px;
+  color: $tertiary-color;
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.card_container{
+  color: rgba(#435070, 0.75);
+  width: 100%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .card-scontrino{
+    position: relative;
+    width: 30%;
+    margin: 30px 0;
+    .card_image{
+      width: 100%;
+      display: block;
+    }
+    .card-body{
+      height: 518px;
+      width: 100%;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      .card-title{
+        margin: 45px 0 50px;
+        font-size: 1rem;
+        font-weight: bold;
+      }
+      .card_info{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .card_plate_name{
+          width: 70%
+        }
+        .card_plate_price{
+          width: 25%;
+          text-align: right;
+        }
+      }
+      .card_total{
+        font-size: 1.8rem;
+        font-weight: bolder;
+        position: absolute;
+        bottom: 32px;
+        left: 22px;
+        color: $tertiary-color;
+      }
+    }
+  }
+}
+
+@media #{$smartphone}{
+  .card_container{
+    justify-content: space-around;
+    .card-scontrino{
+      width: 80%;
+      height: 100%;
+      margin: 30px auto;
+      .card-body{
+        width: 95%;
+        height: 100%;
+        top: 23px;
+        left: 8px;
+        .card-title{
+          font-size: 1.3rem;
+          margin: 42px 0 60px;
+        }
+        .card_info{
+          font-size: 1.2rem;
+        }
+        .card_total{
+          font-size: 2rem;
+          bottom: 70px;
+        }
+      }
+    }
+  }
+}
