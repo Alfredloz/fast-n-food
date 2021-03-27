@@ -12048,6 +12048,24 @@ form {
   color: #435070;
 }
 
+@media (max-width: 575px) {
+  .presentation {
+    padding: 0 30px;
+  }
+
+  .presentation p {
+    margin: 0;
+  }
+
+  .dashboard_menu {
+    flex-direction: column;
+  }
+
+  .dashboard_menu .img_dashboard {
+    margin: 30px 0;
+  }
+}
+
 .statistic h1 {
   font-size: 50px;
   font-weight: bold;
@@ -12107,7 +12125,7 @@ form {
   margin: 1rem 0;
 }
 
-@media screen and (max-width: 576px) {
+@media (max-width: 575px) {
   .custom_center {
     text-align: center;
   }

@@ -51,7 +51,7 @@
     }
 }
 
-@media screen and (max-width: 576px) {
+@media #{$smartphone} {
     .custom_center {
         text-align: center;
     }

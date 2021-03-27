@@ -40,3 +40,21 @@
         }
     }
 }
+
+@media #{$smartphone} {
+    .presentation {
+        padding: 0 30px;
+    
+        p {
+            margin: 0;
+        }
+    }
+
+    .dashboard_menu {
+        flex-direction: column;
+
+        .img_dashboard {
+            margin: 30px 0;
+        }
+    }
+}
