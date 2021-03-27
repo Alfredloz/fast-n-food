@@ -4,10 +4,11 @@
 
 <div class="statistic">
   <h1>Statistica degli ordini e guadagni</h1>
-  <div class="container">
+  <div class="chartjs">
     <canvas id="myChart"></canvas>
   </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 
@@ -62,13 +63,11 @@ var ctx = document.getElementById('myChart').getContext('2d');
   Chart.defaults.global.defaultFontSize = 18;
   Chart.defaults.global.defaultFontStyle = 'bold';
   Chart.defaults.global.defaultFontColor = '#435070';
-    
     var chart = new Chart(ctx, {
-
 
         // The type of chart we want to create
         type: 'line',
-
+        responsive: true,
         // The data for our dataset
         data: {
             labels: labels,
@@ -94,10 +93,12 @@ var ctx = document.getElementById('myChart').getContext('2d');
         },
 
         options: {
+          responsive: true,
+          maintainAspectRatio: false,
           title: {
             display: true,
             text: 'Ordini ricevuti e guadagni',
-            fontSize: 25
+            fontSize: 20
           },
           legend: {
             position: 'top',
