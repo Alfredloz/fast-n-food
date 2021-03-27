@@ -12272,6 +12272,39 @@ h2 {
   color: #435070;
 }
 
+@media (max-width: 575px) {
+  .card_container {
+    justify-content: space-around;
+  }
+
+  .card_container .card-scontrino {
+    width: 80%;
+    height: 100%;
+    margin: 30px auto;
+  }
+
+  .card_container .card-scontrino .card-body {
+    width: 95%;
+    height: 100%;
+    top: 23px;
+    left: 8px;
+  }
+
+  .card_container .card-scontrino .card-body .card-title {
+    font-size: 1.3rem;
+    margin: 42px 0 60px;
+  }
+
+  .card_container .card-scontrino .card-body .card_info {
+    font-size: 1.2rem;
+  }
+
+  .card_container .card-scontrino .card-body .card_total {
+    font-size: 2rem;
+    bottom: 70px;
+  }
+}
+
 * {
   padding: 0;
   margin: 0;

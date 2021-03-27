@@ -57,3 +57,31 @@
     }
   }
 }
+
+@media #{$smartphone}{
+  .card_container{
+    justify-content: space-around;
+    .card-scontrino{
+      width: 80%;
+      height: 100%;
+      margin: 30px auto;
+      .card-body{
+        width: 95%;
+        height: 100%;
+        top: 23px;
+        left: 8px;
+        .card-title{
+          font-size: 1.3rem;
+          margin: 42px 0 60px;
+        }
+        .card_info{
+          font-size: 1.2rem;
+        }
+        .card_total{
+          font-size: 2rem;
+          bottom: 70px;
+        }
+      }
+    }
+  }
+}

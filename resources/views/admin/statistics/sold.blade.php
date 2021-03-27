@@ -11,13 +11,12 @@
 
         <div class="card-body">
           <h4 class="card-title">Ordine del: {{ $bill->created_at }}</h4>
-            @foreach ($bill->plates as $plate)
-              <div class="card_info">
-                <p class="card_plate_name">x{{ $plate->pivot->plate_quantity}} - {{ $plate->name}}</p>
-                <p class="card_plate_price">{{ $plate->price}} €</p>
-            </div>
-            @endforeach
-
+          @foreach ($bill->plates as $plate)
+            <div class="card_info">
+              <p class="card_plate_name">x{{ $plate->pivot->plate_quantity}} - {{ $plate->name}}</p>
+              <p class="card_plate_price">{{ $plate->price}} €</p>
+          </div>
+          @endforeach
           <p class="card-text card_total">Totale: {{ $bill->total_price}} €</p>
         </div>
 
