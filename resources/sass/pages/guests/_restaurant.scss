@@ -1,3 +1,4 @@
+
 .restaurant-banner-container {
     position: relative;
     height: 500px;
@@ -26,7 +27,7 @@
 .restaurant-container {
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     width: 80%;
     margin: auto;
     margin-bottom: 100px;
@@ -57,7 +58,7 @@
         min-width: 200px;
         color: $tertiary-color;
         .plate-image {
-            height: 280px;
+            // height: 280px;
             overflow: hidden;
             img {
                 width: 100%;
@@ -78,9 +79,18 @@
               h3 {
                 font-size: 30px;
                 font-weight: bold;
+                @media #{$smartphone} {
+                    font-size: 22px;
+                }
               }
-              h4{
+              p{
                 margin-bottom: auto;
+                font-size: 1.2rem;
+                @media #{$smartphone} {
+                    font-size: initial;
+                    overflow-y: scroll;
+                    
+                }
               }
               h5{
                 width: 100%;
@@ -96,6 +106,7 @@
             }
         }
     }
+    
 }
 .restaurant-logo-name {
     display: flex;
@@ -161,10 +172,11 @@
 }
 .cart-restaurant {
   position: relative;
+
     .cart {
-      position: sticky;
-      top: 170px;
-      right: 0;
+        position: sticky;
+        top: 170px;
+        right: 0;
         -webkit-box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         -moz-box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         box-shadow:0 10px 14px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -191,7 +203,7 @@
             align-items: baseline;
             justify-content: space-around;
             padding-bottom: 30px;
-            h1 {
+            h2 {
                 font-size: 30px;
                 font-weight: bold;
             }
@@ -218,7 +230,28 @@
           }
         }
     }
+    // smartphone breakpoint
+    @media #{$smartphone} {
+        #cart{
+            transform: none;
+            position: initial;
+        }
+    }
+    // tablet breakpoint
+    @media screen and (min-width: 576px) and (max-width: 1500px) {
+        #cart{
+            transform: none;
+            position: initial;
+            width: 80vw;
 
+            .cart_plates{
+                margin: 50px auto;
+            }
+            .delete_cart{
+                text-align: center;
+            }
+        }
+    }
 }
 // buttons
 .add-cart-btn {

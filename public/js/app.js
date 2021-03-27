@@ -38762,7 +38762,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "cart" }, [
+  return _c("div", { staticClass: "cart", attrs: { id: "cart" } }, [
     _vm._m(0),
     _vm._v(" "),
     _vm._m(1),
@@ -38886,7 +38886,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "shopping" }, [
       _c("i", { staticClass: "fas fa-cart-arrow-down" }),
-      _c("h1", [_vm._v("Carrello")])
+      _c("h2", [_vm._v("Carrello")])
     ])
   },
   function() {
@@ -39185,7 +39185,7 @@ var render = function() {
             _c("div", { staticClass: "plate_info_description" }, [
               _c("h3", [_vm._v(_vm._s(plate.name))]),
               _vm._v(" "),
-              _c("h4", [_vm._v(_vm._s(plate.description_ingredients))]),
+              _c("p", [_vm._v(_vm._s(plate.description_ingredients))]),
               _vm._v(" "),
               _c("h5", [_vm._v("€ " + _vm._s(plate.price))])
             ]),
