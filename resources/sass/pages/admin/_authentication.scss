@@ -68,3 +68,9 @@ form {
         }
     }
 }
+
+@media #{$smartphone} {
+    .imput_img {
+        width: 150px;
+    }
+}
