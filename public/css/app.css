@@ -12204,6 +12204,74 @@ h2 {
   margin: 10px;
 }
 
+.title_bills {
+  margin-top: 30px;
+  color: #435070;
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.card_container {
+  color: rgba(67, 80, 112, 0.75);
+  width: 100%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card_container .card-scontrino {
+  position: relative;
+  width: 30%;
+  margin: 30px 0;
+}
+
+.card_container .card-scontrino .card_image {
+  width: 100%;
+  display: block;
+}
+
+.card_container .card-scontrino .card-body {
+  height: 518px;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card_container .card-scontrino .card-body .card-title {
+  margin: 45px 0 50px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.card_container .card-scontrino .card-body .card_info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card_container .card-scontrino .card-body .card_info .card_plate_name {
+  width: 70%;
+}
+
+.card_container .card-scontrino .card-body .card_info .card_plate_price {
+  width: 25%;
+  text-align: right;
+}
+
+.card_container .card-scontrino .card-body .card_total {
+  font-size: 1.8rem;
+  font-weight: bolder;
+  position: absolute;
+  bottom: 32px;
+  left: 22px;
+  color: #435070;
+}
+
 * {
   padding: 0;
   margin: 0;
