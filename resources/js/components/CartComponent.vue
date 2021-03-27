@@ -1,7 +1,7 @@
 <template>
-    <div class="cart">
+    <div class="cart" id="cart">
 
-        <div class="shopping"><i class="fas fa-cart-arrow-down"></i><h1>Carrello</h1></div>
+        <div class="shopping"><i class="fas fa-cart-arrow-down"></i><h2>Carrello</h2></div>
         <div class="shopping"><img width="140px" src="/images/Artwork.svg"></div>
         <div>
 

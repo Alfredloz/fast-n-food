@@ -27,7 +27,7 @@
                 <div class="plate-info">
                     <div class="plate_info_description">
                         <h3>{{plate.name}}</h3>
-                        <h4>{{plate.description_ingredients}}</h4>
+                        <p>{{plate.description_ingredients}}</p>
                         <h5>€ {{plate.price}}</h5>
                     </div>
                     <div class="quantity-plate">

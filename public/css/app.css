@@ -11192,6 +11192,13 @@ body {
   filter: grayscale(100%);
 }
 
+@media (max-width: 575px) {
+  .home-component .typologies .restaurant-list .restaurant:hover {
+    transform: none;
+    filter: none;
+  }
+}
+
 .home-component .typologies .restaurant-list .restaurant .restaurant-info {
   text-align: center;
 }
@@ -11414,7 +11421,7 @@ html {
 .restaurant-container {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
   width: 80%;
   margin: auto;
   margin-bottom: 100px;
@@ -11450,7 +11457,6 @@ html {
 }
 
 .restaurant-container .plate .plate-image {
-  height: 280px;
   overflow: hidden;
 }
 
@@ -11479,8 +11485,22 @@ html {
   font-weight: bold;
 }
 
-.restaurant-container .plate .plate-info .plate_info_description h4 {
+@media (max-width: 575px) {
+  .restaurant-container .plate .plate-info .plate_info_description h3 {
+    font-size: 22px;
+  }
+}
+
+.restaurant-container .plate .plate-info .plate_info_description p {
   margin-bottom: auto;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 575px) {
+  .restaurant-container .plate .plate-info .plate_info_description p {
+    font-size: initial;
+    overflow-y: scroll;
+  }
 }
 
 .restaurant-container .plate .plate-info .plate_info_description h5 {
@@ -11601,7 +11621,7 @@ html {
   padding-bottom: 30px;
 }
 
-.cart-restaurant .cart .shopping h1 {
+.cart-restaurant .cart .shopping h2 {
   font-size: 30px;
   font-weight: bold;
 }
@@ -11628,6 +11648,29 @@ html {
 
 .cart-restaurant .cart .delete_cart .remove-cart-btn {
   background-color: #fa6400;
+}
+
+@media (max-width: 575px) {
+  .cart-restaurant #cart {
+    transform: none;
+    position: initial;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 1500px) {
+  .cart-restaurant #cart {
+    transform: none;
+    position: initial;
+    width: 80vw;
+  }
+
+  .cart-restaurant #cart .cart_plates {
+    margin: 50px auto;
+  }
+
+  .cart-restaurant #cart .delete_cart {
+    text-align: center;
+  }
 }
 
 .add-cart-btn {
