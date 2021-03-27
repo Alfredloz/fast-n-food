@@ -11192,6 +11192,13 @@ body {
   filter: grayscale(100%);
 }
 
+@media (max-width: 575px) {
+  .home-component .typologies .restaurant-list .restaurant:hover {
+    transform: none;
+    filter: none;
+  }
+}
+
 .home-component .typologies .restaurant-list .restaurant .restaurant-info {
   text-align: center;
 }

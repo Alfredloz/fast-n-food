@@ -107,6 +107,10 @@ body {
                     transition: 1s ease;
                     transform: scale(1.15);
                     filter: grayscale(100%);
+                    @media #{$smartphone} {
+                        transform: none;
+                        filter: none;
+                    }
                 }
 
                 .restaurant-info{
