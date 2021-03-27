@@ -11185,6 +11185,12 @@ body {
   border-radius: 10px;
 }
 
+@media (max-width: 575px) {
+  .home-component .typologies .restaurant-list .restaurant {
+    max-width: 350px;
+  }
+}
+
 .home-component .typologies .restaurant-list .restaurant:hover {
   transition: 0.2s;
   transition: 1s ease;
@@ -11258,7 +11264,7 @@ body {
 .lavora-con-noi-container {
   display: flex;
   margin: auto;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: baseline;
   flex-wrap: wrap;
   margin-bottom: 100px;
