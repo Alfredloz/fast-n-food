@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="login-container">
-    <h1>Create your Dish</h1>
+    <h1>Crea il tuo piatto</h1>
     @include('layouts.partials.errors')
 
     <form action="{{route('admin.plates.store')}}" method="post" enctype="multipart/form-data">
@@ -12,7 +12,7 @@
         {{-- Input text name --}}
         <div class="input-container">
             <!-- <label for="name">Name</label> -->
-            <i class="fas fa-pizza-slice"></i><input placeholder="Name" class="form-control" type="text" name="name" id="name" value="{{ old('name')}}">
+            <i class="fas fa-pizza-slice"></i><input placeholder="Nome" class="form-control" type="text" name="name" id="name" value="{{ old('name')}}">
         </div>
         @error('name')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -26,7 +26,7 @@
         {{-- Input number price --}}
         <div class="input-container">
             <!-- <label for="price">Price</label> -->
-            <i class="fas fa-tags"></i><input placeholder="Price" class="form-control" type="number" name="price" id="price" step="0.01" min="0" max="9999.99" value="{{ old('price')}}">
+            <i class="fas fa-tags"></i><input placeholder="Prezzo" class="form-control" type="number" name="price" id="price" step="0.01" min="0" max="9999.99" value="{{ old('price')}}">
         </div>
         @error('price')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -36,7 +36,7 @@
         {{-- Input textarea description --}}
         <div class="input-container">
             <!-- <label for="description_ingredients">Description</label> -->
-            <textarea placeholder="Description" class="form-control" type="text" rows="3" name="description_ingredients" id="description_ingredients">{{old('description_ingredients')}}</textarea>
+            <textarea placeholder="Descrizione" class="form-control" type="text" rows="3" name="description_ingredients" id="description_ingredients">{{old('description_ingredients')}}</textarea>
         </div>
         @error('description_ingredients')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -45,7 +45,7 @@
 
         {{-- Input file picture --}}
         <div class="input-container">
-            <i class="fas fa-sign-in-alt"></i><label for="picture" class="col-md-4 col-form-label text-md-right">Add image</label>
+            <i class="fas fa-sign-in-alt"></i><label for="picture" class="imput_img col-md-4 col-form-label text-md-right">Aggiungi un immagine</label>
             <input type="file" class="form-control-file" name="picture" id="picture" value="{{ old('picture')}}">
         </div>
         <hr>
@@ -53,10 +53,10 @@
         {{-- Input radio visibility --}}
         <div class="form-check my-4">
             <input type="radio" class="form-check-input" name="visibility" value="1" checked>
-            <label for="visibility" class="form-check-label">Available</label>
+            <label for="visibility" class="form-check-label">Disponibile</label>
             <br>
             <input type="radio" class="form-check-input" name="visibility" value="0">
-            <label for="visibility" class="form-check-label">Not Available</label>
+            <label for="visibility" class="form-check-label">Non disponibile</label>
         </div>
         @error('visibility')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -65,7 +65,7 @@
 
         {{-- Submit button --}}
         <div class="login-container">
-            <button type="submit" class="login-button" name="submit">Submit</button>
+            <button type="submit" class="login-button" name="submit">Salva</button>
         </div>
     </form>
 

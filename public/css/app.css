@@ -12006,6 +12006,12 @@ form {
   color: lightgrey;
 }
 
+@media (max-width: 575px) {
+  .imput_img {
+    width: 150px;
+  }
+}
+
 .presentation {
   color: #435070;
 }
