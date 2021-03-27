@@ -17,6 +17,8 @@
 
   <div class="curvature"></div>
 </div>
+
+<section id="typologies"></section>
 <div id="app">
   <home-component></home-component>
 </div>

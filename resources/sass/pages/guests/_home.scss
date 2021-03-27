@@ -102,6 +102,10 @@ body {
                 max-height: 600px;
                 margin: 50px auto;
                 border-radius: 10px;
+                // media query
+                @media #{$smartphone} {
+                    max-width: 350px;
+                }
                 &:hover {
                     transition: 0.2s;
                     transition: 1s ease;
@@ -169,7 +173,7 @@ body {
 .lavora-con-noi-container {
     display: flex;
     margin: auto;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: baseline;
     flex-wrap: wrap;
     margin-bottom: 100px;
