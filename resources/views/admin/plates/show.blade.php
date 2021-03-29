@@ -16,10 +16,11 @@
       <span><i class="fas fa-tags"></i> {{$plate->price}} €</span>
       <p><i class="fas fa-align-left"></i> {{$plate->description_ingredients}}</p>
       @if ($plate->visibility == 1)
-      <span><i class="fas fa-check-circle"></i> Available</span>
+      <span><i class="fas fa-check-circle"></i> Disponibile</span>
       @else
-      <span><i class="fas fa-times-circle"></i> Not available</span>
+      <span><i class="fas fa-times-circle"></i> Non disponibile</span>
       @endif
+      <a class="btn btn_add" style="width: 200px; margin-top: 20px;" href="{{route("admin.plates.index")}}">Torna al menù</a>
     </div>
   </div>
 @endcan
