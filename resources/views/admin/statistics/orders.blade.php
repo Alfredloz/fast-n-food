@@ -24,31 +24,31 @@ const orders_info = {!! $orders !!};
 //Array dei ricavi totali per ognuno dei 12 mese
 const yearTtlAmount = [];
 
-//Array delle etichette degli ultimi 11 mesi 
+//Array delle etichette degli ultimi 11 mesi
 const labels = [];
 
 //Array contente il numero di ordini di ciascun mese
 const orderCounters = [];
 
-//Ciclo per i calcoli degli ordini dal mese attuale fino agli 11 mesi precedenti 
+//Ciclo per i calcoli degli ordini dal mese attuale fino agli 11 mesi precedenti
 for (let i = 11; i >= 0; i--) {
-  
+
   var monthTtlAmount = 0;
   var orderCounter = 0;
-  var checkMonth = moment().subtract(i, 'month'); // Sottrazione di [i] mesi dalla data corrente 
-  var firstDay = checkMonth.startOf('month').format('YYYY MM DD'); 
+  var checkMonth = moment().subtract(i, 'month'); // Sottrazione di [i] mesi dalla data corrente
+  var firstDay = checkMonth.startOf('month').format('YYYY MM DD');
   var lastDay = checkMonth.endOf('month').format('YYYY MM DD');
   labels.push(checkMonth.format('MMMM YY'));
 
   //Ciclo dei dati provenienti dal db
   orders_info.forEach(order => {
-    let month = moment(order.created_at).isBetween(firstDay, lastDay); 
+    let month = moment(order.created_at).isBetween(firstDay, lastDay);
 
       //Se l'ordine appartiene al mese considerato in questo ciclo:
       if (month == true) {
         monthTtlAmount += order.total_price;
-        orderCounter++; 
-      } 
+        orderCounter++;
+      }
     });
     yearTtlAmount.push(monthTtlAmount);
     orderCounters.push(orderCounter);
@@ -58,7 +58,7 @@ for (let i = 11; i >= 0; i--) {
 
 //Struttura Chart,Js --> Prendo il contesto del tag canvas
 var ctx = document.getElementById('myChart').getContext('2d');
-  
+
   //Global Options
   Chart.defaults.global.defaultFontSize = 18;
   Chart.defaults.global.defaultFontStyle = 'bold';
@@ -75,16 +75,16 @@ var ctx = document.getElementById('myChart').getContext('2d');
               {
                 label: 'Totale incasso (€)',
                 backgroundColor: 'rgba(255, 155, 41, 0.5)',
-                borderColor: 'rgb(250, 100, 0)', 
+                borderColor: 'rgb(250, 100, 0)',
                 borderWidth: 2,
-                hoverBorderWidth: 4, 
-                hoverBorderColor: 'rgb(67, 80, 112)', 
+                hoverBorderWidth: 4,
+                hoverBorderColor: 'rgb(67, 80, 112)',
                 data: yearTtlAmount
             },
             {
                 label: 'Numeri ordini',
-                backgroundColor: 'rgba(192, 33, 62, 0.5)', 
-                borderColor: 'rgb(192, 33, 62)', 
+                backgroundColor: 'rgba(192, 33, 62, 0.5)',
+                borderColor: 'rgb(192, 33, 62)',
                 borderWidth: 2,
                 type: 'line',
                 data: orderCounters
@@ -110,7 +110,7 @@ var ctx = document.getElementById('myChart').getContext('2d');
           //       top: 20,
           //       bottom: 70
           //   }
-          // }  
+          // }
         }
     });
 

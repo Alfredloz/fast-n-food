@@ -1,7 +1,25 @@
+.btn_add{
+  background-color: $secondary-color;
+  color: white;
+}
+.btn_show{
+  background-color: $add-color;
+  color: white;
+}
+.btn_edit{
+  background-color: $tertiary-color;
+  color: white;
+}
+.btn_delete{
+  background-color: $remove-color;
+  color: white;
+}
+
+
 .plates_list {
     display: flex;
     flex-direction: column;
-    
+
     .plate_card {
         display: flex;
         width: 100%;
@@ -21,8 +39,8 @@
             justify-content: space-between;
             width: calc(100% - 300px);
             color: $tertiary-color;
-            
-            
+
+
             h3 {
                 width: 150px;
                 text-align: left;
@@ -31,7 +49,7 @@
             }
 
             .visibility-form {
-                width: 170px;   
+                width: 170px;
             }
 
             p {
@@ -51,7 +69,7 @@
     }
 }
 
-@media #{$smartphone} {
+@media #{$smartphone}, #{$tablet} {
     .custom_center {
         text-align: center;
     }

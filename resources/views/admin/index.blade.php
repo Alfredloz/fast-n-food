@@ -14,6 +14,6 @@
     <a class="img_dashboard" href="{{ route('admin.sold')}}" role="button"><img src="{{asset('/images/back_office/invoice.png')}}" alt=""><h3>Ordini ricevuti</h3></a>
   </div>
 
-  
+
 
 @endsection

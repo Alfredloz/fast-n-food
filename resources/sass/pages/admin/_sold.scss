@@ -17,6 +17,7 @@
   .card-scontrino{
     position: relative;
     width: 30%;
+    height: 518px;
     margin: 30px 0;
     .card_image{
       width: 100%;
@@ -53,6 +54,30 @@
         bottom: 32px;
         left: 22px;
         color: $tertiary-color;
+      }
+    }
+  }
+}
+
+@media #{$tablet}{
+  .card_container{
+    .card-scontrino{
+      height: 332px;
+      .card-body{
+        position: relative;
+        height: 330px;
+        top: -323px;
+        .card_info_orders{
+          height: 180px;
+          overflow-y: scroll;
+        }
+        .card-title{
+          margin: 12px 0 15px;
+          font-size: 0.8rem;
+        }
+        .card_total{
+          font-size: 1.3rem;
+        }
       }
     }
   }

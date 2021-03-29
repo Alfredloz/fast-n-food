@@ -18,7 +18,7 @@
       @if ($plate->visibility == 1)
       <span><i class="fas fa-check-circle"></i> Available</span>
       @else
-      <span><i class="fas fa-times-circle"></i> Not available</span>      
+      <span><i class="fas fa-times-circle"></i> Not available</span>
       @endif
     </div>
   </div>
