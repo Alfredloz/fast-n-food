@@ -47,7 +47,7 @@
         padding: 7px 12px;
         margin-left: 20px;
         transition: 0.5s;
-        
+
         &:hover {
             background-color: $tertiary-color;
             transition: 0.5s;
@@ -58,14 +58,13 @@
             font-size: 1.3rem;
         }
     }
-
 }
 .collapse{
     position: relative;
 
     .right_nav{
       position: absolute;
-      right: 0; 
+      right: 0;
       @media #{$smartphone} {
         position: initial;
         left: 0;

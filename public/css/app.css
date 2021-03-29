@@ -12145,6 +12145,26 @@ form {
   }
 }
 
+.btn_add {
+  background-color: #ff9b29;
+  color: white;
+}
+
+.btn_show {
+  background-color: #42AAFF;
+  color: white;
+}
+
+.btn_edit {
+  background-color: #435070;
+  color: white;
+}
+
+.btn_delete {
+  background-color: #C1213F;
+  color: white;
+}
+
 .plates_list {
   display: flex;
   flex-direction: column;
@@ -12197,7 +12217,7 @@ form {
   margin: 1rem 0;
 }
 
-@media (max-width: 575px) {
+@media (max-width: 575px), (min-width: 576px) and (max-width: 992px) {
   .custom_center {
     text-align: center;
   }
@@ -12294,6 +12314,24 @@ h2 {
   margin: 10px;
 }
 
+@media (min-width: 576px) and (max-width: 992px), (max-width: 575px) {
+  h2 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .show {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .show .img_show img {
+    margin: 0 auto 30px;
+  }
+}
+
 .title_bills {
   margin-top: 30px;
   color: #435070;
@@ -12315,6 +12353,7 @@ h2 {
 .card_container .card-scontrino {
   position: relative;
   width: 30%;
+  height: 518px;
   margin: 30px 0;
 }
 
@@ -12360,6 +12399,32 @@ h2 {
   bottom: 32px;
   left: 22px;
   color: #435070;
+}
+
+@media (min-width: 576px) and (max-width: 992px) {
+  .card_container .card-scontrino {
+    height: 332px;
+  }
+
+  .card_container .card-scontrino .card-body {
+    position: relative;
+    height: 330px;
+    top: -323px;
+  }
+
+  .card_container .card-scontrino .card-body .card_info_orders {
+    height: 180px;
+    overflow-y: scroll;
+  }
+
+  .card_container .card-scontrino .card-body .card-title {
+    margin: 12px 0 15px;
+    font-size: 0.8rem;
+  }
+
+  .card_container .card-scontrino .card-body .card_total {
+    font-size: 1.3rem;
+  }
 }
 
 @media (max-width: 575px) {

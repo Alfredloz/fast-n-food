@@ -4,7 +4,7 @@
 
 <div class="custom_center">
     <h2>Menu</h2>
-    <a class="btn btn-warning" href="{{ route('admin.plates.create') }}" role="button">Aggiungi piatto</a>
+    <a class="btn btn_add" href="{{ route('admin.plates.create') }}" role="button">Aggiungi piatto</a>
 </div>
 
 <div class="plates_list">
@@ -51,9 +51,9 @@
 
             {{-- Group button --}}
             <div class="group_button">
-                <a class="btn btn-success" href="{{ route('admin.plates.show', ['plate'=> $plate->slug]) }}"><i
+                <a class="btn btn_show" href="{{ route('admin.plates.show', ['plate'=> $plate->slug]) }}"><i
                         class="fas fa-pizza-slice"></i> Piatto</a>
-                <a class="btn btn-primary mi2" href="{{ route('admin.plates.edit', ['plate'=> $plate->slug]) }}"><i
+                <a class="btn btn_edit mi2" href="{{ route('admin.plates.edit', ['plate'=> $plate->slug]) }}"><i
                         class="fas fa-edit"></i> Modifica</a>
 
                 <!-- Button trigger modal -->

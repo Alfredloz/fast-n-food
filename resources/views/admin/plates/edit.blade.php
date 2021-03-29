@@ -7,11 +7,11 @@
 <div class="login-container">
     <h1>Modifica il piatto</h1>
     @can ('access-plate', $plate)
-    
+
     <form action="{{route('admin.plates.update', ['plate' => $plate->slug]) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-    
+
         {{-- Input text name --}}
         <div class="input-container">
             <!-- <label for="name">Name</label> -->
@@ -31,7 +31,7 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         <hr>
-    
+
         {{-- Input text description --}}
         <div class="input-container">
             <!-- <label for="description_ingredients">Description</label> -->
@@ -41,7 +41,7 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         <hr>
-    
+
         {{-- Input file picture --}}
         <div class="input-container">
             @if ($plate->picture)
@@ -49,7 +49,7 @@
             @endif
         </div>
         <hr>
-    
+
         <div class="input-container">
             <i class="fas fa-sign-in-alt"></i><label for="picture" class="imput_img col-md-4 col-form-label text-md-right">Modifica immagine</label>
             <input type="file" class="form-control-file" name="picture" id="picture">
@@ -73,14 +73,14 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         <hr>
-    
+
         {{-- Submit button --}}
         <div class="login-container">
             <button type="submit" class="login-button" name="submit">Salva</button>
         </div>
     </form>
     @endcan
-    
+
     @cannot ('access-plate', $plate)
     @include('layouts.partials.attention')
     @endcannot
