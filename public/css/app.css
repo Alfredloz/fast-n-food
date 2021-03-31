@@ -11789,7 +11789,8 @@ html {
 }
 
 .cart-checkout .cart {
-  border: 1px solid black;
+  border: 1px solid grey;
+  border-radius: 5px;
   padding: 30px;
   background-color: #F8F9FD;
   color: #435070;

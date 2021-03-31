@@ -6,7 +6,8 @@
         display: none;
     }
     .cart {
-        border: 1px solid black;
+        border: 1px solid grey;
+        border-radius: 5px;
         padding: 30px;
         background-color: $background-color;
         color: $tertiary-color;
@@ -43,7 +44,7 @@
             }
         }
     }
-    
+
     // buttons
     .add-cart-btn {
         color: orange;

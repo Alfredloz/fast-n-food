@@ -26,7 +26,7 @@
         <small class="error-checkout" id="error_phone"></small>
       </div>
       <hr>
-      
+
       <div class="input-container">
         <!-- <label for="address">Indirizzo</label> -->
         <i class="fas fa-map-marker-alt"></i><input class="form-control" type="text" placeholder="Indirizzo" name="address" id="address" required>
@@ -44,7 +44,7 @@
         <button id="submit-button" class="submit-payment">Submit payment</button>
       </div>
     </div>
-    
+
 <script>
   var button = document.querySelector('#submit-button');
 

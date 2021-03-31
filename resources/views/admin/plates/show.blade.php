@@ -5,7 +5,7 @@
 
 @can ('access-plate', $plate)
 
-  <h2>Info plate</h2>
+  <h2>Descrizione del piatto</h2>
 
   <div class="show">
     <div class="img_show">
